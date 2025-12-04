@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>analises_relacionais.views &mdash; APEX_GOVERNANCE 20/01/2025 documentation</title>
+  <title>analises_relacionais.views &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=e2184e81"></script>
+      <script src="../../_static/documentation_options.js?v=c0c8e3fa"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -39,8 +39,43 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"></div>
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -68,36 +103,107 @@
   <h1>Source code for analises_relacionais.views</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">messages</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">RelatorioAnaliseRelacional</span>
-<span class="c1"># Certifique-se de que a tarefa existe em tasks.py ou comente a linha abaixo temporariamente</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.tasks</span><span class="w"> </span><span class="kn">import</span> <span class="n">executar_analises_relacionais_task</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">RelatorioAnaliseRelacional</span><span class="p">,</span> 
+    <span class="n">RelatorioDQI</span><span class="p">,</span> 
+    <span class="n">RelatorioRiscoSenha</span><span class="p">,</span>
+    <span class="n">RelatorioScorecard</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tasks</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">executar_analises_relacionais_task</span><span class="p">,</span> 
+    <span class="n">executar_metricas_avancadas_task</span><span class="p">,</span>
+    <span class="n">executar_scorecard_completo_task</span><span class="p">,</span>
+    <span class="c1"># --- NOVAS TAREFAS IMPORTADAS ---</span>
+    <span class="n">executar_regras_staging_task</span><span class="p">,</span>
+    <span class="n">executar_regras_producao_task</span>
+<span class="p">)</span>
+
+<span class="c1"># -----------------------------------</span>
 
 <div class="viewcode-block" id="dashboard_relacional">
 <a class="viewcode-back" href="../../analises_relacionais.html#analises_relacionais.views.dashboard_relacional">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">dashboard_relacional</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    View do painel de análises relacionais.</span>
+<span class="sd">    View principal do painel relacional (Dashboard).</span>
+<span class="sd">    Separada em Staging e Produção.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
-        <span class="c1"># Dispara a tarefa no Celery</span>
-        <span class="n">executar_analises_relacionais_task</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span>
-        <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Análises de Integridade e Consistência iniciadas!&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;dashboard_relacional&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># 1. AUDITORIA DE PRODUÇÃO (Botão Roxo)</span>
+        <span class="k">if</span> <span class="s1">&#39;acao_auditoria_producao&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">executar_regras_producao_task</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span> <span class="c1"># Roda as regras limpas</span>
+            <span class="n">executar_metricas_avancadas_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">tipo_analise</span><span class="o">=</span><span class="s1">&#39;producao&#39;</span><span class="p">)</span> 
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Auditoria de PRODUÇÃO iniciada!&#39;</span><span class="p">)</span>
 
-    <span class="c1"># Busca histórico</span>
-    <span class="n">ultimos_relatorios</span> <span class="o">=</span> <span class="n">RelatorioAnaliseRelacional</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">100</span><span class="p">]</span>
+        <span class="c1"># 2. AUDITORIA DE STAGING (Botão Laranja)</span>
+        <span class="k">elif</span> <span class="s1">&#39;acao_auditoria_staging&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">executar_regras_staging_task</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span> <span class="c1"># Roda as regras blindadas (regex)</span>
+            <span class="n">executar_metricas_avancadas_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">tipo_analise</span><span class="o">=</span><span class="s1">&#39;staging&#39;</span><span class="p">)</span> 
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Auditoria de STAGING iniciada!&#39;</span><span class="p">)</span>
+
+        <span class="c1"># 3. SCORECARDS (CSV)</span>
+        <span class="k">elif</span> <span class="s1">&#39;acao_scorecard_producao&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">executar_scorecard_completo_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">tipo_analise</span><span class="o">=</span><span class="s1">&#39;producao&#39;</span><span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Geração de Scorecard (Produção) iniciada!&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;dashboard_scorecard&#39;</span><span class="p">)</span>
+            
+        <span class="k">elif</span> <span class="s1">&#39;acao_scorecard_staging&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">executar_scorecard_completo_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">tipo_analise</span><span class="o">=</span><span class="s1">&#39;staging&#39;</span><span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Geração de Scorecard (Staging) iniciada!&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;dashboard_scorecard&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Botão Legado (Compatibilidade)</span>
+        <span class="k">elif</span> <span class="s1">&#39;acao_analise_consistencia&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">:</span>
+            <span class="n">executar_analises_relacionais_task</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span>
+            <span class="n">executar_metricas_avancadas_task</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Auditoria Padrão Iniciada!&#39;</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;dashboard_relacional&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># SEPARAÇÃO DO HISTÓRICO PARA O TEMPLATE </span>
+    
+    <span class="c1"># Staging: Tabelas que TERMINAM com &quot;_staging&quot; ou contém &quot;_staging&quot; na string de join</span>
+    <span class="n">historico_staging</span> <span class="o">=</span> <span class="n">RelatorioAnaliseRelacional</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">tabelas_envolvidas__contains</span><span class="o">=</span><span class="s1">&#39;_staging&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">,</span> <span class="s1">&#39;nome_analise&#39;</span><span class="p">)[:</span><span class="mi">100</span><span class="p">]</span>
+
+    <span class="c1"># Produção: Tabelas que NÃO contêm &quot;_staging&quot;</span>
+    <span class="n">historico_producao</span> <span class="o">=</span> <span class="n">RelatorioAnaliseRelacional</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span>
+        <span class="n">tabelas_envolvidas__contains</span><span class="o">=</span><span class="s1">&#39;_staging&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">,</span> <span class="s1">&#39;nome_analise&#39;</span><span class="p">)[:</span><span class="mi">100</span><span class="p">]</span>
+    
+    <span class="c1"># KPIs (DQI e Risco)</span>
+    <span class="n">dqi_producao</span> <span class="o">=</span> <span class="n">RelatorioDQI</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tipo_ambiente</span><span class="o">=</span><span class="s1">&#39;PRODUÇÃO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+    <span class="n">dqi_staging</span> <span class="o">=</span> <span class="n">RelatorioDQI</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tipo_ambiente</span><span class="o">=</span><span class="s1">&#39;STAGING&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+    <span class="n">ultimo_risco</span> <span class="o">=</span> <span class="n">RelatorioRiscoSenha</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
 
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;APEX - Análises Relacionais (Cruzamento)&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;ultimos_relatorios&#39;</span><span class="p">:</span> <span class="n">ultimos_relatorios</span>
+        <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;APEX - Governança Avançada (DQI &amp; Riscos)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;historico_producao&#39;</span><span class="p">:</span> <span class="n">historico_producao</span><span class="p">,</span> 
+        <span class="s1">&#39;historico_staging&#39;</span><span class="p">:</span> <span class="n">historico_staging</span><span class="p">,</span>   
+        <span class="s1">&#39;dqi_producao&#39;</span><span class="p">:</span> <span class="n">dqi_producao</span><span class="p">,</span>
+        <span class="s1">&#39;dqi_staging&#39;</span><span class="p">:</span> <span class="n">dqi_staging</span><span class="p">,</span>
+        <span class="s1">&#39;risco_senha&#39;</span><span class="p">:</span> <span class="n">ultimo_risco</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;analises_relacionais/dashboard_relacional.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
 
+
 <div class="viewcode-block" id="detalhe_relatorio_relacional">
 <a class="viewcode-back" href="../../analises_relacionais.html#analises_relacionais.views.detalhe_relatorio_relacional">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">detalhe_relatorio_relacional</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    View de detalhe para um relatório específico.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">relatorio</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">RelatorioAnaliseRelacional</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    
     <span class="n">status_classe</span> <span class="o">=</span> <span class="s2">&quot;status-sucesso&quot;</span> <span class="k">if</span> <span class="n">relatorio</span><span class="o">.</span><span class="n">total_inconsistencias</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;status-falhou&quot;</span>
     
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
@@ -106,6 +212,47 @@
         <span class="s1">&#39;status_classe&#39;</span><span class="p">:</span> <span class="n">status_classe</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;analises_relacionais/detalhe_relatorio_relacional.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+    
+<span class="c1"># -----------------------------------</span>
+
+<div class="viewcode-block" id="dashboard_scorecard">
+<a class="viewcode-back" href="../../analises_relacionais.html#analises_relacionais.views.dashboard_scorecard">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dashboard_scorecard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tela que mostra os Top 50 ofensores e o botão de download.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ultimo_scorecard</span> <span class="o">=</span> <span class="n">RelatorioScorecard</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">executar_scorecard_completo_task</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">tipo_analise</span><span class="o">=</span><span class="s1">&#39;producao&#39;</span><span class="p">)</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Novo Scorecard solicitado!&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;dashboard_scorecard&#39;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;analises_relacionais/dashboard_scorecard.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;Scorecard Individual (Detalhe por Objeto)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;scorecard&#39;</span><span class="p">:</span> <span class="n">ultimo_scorecard</span>
+    <span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="baixar_csv_scorecard">
+<a class="viewcode-back" href="../../analises_relacionais.html#analises_relacionais.views.baixar_csv_scorecard">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">baixar_csv_scorecard</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Serve o arquivo CSV gerado para download.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scorecard</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">RelatorioScorecard</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    
+    <span class="c1"># Caminho completo do arquivo</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;media&#39;</span><span class="p">,</span> <span class="s1">&#39;scorecards&#39;</span><span class="p">,</span> <span class="n">scorecard</span><span class="o">.</span><span class="n">arquivo_csv</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">FileResponse</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">),</span> <span class="n">as_attachment</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">scorecard</span><span class="o">.</span><span class="n">arquivo_csv</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;Arquivo CSV não encontrado no servidor (pode ter sido excluído).&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;dashboard_scorecard&#39;</span><span class="p">)</span></div>
 
 </pre></div>
 
@@ -116,7 +263,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Sergio Santana dos Santos.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Cases &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pipeline ETL (BPMN-style)" href="bpmn.html" />
+    <link rel="prev" title="Formulas" href="../requirements/formulas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Use Cases</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagrams/use_cases.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="use-cases">
+<h1>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h1>
+<p>… uml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@startuml
+!theme plain
+left to right direction
+
+&#39; ---- ATORES ----
+actor &quot;Técnico de TI&quot; as Tech
+actor &quot;Agendador (Cron)&quot; &lt;&lt;system&gt;&gt; as Cron
+actor &quot;Agente Windows (Serviço AD)&quot; &lt;&lt;system&gt;&gt; as Agent
+
+rectangle &quot;Active Directory&quot; &lt;&lt;external&gt;&gt; as AD
+
+actor &quot;Gerente de Governança&quot; as Manager
+actor &quot;Super Admin&quot; as SuperAdmin
+
+actor &quot;Gerente Acadêmico (Graduação)&quot; as MgrGrad
+actor &quot;Gerente Acadêmico (Pós)&quot; as MgrPos
+actor &quot;Gerente RH (Efetivos)&quot; as MgrEfetivo
+actor &quot;Gerente RH (Terceirizados)&quot; as MgrTerc
+actor &quot;Gerente de Infra&quot; as MgrInfra
+
+&#39; Herdam permissões do Gerente base
+MgrGrad -up-|&gt; Manager
+MgrPos -up-|&gt; Manager
+MgrEfetivo -up-|&gt; Manager
+MgrTerc -up-|&gt; Manager
+MgrInfra -up-|&gt; Manager
+SuperAdmin -up-|&gt; Manager
+
+
+&#39; ---- MÓDULO ETL ----
+package &quot;Módulo 1: Engenharia &amp; Carga (ETL)&quot; {
+  usecase &quot;Executar Pipeline Completo&quot; as UC_ETL
+  usecase &quot;Importar CSV Dinâmico&quot; as UC_CSV
+  usecase &quot;Mapear Colunas De/Para&quot; as UC_Map
+}
+
+&#39; ---- MÓDULO AUDITORIA PASSIVA ----
+package &quot;Módulo 2: Auditoria Passiva&quot; {
+  usecase &quot;Visualizar Dashboard&quot; as UC_Dash
+  usecase &quot;Executar Auditoria&quot; as UC_Audit
+  usecase &quot;Gerar Relatório (PDF)&quot; as UC_PDF
+  usecase &quot;Gerar Scorecard (CSV)&quot; as UC_Score
+}
+
+&#39; ---- MÓDULO GOVERNANÇA ATIVA ----
+package &quot;Módulo 3: Governança Ativa&quot; {
+  usecase &quot;Receber Evento via API&quot; as UC_API
+  usecase &quot;Detectar Violação&quot; as UC_Signal
+  usecase &quot;Gerenciar Incidentes&quot; as UC_Incident
+  usecase &quot;Aprovar Exceção&quot; as UC_Approve
+  usecase &quot;Rejeitar Correção&quot; as UC_Reject
+}
+
+
+&#39; ---- RELAÇÕES (Linhas simples, SEM SETAS) ----
+
+Tech -- UC_Audit
+Tech -- UC_ETL
+Cron -- UC_ETL
+
+Agent -- UC_API
+
+SuperAdmin -- UC_ETL
+SuperAdmin -- UC_CSV
+SuperAdmin -- UC_Map
+
+Manager -- UC_Dash
+Manager -- UC_PDF
+Manager -- UC_Score
+Manager -- UC_Incident
+
+&#39; Extend / Include (único caso que tem seta)
+UC_API --&gt; UC_Signal : &quot;&lt;&lt;include&gt;&gt;&quot;
+UC_Incident &lt;.. UC_Approve : &quot;&lt;&lt;extend&gt;&gt;&quot;
+UC_Incident &lt;.. UC_Reject : &quot;&lt;&lt;extend&gt;&gt;&quot;
+
+&#39; Nota explicando fluxo externo (não permitido como seta)
+note right of Agent
+  O Agente Windows detecta eventos do AD
+  e envia para o caso de uso &quot;Receber Evento via API&quot;.
+  (Fluxo detalhado é mostrado no diagrama de sequência.)
+end note
+
+@enduml
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../requirements/formulas.html" class="btn btn-neutral float-left" title="Formulas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpmn.html" class="btn btn-neutral float-right" title="Pipeline ETL (BPMN-style)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

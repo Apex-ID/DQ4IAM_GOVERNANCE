@@ -39,9 +39,41 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Pacotes e Módulos</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">APEX_GOVERNANCE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#apex-governance">APEX_GOVERNANCE</a></li>
 </ul>
 
         </div>
@@ -76,6 +108,7 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
@@ -94,6 +127,8 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="iniciar_sistema.html#iniciar_sistema.abrir_terminal">abrir_terminal() (in module iniciar_sistema)</a>
+</li>
       <li><a href="analises_simples.logica_de_analise.html#analises_simples.logica_de_analise.logica_unicidade.analisar_unicidade_coluna">analisar_unicidade_coluna() (in module analises_simples.logica_de_analise.logica_unicidade)</a>
 </li>
       <li><a href="analises_simples.logica_de_analise.html#analises_simples.logica_de_analise.logica_unicidade.analisar_unicidade_multicoluna">analisar_unicidade_multicoluna() (in module analises_simples.logica_de_analise.logica_unicidade)</a>
@@ -122,6 +157,13 @@
 </li>
       </ul></li>
       <li>
+    analises_relacionais.logica_scorecard
+
+      <ul>
+        <li><a href="analises_relacionais.html#module-analises_relacionais.logica_scorecard">module</a>
+</li>
+      </ul></li>
+      <li>
     analises_relacionais.migrations
 
       <ul>
@@ -136,6 +178,27 @@
 </li>
       </ul></li>
       <li>
+    analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha
+
+      <ul>
+        <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha">module</a>
+</li>
+      </ul></li>
+      <li>
+    analises_relacionais.migrations.0003_relatorioscorecard
+
+      <ul>
+        <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0003_relatorioscorecard">module</a>
+</li>
+      </ul></li>
+      <li>
+    analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente
+
+      <ul>
+        <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente">module</a>
+</li>
+      </ul></li>
+      <li>
     analises_relacionais.models
 
       <ul>
@@ -143,10 +206,17 @@
 </li>
       </ul></li>
       <li>
-    analises_relacionais.regras_sql
+    analises_relacionais.regras_producao
 
       <ul>
-        <li><a href="analises_relacionais.html#module-analises_relacionais.regras_sql">module</a>
+        <li><a href="analises_relacionais.html#module-analises_relacionais.regras_producao">module</a>
+</li>
+      </ul></li>
+      <li>
+    analises_relacionais.regras_staging
+
+      <ul>
+        <li><a href="analises_relacionais.html#module-analises_relacionais.regras_staging">module</a>
 </li>
       </ul></li>
       <li>
@@ -233,6 +303,8 @@
         <li><a href="analises_simples.migrations.html#module-analises_simples.migrations">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     analises_simples.migrations.0001_initial
 
@@ -240,8 +312,6 @@
         <li><a href="analises_simples.migrations.html#module-analises_simples.migrations.0001_initial">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     analises_simples.migrations.0002_relatoriocompletudegeral
 
@@ -386,11 +456,27 @@
         <li><a href="apex_project.html#module-apex_project.wsgi">module</a>
 </li>
       </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.views.api_receber_auditoria">api_receber_auditoria() (in module melhoria_continua.views)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.arquivo_csv">arquivo_csv (analises_relacionais.models.RelatorioScorecard attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD">AuditoriaAD (class in melhoria_continua.models)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.DoesNotExist">AuditoriaAD.DoesNotExist</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.MultipleObjectsReturned">AuditoriaAD.MultipleObjectsReturned</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.AuditoriaADAdmin">AuditoriaADAdmin (class in melhoria_continua.admin)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.views.baixar_csv_scorecard">baixar_csv_scorecard() (in module analises_relacionais.views)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.base_fields">base_fields (importador_dinamico.forms.UploadCSVForm attribute)</a>
 </li>
@@ -409,6 +495,8 @@
       </ul></li>
       <li><a href="carga_manual.html#carga_manual.carregar_dados_manualmente">carregar_dados_manualmente() (in module carga_manual)</a>
 </li>
+      <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.views.central_relatorios">central_relatorios() (in module relatorios_gerenciais.views)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.coluna_analisada">coluna_analisada (analises_simples.models.RelatorioUnicidade attribute)</a>
 </li>
   </ul></td>
@@ -421,15 +509,25 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.contato_completo">contato_completo (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.cor_status">cor_status (analises_relacionais.models.RelatorioDQI property)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.dados_evento">dados_evento (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.views.dashboard_analises">dashboard_analises() (in module analises_simples.views)</a>
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.views.dashboard_relacional">dashboard_relacional() (in module analises_relacionais.views)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.views.dashboard_scorecard">dashboard_scorecard() (in module analises_relacionais.views)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.data_abertura">data_abertura (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.data_fechamento">data_fechamento (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
       <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.declared_fields">declared_fields (importador_dinamico.forms.UploadCSVForm attribute)</a>
 </li>
@@ -440,12 +538,22 @@
 </li>
         <li><a href="importador_dinamico.html#importador_dinamico.apps.ImportadorDinamicoConfig.default_auto_field">(importador_dinamico.apps.ImportadorDinamicoConfig attribute)</a>
 </li>
+        <li><a href="melhoria_continua.html#melhoria_continua.apps.MelhoriaContinuaConfig.default_auto_field">(melhoria_continua.apps.MelhoriaContinuaConfig attribute)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.apps.QualidadeAdConfig.default_auto_field">(qualidade_ad.apps.QualidadeAdConfig attribute)</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.default_auto_field">(relatorios_gerenciais.apps.RelatoriosGerenciaisConfig attribute)</a>
 </li>
       </ul></li>
       <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0001_initial.Migration.dependencies">dependencies (analises_relacionais.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha.Migration.dependencies">(analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha.Migration attribute)</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0003_relatorioscorecard.Migration.dependencies">(analises_relacionais.migrations.0003_relatorioscorecard.Migration attribute)</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente.Migration.dependencies">(analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente.Migration attribute)</a>
+</li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0001_initial.Migration.dependencies">(analises_simples.migrations.0001_initial.Migration attribute)</a>
 </li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0002_relatoriocompletudegeral.Migration.dependencies">(analises_simples.migrations.0002_relatoriocompletudegeral.Migration attribute)</a>
@@ -466,6 +574,8 @@
 </li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0010_relatoriounicidadepersonalizada.Migration.dependencies">(analises_simples.migrations.0010_relatoriounicidadepersonalizada.Migration attribute)</a>
 </li>
+        <li><a href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration.dependencies">(melhoria_continua.migrations.0001_initial.Migration attribute)</a>
+</li>
         <li><a href="qualidade_ad.migrations.html#qualidade_ad.migrations.0001_initial.Migration.dependencies">(qualidade_ad.migrations.0001_initial.Migration attribute)</a>
 </li>
       </ul></li>
@@ -477,6 +587,8 @@
         <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.descricao_impacto">(analises_simples.models.RelatorioRegraNegocio attribute)</a>
 </li>
       </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.descricao_incidente">descricao_incidente (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.detalhamento_erros">detalhamento_erros (analises_simples.models.RelatorioValidadeFormato attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadeGeral.detalhe_por_coluna">detalhe_por_coluna (analises_simples.models.RelatorioUnicidadeGeral attribute)</a>
@@ -503,9 +615,15 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="qualidade_ad.html#qualidade_ad.agente_simulador.enviar_para_api">enviar_para_api() (in module qualidade_ad.agente_simulador)</a>
+</li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.etapa_nome">etapa_nome (qualidade_ad.models.LogEtapa attribute)</a>
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.ETAPAS_CHOICES">ETAPAS_CHOICES (qualidade_ad.models.LogEtapa attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.evento_auditoria">evento_auditoria (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.evento_auditoria_id">evento_auditoria_id (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.execucao">execucao (qualidade_ad.models.LogEtapa attribute)</a>
 </li>
@@ -517,10 +635,10 @@
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.MultipleObjectsReturned">ExecucaoPipeline.MultipleObjectsReturned</a>
 </li>
-      <li><a href="analises_simples.logica_de_analise.html#analises_simples.logica_de_analise.logica_validade.executar_analise_de_validade">executar_analise_de_validade() (in module analises_simples.logica_de_analise.logica_validade)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_simples.logica_de_analise.html#analises_simples.logica_de_analise.logica_validade.executar_analise_de_validade">executar_analise_de_validade() (in module analises_simples.logica_de_analise.logica_validade)</a>
+</li>
       <li><a href="qualidade_ad.pipeline.html#qualidade_ad.pipeline.etapa_4_carga_staging.executar_carga_staging">executar_carga_staging() (in module qualidade_ad.pipeline.etapa_4_carga_staging)</a>
 </li>
       <li><a href="qualidade_ad.pipeline.html#qualidade_ad.pipeline.etapa_1_extracao.executar_extracao_ad">executar_extracao_ad() (in module qualidade_ad.pipeline.etapa_1_extracao)</a>
@@ -542,11 +660,47 @@
   </ul></td>
 </tr></table>
 
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.faixa_amarela_180dias">faixa_amarela_180dias (analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.faixa_critica_velha">faixa_critica_velha (analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.faixa_verde_90dias">faixa_verde_90dias (analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.faixa_vermelha_1ano">faixa_vermelha_1ano (analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="qualidade_ad.html#qualidade_ad.agente_simulador.gerar_evento_simulado">gerar_evento_simulado() (in module qualidade_ad.agente_simulador)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.logica_scorecard.gerar_scorecard_detalhado">gerar_scorecard_detalhado() (in module analises_relacionais.logica_scorecard)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.gerente_decisor">gerente_decisor (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.gerente_decisor_id">gerente_decisor_id (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_etapa_nome_display">get_etapa_nome_display() (qualidade_ad.models.LogEtapa method)</a>
 </li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.get_next_by_data_abertura">get_next_by_data_abertura() (melhoria_continua.models.IncidenteQualidade method)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.get_next_by_timestamp">get_next_by_timestamp() (analises_relacionais.models.RelatorioDQI method)</a>
+
+      <ul>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.get_next_by_timestamp">(analises_relacionais.models.RelatorioRiscoSenha method)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.get_next_by_timestamp">(analises_relacionais.models.RelatorioScorecard method)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.get_next_by_timestamp">(melhoria_continua.models.AuditoriaAD method)</a>
+</li>
+      </ul></li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_next_by_timestamp_fim">get_next_by_timestamp_fim() (qualidade_ad.models.LogEtapa method)</a>
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.get_next_by_timestamp_inicio">get_next_by_timestamp_inicio() (analises_relacionais.models.RelatorioAnaliseRelacional method)</a>
@@ -571,10 +725,22 @@
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_next_by_timestamp_inicio">(qualidade_ad.models.LogEtapa method)</a>
 </li>
       </ul></li>
-      <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_previous_by_timestamp_fim">get_previous_by_timestamp_fim() (qualidade_ad.models.LogEtapa method)</a>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.get_previous_by_data_abertura">get_previous_by_data_abertura() (melhoria_continua.models.IncidenteQualidade method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.get_previous_by_timestamp">get_previous_by_timestamp() (analises_relacionais.models.RelatorioDQI method)</a>
+
+      <ul>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.get_previous_by_timestamp">(analises_relacionais.models.RelatorioRiscoSenha method)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.get_previous_by_timestamp">(analises_relacionais.models.RelatorioScorecard method)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.get_previous_by_timestamp">(melhoria_continua.models.AuditoriaAD method)</a>
+</li>
+      </ul></li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_previous_by_timestamp_fim">get_previous_by_timestamp_fim() (qualidade_ad.models.LogEtapa method)</a>
+</li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.get_previous_by_timestamp_inicio">get_previous_by_timestamp_inicio() (analises_relacionais.models.RelatorioAnaliseRelacional method)</a>
 
       <ul>
@@ -603,9 +769,15 @@
         <li><a href="transformacao_manual.html#transformacao_manual.get_process_function_sql">(in module transformacao_manual)</a>
 </li>
       </ul></li>
-      <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.get_status_display">get_status_display() (qualidade_ad.models.ExecucaoPipeline method)</a>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.get_responsabilidade_display">get_responsabilidade_display() (melhoria_continua.models.PerfilGerente method)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.get_responsavel_resolucao_display">get_responsavel_resolucao_display() (melhoria_continua.models.IncidenteQualidade method)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.get_status_display">get_status_display() (melhoria_continua.models.IncidenteQualidade method)</a>
 
       <ul>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.get_status_display">(qualidade_ad.models.ExecucaoPipeline method)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_status_display">(qualidade_ad.models.LogEtapa method)</a>
 </li>
       </ul></li>
@@ -618,6 +790,12 @@
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.id">id (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
 
       <ul>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.id">(analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.id">(analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.id">(analises_relacionais.models.RelatorioScorecard attribute)</a>
+</li>
         <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.id">(analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
         <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.id">(analises_simples.models.RelatorioCompletudeGeral attribute)</a>
@@ -631,6 +809,12 @@
         <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadePersonalizada.id">(analises_simples.models.RelatorioUnicidadePersonalizada attribute)</a>
 </li>
         <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.id">(analises_simples.models.RelatorioValidadeFormato attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.id">(melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.id">(melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.id">(melhoria_continua.models.PerfilGerente attribute)</a>
 </li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.id">(qualidade_ad.models.ExecucaoPipeline attribute)</a>
 </li>
@@ -711,26 +895,63 @@
       </ul></li>
       <li><a href="importador_dinamico.html#importador_dinamico.apps.ImportadorDinamicoConfig">ImportadorDinamicoConfig (class in importador_dinamico.apps)</a>
 </li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade">IncidenteQualidade (class in melhoria_continua.models)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.DoesNotExist">IncidenteQualidade.DoesNotExist</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.MultipleObjectsReturned">IncidenteQualidade.MultipleObjectsReturned</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.incidentequalidade_set">incidentequalidade_set (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.IncidenteQualidadeAdmin">IncidenteQualidadeAdmin (class in melhoria_continua.admin)</a>
+</li>
+      <li>
+    iniciar_sistema
+
+      <ul>
+        <li><a href="iniciar_sistema.html#module-iniciar_sistema">module</a>
+</li>
+      </ul></li>
       <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0001_initial.Migration.initial">initial (analises_relacionais.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0001_initial.Migration.initial">(analises_simples.migrations.0001_initial.Migration attribute)</a>
 </li>
+        <li><a href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration.initial">(melhoria_continua.migrations.0001_initial.Migration attribute)</a>
+</li>
         <li><a href="qualidade_ad.migrations.html#qualidade_ad.migrations.0001_initial.Migration.initial">(qualidade_ad.migrations.0001_initial.Migration attribute)</a>
 </li>
       </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.ip_origem">ip_origem (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.AuditoriaADAdmin.list_display">list_display (melhoria_continua.admin.AuditoriaADAdmin attribute)</a>
+
+      <ul>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.IncidenteQualidadeAdmin.list_display">(melhoria_continua.admin.IncidenteQualidadeAdmin attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin.list_display">(melhoria_continua.admin.PerfilGerenteAdmin attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.AuditoriaADAdmin.list_filter">list_filter (melhoria_continua.admin.AuditoriaADAdmin attribute)</a>
+
+      <ul>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.IncidenteQualidadeAdmin.list_filter">(melhoria_continua.admin.IncidenteQualidadeAdmin attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin.list_filter">(melhoria_continua.admin.PerfilGerenteAdmin attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa">LogEtapa (class in qualidade_ad.models)</a>
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.DoesNotExist">LogEtapa.DoesNotExist</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.MultipleObjectsReturned">LogEtapa.MultipleObjectsReturned</a>
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.logs_etapas">logs_etapas (qualidade_ad.models.ExecucaoPipeline attribute)</a>
@@ -741,8 +962,12 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="manage.html#manage.main">main() (in module manage)</a>
+      <li><a href="iniciar_sistema.html#iniciar_sistema.main">main() (in module iniciar_sistema)</a>
+
+      <ul>
+        <li><a href="manage.html#manage.main">(in module manage)</a>
 </li>
+      </ul></li>
       <li>
     manage
 
@@ -751,12 +976,100 @@
 </li>
       </ul></li>
       <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.media">media (importador_dinamico.forms.UploadCSVForm property)</a>
+
+      <ul>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.AuditoriaADAdmin.media">(melhoria_continua.admin.AuditoriaADAdmin property)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.IncidenteQualidadeAdmin.media">(melhoria_continua.admin.IncidenteQualidadeAdmin property)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin.media">(melhoria_continua.admin.PerfilGerenteAdmin property)</a>
+</li>
+      </ul></li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.media_falhas_por_objeto">media_falhas_por_objeto (analises_relacionais.models.RelatorioScorecard attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadeGeral.media_unicidade">media_unicidade (analises_simples.models.RelatorioUnicidadeGeral attribute)</a>
+</li>
+      <li>
+    melhoria_continua
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.admin
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.admin">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.apps
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.apps">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.migrations
+
+      <ul>
+        <li><a href="melhoria_continua.migrations.html#module-melhoria_continua.migrations">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.migrations.0001_initial
+
+      <ul>
+        <li><a href="melhoria_continua.migrations.html#module-melhoria_continua.migrations.0001_initial">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.models
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.signals
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.signals">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.tests
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.urls
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.urls">module</a>
+</li>
+      </ul></li>
+      <li>
+    melhoria_continua.views
+
+      <ul>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.views">module</a>
+</li>
+      </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.apps.MelhoriaContinuaConfig">MelhoriaContinuaConfig (class in melhoria_continua.apps)</a>
 </li>
       <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0001_initial.Migration">Migration (class in analises_relacionais.migrations.0001_initial)</a>
 
       <ul>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha.Migration">(class in analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha)</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0003_relatorioscorecard.Migration">(class in analises_relacionais.migrations.0003_relatorioscorecard)</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente.Migration">(class in analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente)</a>
+</li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0001_initial.Migration">(class in analises_simples.migrations.0001_initial)</a>
 </li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0002_relatoriocompletudegeral.Migration">(class in analises_simples.migrations.0002_relatoriocompletudegeral)</a>
@@ -777,6 +1090,8 @@
 </li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0010_relatoriounicidadepersonalizada.Migration">(class in analises_simples.migrations.0010_relatoriounicidadepersonalizada)</a>
 </li>
+        <li><a href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration">(class in melhoria_continua.migrations.0001_initial)</a>
+</li>
         <li><a href="qualidade_ad.migrations.html#qualidade_ad.migrations.0001_initial.Migration">(class in qualidade_ad.migrations.0001_initial)</a>
 </li>
       </ul></li>
@@ -790,13 +1105,23 @@
 </li>
         <li><a href="analises_relacionais.html#module-analises_relacionais.apps">analises_relacionais.apps</a>
 </li>
+        <li><a href="analises_relacionais.html#module-analises_relacionais.logica_scorecard">analises_relacionais.logica_scorecard</a>
+</li>
         <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations">analises_relacionais.migrations</a>
 </li>
         <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0001_initial">analises_relacionais.migrations.0001_initial</a>
 </li>
+        <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha">analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0003_relatorioscorecard">analises_relacionais.migrations.0003_relatorioscorecard</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente">analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente</a>
+</li>
         <li><a href="analises_relacionais.html#module-analises_relacionais.models">analises_relacionais.models</a>
 </li>
-        <li><a href="analises_relacionais.html#module-analises_relacionais.regras_sql">analises_relacionais.regras_sql</a>
+        <li><a href="analises_relacionais.html#module-analises_relacionais.regras_producao">analises_relacionais.regras_producao</a>
+</li>
+        <li><a href="analises_relacionais.html#module-analises_relacionais.regras_staging">analises_relacionais.regras_staging</a>
 </li>
         <li><a href="analises_relacionais.html#module-analises_relacionais.tasks">analises_relacionais.tasks</a>
 </li>
@@ -886,13 +1211,37 @@
 </li>
         <li><a href="importador_dinamico.html#module-importador_dinamico.views">importador_dinamico.views</a>
 </li>
+        <li><a href="iniciar_sistema.html#module-iniciar_sistema">iniciar_sistema</a>
+</li>
         <li><a href="manage.html#module-manage">manage</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua">melhoria_continua</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.admin">melhoria_continua.admin</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.apps">melhoria_continua.apps</a>
+</li>
+        <li><a href="melhoria_continua.migrations.html#module-melhoria_continua.migrations">melhoria_continua.migrations</a>
+</li>
+        <li><a href="melhoria_continua.migrations.html#module-melhoria_continua.migrations.0001_initial">melhoria_continua.migrations.0001_initial</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.models">melhoria_continua.models</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.signals">melhoria_continua.signals</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.tests">melhoria_continua.tests</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.urls">melhoria_continua.urls</a>
+</li>
+        <li><a href="melhoria_continua.html#module-melhoria_continua.views">melhoria_continua.views</a>
 </li>
         <li><a href="preparar_banco_dados.html#module-preparar_banco_dados">preparar_banco_dados</a>
 </li>
         <li><a href="qualidade_ad.html#module-qualidade_ad">qualidade_ad</a>
 </li>
         <li><a href="qualidade_ad.html#module-qualidade_ad.admin">qualidade_ad.admin</a>
+</li>
+        <li><a href="qualidade_ad.html#module-qualidade_ad.agente_simulador">qualidade_ad.agente_simulador</a>
 </li>
         <li><a href="qualidade_ad.html#module-qualidade_ad.apps">qualidade_ad.apps</a>
 </li>
@@ -922,6 +1271,26 @@
 </li>
         <li><a href="qualidade_ad.html#module-qualidade_ad.views">qualidade_ad.views</a>
 </li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais">relatorios_gerenciais</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.admin">relatorios_gerenciais.admin</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.apps">relatorios_gerenciais.apps</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.catalogo_formulas">relatorios_gerenciais.catalogo_formulas</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.dicionario_dados">relatorios_gerenciais.dicionario_dados</a>
+</li>
+        <li><a href="relatorios_gerenciais.migrations.html#module-relatorios_gerenciais.migrations">relatorios_gerenciais.migrations</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.models">relatorios_gerenciais.models</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.tests">relatorios_gerenciais.tests</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.urls">relatorios_gerenciais.urls</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.views">relatorios_gerenciais.views</a>
+</li>
         <li><a href="transformacao_manual.html#module-transformacao_manual">transformacao_manual</a>
 </li>
       </ul></li>
@@ -938,7 +1307,11 @@
 </li>
         <li><a href="importador_dinamico.html#importador_dinamico.apps.ImportadorDinamicoConfig.name">(importador_dinamico.apps.ImportadorDinamicoConfig attribute)</a>
 </li>
+        <li><a href="melhoria_continua.html#melhoria_continua.apps.MelhoriaContinuaConfig.name">(melhoria_continua.apps.MelhoriaContinuaConfig attribute)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.apps.QualidadeAdConfig.name">(qualidade_ad.apps.QualidadeAdConfig attribute)</a>
+</li>
+        <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.name">(relatorios_gerenciais.apps.RelatoriosGerenciaisConfig attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -956,6 +1329,12 @@
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.objects">objects (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
 
       <ul>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.objects">(analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.objects">(analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.objects">(analises_relacionais.models.RelatorioScorecard attribute)</a>
+</li>
         <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.objects">(analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
         <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.objects">(analises_simples.models.RelatorioCompletudeGeral attribute)</a>
@@ -970,14 +1349,36 @@
 </li>
         <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.objects">(analises_simples.models.RelatorioValidadeFormato attribute)</a>
 </li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.objects">(melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.objects">(melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.objects">(melhoria_continua.models.PerfilGerente attribute)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.objects">(qualidade_ad.models.ExecucaoPipeline attribute)</a>
 </li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.objects">(qualidade_ad.models.LogEtapa attribute)</a>
 </li>
       </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.objeto_guid">objeto_guid (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.objeto_nome">objeto_nome (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.observacao_gerente">observacao_gerente (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+      <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.dicionario_dados.obter_info_coluna">obter_info_coluna() (in module relatorios_gerenciais.dicionario_dados)</a>
+</li>
       <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0001_initial.Migration.operations">operations (analises_relacionais.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha.Migration.operations">(analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha.Migration attribute)</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0003_relatorioscorecard.Migration.operations">(analises_relacionais.migrations.0003_relatorioscorecard.Migration attribute)</a>
+</li>
+        <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente.Migration.operations">(analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente.Migration attribute)</a>
+</li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0001_initial.Migration.operations">(analises_simples.migrations.0001_initial.Migration attribute)</a>
 </li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0002_relatoriocompletudegeral.Migration.operations">(analises_simples.migrations.0002_relatoriocompletudegeral.Migration attribute)</a>
@@ -998,6 +1399,8 @@
 </li>
         <li><a href="analises_simples.migrations.html#analises_simples.migrations.0010_relatoriounicidadepersonalizada.Migration.operations">(analises_simples.migrations.0010_relatoriounicidadepersonalizada.Migration attribute)</a>
 </li>
+        <li><a href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration.operations">(melhoria_continua.migrations.0001_initial.Migration attribute)</a>
+</li>
         <li><a href="qualidade_ad.migrations.html#qualidade_ad.migrations.0001_initial.Migration.operations">(qualidade_ad.migrations.0001_initial.Migration attribute)</a>
 </li>
       </ul></li>
@@ -1009,7 +1412,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="qualidade_ad.html#qualidade_ad.views.painel_de_controle">painel_de_controle() (in module qualidade_ad.views)</a>
 </li>
+      <li><a href="melhoria_continua.html#melhoria_continua.views.painel_gestao_incidentes">painel_gestao_incidentes() (in module melhoria_continua.views)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.perc_amarela">perc_amarela (analises_relacionais.models.RelatorioRiscoSenha property)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.perc_contato_completo">perc_contato_completo (analises_simples.models.RelatorioCompletude attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.perc_critica">perc_critica (analises_relacionais.models.RelatorioRiscoSenha property)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.perc_sem_cargo">perc_sem_cargo (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
@@ -1017,12 +1426,16 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.perc_sem_gerente">perc_sem_gerente (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
-      <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.percentual_completude_geral">percentual_completude_geral (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.perc_verde">perc_verde (analises_relacionais.models.RelatorioRiscoSenha property)</a>
 </li>
-      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.percentual_consistencia">percentual_consistencia (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.perc_vermelha">perc_vermelha (analises_relacionais.models.RelatorioRiscoSenha property)</a>
+</li>
+      <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.percentual_completude_geral">percentual_completude_geral (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.percentual_consistencia">percentual_consistencia (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.percentual_falha">percentual_falha (analises_simples.models.RelatorioRegraNegocio attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.percentual_unicidade">percentual_unicidade (analises_simples.models.RelatorioUnicidade attribute)</a>
@@ -1032,6 +1445,14 @@
 </li>
       </ul></li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.percentual_validade">percentual_validade (analises_simples.models.RelatorioValidadeFormato attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente">PerfilGerente (class in melhoria_continua.models)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.DoesNotExist">PerfilGerente.DoesNotExist</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.MultipleObjectsReturned">PerfilGerente.MultipleObjectsReturned</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin">PerfilGerenteAdmin (class in melhoria_continua.admin)</a>
 </li>
       <li>
     preparar_banco_dados
@@ -1069,6 +1490,13 @@
 </li>
       </ul></li>
       <li>
+    qualidade_ad.agente_simulador
+
+      <ul>
+        <li><a href="qualidade_ad.html#module-qualidade_ad.agente_simulador">module</a>
+</li>
+      </ul></li>
+      <li>
     qualidade_ad.apps
 
       <ul>
@@ -1103,6 +1531,8 @@
         <li><a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     qualidade_ad.pipeline.etapa_1_extracao
 
@@ -1110,8 +1540,6 @@
         <li><a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_1_extracao">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     qualidade_ad.pipeline.etapa_2_limpeza
 
@@ -1176,6 +1604,10 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.AuditoriaADAdmin.readonly_fields">readonly_fields (melhoria_continua.admin.AuditoriaADAdmin attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.apps.MelhoriaContinuaConfig.ready">ready() (melhoria_continua.apps.MelhoriaContinuaConfig method)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadePersonalizada.registros_duplicados">registros_duplicados (analises_simples.models.RelatorioUnicidadePersonalizada attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.registros_preenchidos">registros_preenchidos (analises_simples.models.RelatorioUnicidade attribute)</a>
@@ -1186,7 +1618,11 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.registros_vazios">registros_vazios (analises_simples.models.RelatorioUnicidade attribute)</a>
 </li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.regra_violada">regra_violada (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.relatorio_colunas_vazias">relatorio_colunas_vazias (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
+</li>
+      <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.views.relatorio_oficial_impressao">relatorio_oficial_impressao() (in module relatorios_gerenciais.views)</a>
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional">RelatorioAnaliseRelacional (class in analises_relacionais.models)</a>
 </li>
@@ -1206,13 +1642,103 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.MultipleObjectsReturned">RelatorioCompletudeGeral.MultipleObjectsReturned</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI">RelatorioDQI (class in analises_relacionais.models)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.DoesNotExist">RelatorioDQI.DoesNotExist</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.MultipleObjectsReturned">RelatorioDQI.MultipleObjectsReturned</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio">RelatorioRegraNegocio (class in analises_simples.models)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.DoesNotExist">RelatorioRegraNegocio.DoesNotExist</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.MultipleObjectsReturned">RelatorioRegraNegocio.MultipleObjectsReturned</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha">RelatorioRiscoSenha (class in analises_relacionais.models)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.DoesNotExist">RelatorioRiscoSenha.DoesNotExist</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.MultipleObjectsReturned">RelatorioRiscoSenha.MultipleObjectsReturned</a>
+</li>
+      <li>
+    relatorios_gerenciais
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.admin
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.admin">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.apps
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.apps">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    relatorios_gerenciais.catalogo_formulas
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.catalogo_formulas">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.dicionario_dados
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.dicionario_dados">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.migrations
+
+      <ul>
+        <li><a href="relatorios_gerenciais.migrations.html#module-relatorios_gerenciais.migrations">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.models
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.tests
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.urls
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.urls">module</a>
+</li>
+      </ul></li>
+      <li>
+    relatorios_gerenciais.views
+
+      <ul>
+        <li><a href="relatorios_gerenciais.html#module-relatorios_gerenciais.views">module</a>
+</li>
+      </ul></li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard">RelatorioScorecard (class in analises_relacionais.models)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.DoesNotExist">RelatorioScorecard.DoesNotExist</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.MultipleObjectsReturned">RelatorioScorecard.MultipleObjectsReturned</a>
+</li>
+      <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig">RelatoriosGerenciaisConfig (class in relatorios_gerenciais.apps)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade">RelatorioUnicidade (class in analises_simples.models)</a>
 </li>
@@ -1238,6 +1764,10 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.MultipleObjectsReturned">RelatorioValidadeFormato.MultipleObjectsReturned</a>
 </li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.responsabilidade">responsabilidade (melhoria_continua.models.PerfilGerente attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.responsavel_resolucao">responsavel_resolucao (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.resumo_execucao">resumo_execucao (qualidade_ad.models.LogEtapa attribute)</a>
 </li>
   </ul></td>
@@ -1246,23 +1776,45 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_completude">score_completude (analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_consistencia">score_consistencia (analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_total">score_total (analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_unicidade">score_unicidade (analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_validade">score_validade (analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.admin.AuditoriaADAdmin.search_fields">search_fields (melhoria_continua.admin.AuditoriaADAdmin attribute)</a>
+
+      <ul>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.IncidenteQualidadeAdmin.search_fields">(melhoria_continua.admin.IncidenteQualidadeAdmin attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin.search_fields">(melhoria_continua.admin.PerfilGerenteAdmin attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.sem_cargo">sem_cargo (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.sem_departamento">sem_departamento (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.sem_gerente">sem_gerente (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.status">status (qualidade_ad.models.ExecucaoPipeline attribute)</a>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.status">status (melhoria_continua.models.IncidenteQualidade attribute)</a>
 
       <ul>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.status">(qualidade_ad.models.ExecucaoPipeline attribute)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.status">(qualidade_ad.models.LogEtapa attribute)</a>
 </li>
       </ul></li>
-      <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.STATUS_CHOICES">STATUS_CHOICES (qualidade_ad.models.ExecucaoPipeline attribute)</a>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.STATUS_CHOICES">STATUS_CHOICES (melhoria_continua.models.IncidenteQualidade attribute)</a>
 
       <ul>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.STATUS_CHOICES">(qualidade_ad.models.ExecucaoPipeline attribute)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.STATUS_CHOICES">(qualidade_ad.models.LogEtapa attribute)</a>
 </li>
       </ul></li>
@@ -1288,6 +1840,18 @@
       </ul></li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.tabelas_envolvidas">tabelas_envolvidas (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
 </li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.tecnico_ad_login">tecnico_ad_login (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.timestamp">timestamp (analises_relacionais.models.RelatorioDQI attribute)</a>
+
+      <ul>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.timestamp">(analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
+        <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.timestamp">(analises_relacionais.models.RelatorioScorecard attribute)</a>
+</li>
+        <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.timestamp">(melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+      </ul></li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.timestamp_fim">timestamp_fim (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
 
       <ul>
@@ -1320,7 +1884,15 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.tipo_acao">tipo_acao (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.tipo_ambiente">tipo_ambiente (analises_relacionais.models.RelatorioDQI attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.tipo_objeto">tipo_objeto (melhoria_continua.models.AuditoriaAD attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.tipo_tabela">tipo_tabela (analises_simples.models.RelatorioRegraNegocio attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.top_ofensores">top_ofensores (analises_relacionais.models.RelatorioScorecard attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.total_celulas">total_celulas (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
 </li>
@@ -1338,7 +1910,13 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadeGeral.total_colunas_analisadas">total_colunas_analisadas (analises_simples.models.RelatorioUnicidadeGeral attribute)</a>
 </li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioRiscoSenha.total_contas">total_contas (analises_relacionais.models.RelatorioRiscoSenha attribute)</a>
+</li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.total_inconsistencias">total_inconsistencias (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.total_objetos_analisados">total_objetos_analisados (analises_relacionais.models.RelatorioScorecard attribute)</a>
+</li>
+      <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.total_objetos_com_falha">total_objetos_com_falha (analises_relacionais.models.RelatorioScorecard attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.total_registros">total_registros (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
 
@@ -1361,6 +1939,8 @@
         <li><a href="transformacao_manual.html#module-transformacao_manual">module</a>
 </li>
       </ul></li>
+      <li><a href="melhoria_continua.html#melhoria_continua.views.tratar_incidente">tratar_incidente() (in module melhoria_continua.views)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1369,9 +1949,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="importador_dinamico.html#importador_dinamico.views.upload_csv_view">upload_csv_view() (in module importador_dinamico.views)</a>
 </li>
+      <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm">UploadCSVForm (class in importador_dinamico.forms)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm">UploadCSVForm (class in importador_dinamico.forms)</a>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.usuario">usuario (melhoria_continua.models.PerfilGerente attribute)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.usuario_id">usuario_id (melhoria_continua.models.PerfilGerente attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1380,6 +1964,12 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_simples.logica_de_analise.html#analises_simples.logica_de_analise.logica_validade.validar_celula">validar_celula() (in module analises_simples.logica_de_analise.logica_validade)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melhoria_continua.html#melhoria_continua.signals.validar_evento_ad">validar_evento_ad() (in module melhoria_continua.signals)</a>
+</li>
+      <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.violou_regras">violou_regras (melhoria_continua.models.AuditoriaAD attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1393,7 +1983,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Sergio Santana dos Santos.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

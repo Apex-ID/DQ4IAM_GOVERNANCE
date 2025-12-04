@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulas &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Use Cases" href="../diagrams/use_cases.html" />
+    <link rel="prev" title="Non Functional" href="non_functional.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#formulas-implementadas">1. Fórmulas Implementadas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-indice-de-qualidade-de-dados-dqi">A. Índice de Qualidade de Dados (DQI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#b-unicidade-composta">B. Unicidade Composta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-risco-de-obsolescencia-temporalidade">C. Risco de Obsolescência (Temporalidade)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#analise-de-lacunas-o-que-faltou">2. Análise de Lacunas (O que faltou?)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formula-geral-do-indicador">Fórmula Geral do Indicador</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Formulas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/requirements/formulas.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="formulas">
+<h1>Formulas<a class="headerlink" href="#formulas" title="Link to this heading"></a></h1>
+</section>
+<section id="catalogo-de-formulas-e-metricas">
+<h1>Catálogo de Fórmulas e Métricas<a class="headerlink" href="#catalogo-de-formulas-e-metricas" title="Link to this heading"></a></h1>
+<p>Este documento detalha a matemática aplicada no motor de regras do <strong>APEX GOVERNANCE</strong>.</p>
+<section id="formulas-implementadas">
+<h2>1. Fórmulas Implementadas<a class="headerlink" href="#formulas-implementadas" title="Link to this heading"></a></h2>
+<section id="a-indice-de-qualidade-de-dados-dqi">
+<h3>A. Índice de Qualidade de Dados (DQI)<a class="headerlink" href="#a-indice-de-qualidade-de-dados-dqi" title="Link to this heading"></a></h3>
+<p>O DQI é um KPI composto que pondera as quatro dimensões principais. É calculado separadamente para Staging e Produção.</p>
+<div class="math notranslate nohighlight">
+\[DQI = (0.3 \times C) + (0.3 \times K) + (0.2 \times V) + (0.2 \times U)\]</div>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><strong>C (Completude):</strong> Média de preenchimento dos campos obrigatórios.</p></li>
+<li><p><strong>K (Consistência):</strong> Média de aprovação das 20 últimas regras de negócio executadas.</p></li>
+<li><p><strong>V (Validade):</strong> Conformidade com formatos (ex.: UPN, tipos de dados).</p></li>
+<li><p><strong>U (Unicidade):</strong> Taxa de registros únicos vs. duplicados.</p></li>
+</ul>
+</section>
+<section id="b-unicidade-composta">
+<h3>B. Unicidade Composta<a class="headerlink" href="#b-unicidade-composta" title="Link to this heading"></a></h3>
+<p>Utilizada na análise personalizada e na detecção de clones.</p>
+<div class="math notranslate nohighlight">
+\[\text{Unicidade \%} =
+\left( \frac{\text{Contagem de Tuplas Distintas}}{\text{Total de Linhas}} \right) \times 100\]</div>
+</section>
+<section id="c-risco-de-obsolescencia-temporalidade">
+<h3>C. Risco de Obsolescência (Temporalidade)<a class="headerlink" href="#c-risco-de-obsolescencia-temporalidade" title="Link to this heading"></a></h3>
+<p>Utilizada para classificar ativos de risco.</p>
+<ul class="simple">
+<li><p><strong>Inativo:</strong> <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Atual</span> <span class="pre">-</span> <span class="pre">lastLogonTimestamp</span> <span class="pre">&gt;</span> <span class="pre">90</span> <span class="pre">dias</span></code></p></li>
+<li><p><strong>Senha Crítica:</strong> <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Atual</span> <span class="pre">-</span> <span class="pre">pwdLastSet</span> <span class="pre">&gt;</span> <span class="pre">365</span> <span class="pre">dias</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="analise-de-lacunas-o-que-faltou">
+<h2>2. Análise de Lacunas (O que faltou?)<a class="headerlink" href="#analise-de-lacunas-o-que-faltou" title="Link to this heading"></a></h2>
+<p>Apesar da cobertura abrangente, as seguintes fórmulas matemáticas avançadas do DAMA não foram implementadas nesta versão:</p>
+<ol class="arabic simple">
+<li><p><strong>Taxa de Decaimento da Informação (Information Decay Rate):</strong>
+<em>O que é:</em> Estima a perda de validade dos dados ao longo do tempo (ex.: telefone muda a cada 2 anos).
+<em>Por que faltou:</em> O AD não guarda histórico de alterações, impossibilitando séries temporais.</p></li>
+<li><p><strong>Custo do Dado de Má Qualidade:</strong>
+<em>O que é:</em> Converte erro operacional em prejuízo financeiro (ex.: usuários inativos × custo de licença).
+<em>Por que faltou:</em> O sistema não possui acesso a tabelas financeiras ou de licenciamento.</p></li>
+<li><p><strong>Precisão Sintática (Syntactic Accuracy):</strong>
+<em>O que é:</em> Compara o dado com fonte externa confiável (ex.: CPF na Receita Federal).
+<em>Por que faltou:</em> Escopo restrito aos dados internos; sem integrações com APIs externas.</p></li>
+</ol>
+<p>Diferente das métricas simples, estas regras são <strong>binárias por registro (Passa/Falha)</strong>.
+O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p>
+</section>
+<section id="formula-geral-do-indicador">
+<h2>Fórmula Geral do Indicador<a class="headerlink" href="#formula-geral-do-indicador" title="Link to this heading"></a></h2>
+<div class="math notranslate nohighlight">
+\[\% \text{Conformidade} =
+\left(1 - \frac{\text{Total de Registros com Falha}}
+{\text{Total de Registros da Tabela}} \right) \times 100\]</div>
+<p>Abaixo, a lógica técnica de detecção de falha para cada regra.</p>
+<ol class="arabic simple">
+<li><p><strong>Usuários sem Gerente</strong>
+<code class="docutils literal notranslate"><span class="pre">manager</span></code> é nulo ou vazio.</p></li>
+<li><p><strong>Usuários sem Departamento</strong>
+<code class="docutils literal notranslate"><span class="pre">department</span></code> é nulo ou vazio.</p></li>
+<li><p><strong>Usuários sem Cargo (title)</strong>
+<code class="docutils literal notranslate"><span class="pre">title</span></code> é nulo ou vazio.</p></li>
+<li><p><strong>Contato Incompleto</strong>
+<code class="docutils literal notranslate"><span class="pre">mail</span></code> <strong>ou</strong> <code class="docutils literal notranslate"><span class="pre">telephoneNumber</span></code> nulos ou vazios.</p></li>
+<li><p><strong>Computadores sem Dono</strong>
+<code class="docutils literal notranslate"><span class="pre">managedBy</span></code> nulo ou vazio.</p></li>
+<li><p><strong>Computadores sem Descrição</strong>
+<code class="docutils literal notranslate"><span class="pre">description</span></code> nulo ou vazio.</p></li>
+<li><p><strong>Grupos sem Dono</strong>
+<code class="docutils literal notranslate"><span class="pre">managedBy</span></code> nulo ou vazio.</p></li>
+<li><p><strong>Grupos sem Descrição</strong>
+<code class="docutils literal notranslate"><span class="pre">description</span></code> nulo ou vazio.</p></li>
+<li><p><strong>OUs sem Descrição</strong>
+<code class="docutils literal notranslate"><span class="pre">description</span></code> nulo ou vazio.</p></li>
+<li><p><strong>OUs sem Políticas (GPO)</strong>
+<code class="docutils literal notranslate"><span class="pre">gPLink</span></code> nulo ou vazio.</p></li>
+</ol>
+<ol class="arabic simple" start="11">
+<li><p><strong>Usuários Inativos (&gt;90 dias)</strong>
+<code class="docutils literal notranslate"><span class="pre">DataAtual</span> <span class="pre">-</span> <span class="pre">lastLogonTimestamp</span> <span class="pre">&gt;</span> <span class="pre">90</span> <span class="pre">dias</span></code></p></li>
+<li><p><strong>Usuários Nunca Logados</strong>
+<code class="docutils literal notranslate"><span class="pre">lastLogonTimestamp</span></code> nulo.</p></li>
+<li><p><strong>Senha Expirada ou Antiga</strong>
+<code class="docutils literal notranslate"><span class="pre">DataAtual</span> <span class="pre">-</span> <span class="pre">pwdLastSet</span> <span class="pre">&gt;</span> <span class="pre">180</span> <span class="pre">dias</span></code></p></li>
+<li><p><strong>Computadores Inativos</strong>
+<code class="docutils literal notranslate"><span class="pre">DataAtual</span> <span class="pre">-</span> <span class="pre">lastLogonTimestamp</span> <span class="pre">&gt;</span> <span class="pre">90</span> <span class="pre">dias</span></code></p></li>
+</ol>
+<ol class="arabic simple" start="15">
+<li><dl class="simple">
+<dt><strong>Gerente Inválido</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">manager</span></code> não existe em <code class="docutils literal notranslate"><span class="pre">distinguishedName</span></code> de nenhum usuário.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Gerente Desabilitado</strong></dt><dd><p>Usuário ativo cujo gerente está desabilitado.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Conta Desabilitada com Grupos</strong></dt><dd><p>Usuário desabilitado <strong>com</strong> grupos em <code class="docutils literal notranslate"><span class="pre">memberOf</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Privilégio Elevado (adminCount)</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">adminCount</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Computador Órfão</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">managedBy</span></code> aponta para usuário inexistente.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Grupos Aninhados (Nested)</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">memberOf</span></code> preenchido.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Computador Fora de Padrão</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">distinguishedName</span></code> contém <code class="docutils literal notranslate"><span class="pre">CN=Computers</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Grupos “Admin” Desprotegidos</strong></dt><dd><p>Nome contém “Admin”, mas <code class="docutils literal notranslate"><span class="pre">adminCount</span></code> é 0 ou nulo.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Grupos Vazios</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">member</span></code> nulo ou vazio.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic simple" start="24">
+<li><dl class="simple">
+<dt><strong>UPN Fora do Padrão</strong></dt><dd><p>Sufixo do <code class="docutils literal notranslate"><span class="pre">userPrincipalName</span></code> diferente de <code class="docutils literal notranslate"><span class="pre">&#64;office.ufs.br</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Logon Legado Extenso</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">sAMAccountName</span></code> &gt; 20 caracteres.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Sistemas Operacionais Obsoletos</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">operatingSystem</span></code> não contém:
+<em>Windows 10</em>, <em>11</em>, <em>Server 2016</em>, <em>2019</em>, <em>2022</em>.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic simple" start="27">
+<li><dl class="simple">
+<dt><strong>Ciclos Hierárquicos</strong></dt><dd><p>Detecção via SQL recursivo: gerente A → B e B → A.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Padronização de Departamento</strong></dt><dd><p>Departamentos com &lt; 3 ocorrências.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Zombie Containers (OUs)</strong></dt><dd><p>OU sem usuários ativos <strong>e</strong> sem computadores ativos.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt>30–33. <strong>Duplicidade de Linha (Clones)</strong></dt><dd><p>Agrupamento de todos os campos (exceto ID); <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> indica duplicidade.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="34">
+<li><dl class="simple">
+<dt><strong>E-mail Duplicado</strong></dt><dd><p>Mais de um usuário com o mesmo <code class="docutils literal notranslate"><span class="pre">mail</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Nome Completo (CN) Duplicado</strong></dt><dd><p>Mais de um usuário com o mesmo <code class="docutils literal notranslate"><span class="pre">cn</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Contas Admin Vinculadas (Shadow Accounts)</strong></dt><dd><p>Login de usuário contido no login de conta administrativa (ex.: <code class="docutils literal notranslate"><span class="pre">joao</span></code> ↔ <code class="docutils literal notranslate"><span class="pre">adm.joao</span></code>).</p>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="non_functional.html" class="btn btn-neutral float-left" title="Non Functional" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../diagrams/use_cases.html" class="btn btn-neutral float-right" title="Use Cases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

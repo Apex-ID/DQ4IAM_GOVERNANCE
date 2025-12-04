@@ -6,26 +6,24 @@ from sqlalchemy import create_engine, text
 import os
 import pandas as pd
 
-# Imports locais
+# Importe TODOS os models
 from .models import (
-    RelatorioCompletude, 
-    RelatorioCompletudeGeral, 
-    RelatorioValidadeFormato, 
-    RelatorioUnicidadeGeral, 
-    RelatorioRegraNegocio, 
-    RelatorioUnicidadePersonalizada
+    RelatorioCompletude, RelatorioCompletudeGeral, 
+    RelatorioValidadeFormato, RelatorioUnicidade, RelatorioUnicidadeGeral,
+    RelatorioRegraNegocio, RelatorioUnicidadePersonalizada
 )
+# Importe as lógicas
 from .logica_de_analise.logica_validade import executar_analise_de_validade
-from .logica_de_analise.regras_negocio import REGRAS_DE_QUALIDADE
 from .logica_de_analise.logica_unicidade import (
-    analisar_unicidade_coluna,
-    analisar_unicidade_multicoluna,
-    analisar_unicidade_tabela_inteira
+    analisar_unicidade_coluna, 
+    analisar_unicidade_tabela_inteira, 
+    analisar_unicidade_multicoluna
 )
+from .logica_de_analise.regras_negocio import REGRAS_DE_QUALIDADE
 
 logger = logging.getLogger(__name__)
 
-# --- TAREFA 1: COMPLETUDE ESPECÍFICA (USUÁRIOS) ---
+# --- TAREFAS DE COMPLETUDE ---
 @shared_task(bind=True)
 def executar_analise_completude_task(self):
     logger.info("[ANÁLISE] Iniciando Análise de Completude (Usuários)...")
@@ -61,10 +59,8 @@ def executar_analise_completude_task(self):
             )
             return {'estado': 'CONCLUÍDO', 'mensagem': 'Análise de usuários concluída.'}
     except Exception as e:
-        logger.error(f"Erro: {e}", exc_info=True)
         return {'estado': 'FALHOU', 'mensagem': str(e)}
 
-# --- TAREFA 2: COMPLETUDE GERAL (STAGING) ---
 @shared_task(bind=True)
 def executar_analise_completude_geral_task(self):
     logger.info("[ANÁLISE GERAL] Iniciando...")
@@ -100,7 +96,7 @@ def executar_analise_completude_geral_task(self):
     except Exception as e:
         return {'estado': 'FALHOU', 'mensagem': str(e)}
 
-# --- TAREFA 3: VALIDADE (STAGING) ---
+# --- TAREFA DE VALIDADE ---
 @shared_task(bind=True)
 def executar_analise_validade_formato_task(self):
     logger.info("[ANÁLISE VALIDADE] Iniciando...")
@@ -133,7 +129,7 @@ def executar_analise_validade_formato_task(self):
     except Exception as e:
         return {'estado': 'FALHOU', 'mensagem': str(e)}
 
-# --- TAREFAS 4: UNICIDADE (STAGING E PRODUÇÃO) ---
+# --- TAREFAS DE UNICIDADE GERAL ---
 def _executar_unicidade_geral(tabelas_alvo):
     db_user = os.getenv('DB_USER')
     db_pass = os.getenv('DB_PASS')
@@ -143,6 +139,8 @@ def _executar_unicidade_geral(tabelas_alvo):
     engine = create_engine(db_url)
 
     with engine.connect() as connection:
+        RelatorioUnicidadeGeral.objects.filter(tabela_analisada__in=tabelas_alvo).delete()
+        
         for table_name in tabelas_alvo:
             logger.info(f"[ANÁLISE UNICIDADE] Processando tabela: {table_name}")
             try:
@@ -153,7 +151,6 @@ def _executar_unicidade_geral(tabelas_alvo):
             
             if df.empty: continue
             
-            # Chama a nova lógica que processa a tabela inteira
             resultado = analisar_unicidade_tabela_inteira(df, table_name)
             
             RelatorioUnicidadeGeral.objects.create(
@@ -183,80 +180,9 @@ def executar_analise_unicidade_producao_task(self):
         logger.error(f"Falha Unicidade Produção: {e}", exc_info=True)
         return {'estado': 'FALHOU', 'mensagem': str(e)}
 
-# --- TAREFAS 5: REGRAS DE NEGÓCIO (STAGING E PRODUÇÃO) ---
-def _executar_regras_generica(filtro_tipo):
-    tipo_str = "STAGING" if filtro_tipo == 'staging' else "PRODUÇÃO"
-    logger.info(f"[REGRAS {tipo_str}] Iniciando bateria de testes...")
-    
-    try:
-        db_user = os.getenv('DB_USER')
-        db_pass = os.getenv('DB_PASS')
-        db_host = os.getenv('DB_HOST')
-        db_name = os.getenv('DB_NAME')
-        db_url = f"postgresql://{db_user}:{db_pass}@{db_host}/{db_name}"
-        engine = create_engine(db_url)
-
-        with engine.connect() as connection:
-            # Itera sobre a lista de 18 regras definidas em regras_negocio.py
-            for regra in REGRAS_DE_QUALIDADE:
-                tabelas_alvo = regra['tabelas_alvo']
-                
-                # Filtra as tabelas (se quer só staging ou só produção)
-                if filtro_tipo == 'staging':
-                    tabelas_para_processar = [t for t in tabelas_alvo if t.endswith('_staging')]
-                else:
-                    tabelas_para_processar = [t for t in tabelas_alvo if not t.endswith('_staging')]
-
-                for tabela in tabelas_para_processar:
-                    logger.info(f"  -> Regra '{regra['nome']}' em '{tabela}'")
-                    try:
-                        # 1. Contar Total
-                        sql_total = text(f'SELECT COUNT(*) FROM {tabela}')
-                        total = connection.execute(sql_total).scalar()
-                        if total == 0: continue
-
-                        # 2. Contar Falhas
-                        sql_falhas = text(f"SELECT COUNT(*) FROM {tabela} WHERE {regra['sql_filtro_falha']}")
-                        falhas = connection.execute(sql_falhas).scalar()
-                        
-                        percentual = (falhas / total) * 100
-                        
-                        # 3. Salvar Relatório
-                        RelatorioRegraNegocio.objects.create(
-                            nome_regra=regra['nome'],
-                            dimensao=regra['dimensao'],
-                            tabela_analisada=tabela,
-                            tipo_tabela=filtro_tipo.upper(),
-                            qtd_total_registros=total,
-                            qtd_falhas=falhas,
-                            percentual_falha=percentual,
-                            descricao_impacto=regra['impacto']
-                        )
-                    except Exception as sql_err:
-                        logger.error(f"Erro na regra {regra['nome']} em {tabela}: {sql_err}")
-                        continue
-
-        return {'estado': 'CONCLUÍDO', 'mensagem': f'Regras de Negócio ({tipo_str}) concluídas.'}
-
-    except Exception as e:
-        logger.error(f"FALHA GERAL REGRAS: {e}", exc_info=True)
-        return {'estado': 'FALHOU', 'mensagem': str(e)}
-
-@shared_task(bind=True)
-def executar_regras_staging_task(self):
-    """Executa as regras de negócio apenas nas tabelas de Staging"""
-    return _executar_regras_generica('staging')
-
-@shared_task(bind=True)
-def executar_regras_producao_task(self):
-    """Executa as regras de negócio apenas nas tabelas de Produção"""
-    return _executar_regras_generica('producao')
-
-
-# --- TAREFA 6: UNICIDADE PERSONALIZADA ---
+# --- TAREFA DE UNICIDADE PERSONALIZADA ---
 @shared_task(bind=True)
 def executar_unicidade_personalizada_task(self, tabela_nome, colunas_lista):
-    logger.info(f"[UNICIDADE PERSONALIZADA] Tabela: {tabela_nome} | Colunas: {colunas_lista}")
     try:
         db_user = os.getenv('DB_USER')
         db_pass = os.getenv('DB_PASS')
@@ -285,3 +211,82 @@ def executar_unicidade_personalizada_task(self, tabela_nome, colunas_lista):
     except Exception as e:
         logger.error(f"Falha na análise personalizada: {e}", exc_info=True)
         return {'estado': 'FALHOU', 'mensagem': str(e)}
+
+
+# --- TAREFAS DE REGRAS DE NEGÓCIO (AS QUE FALTAVAM!) ---
+def _executar_regras_generica(filtro_tipo):
+    tipo_str = "STAGING" if filtro_tipo == 'staging' else "PRODUÇÃO"
+    logger.info(f"[REGRAS {tipo_str}] Iniciando bateria de testes...")
+    
+    try:
+        db_user = os.getenv('DB_USER')
+        db_pass = os.getenv('DB_PASS')
+        db_host = os.getenv('DB_HOST')
+        db_name = os.getenv('DB_NAME')
+        db_url = f"postgresql://{db_user}:{db_pass}@{db_host}/{db_name}"
+        engine = create_engine(db_url)
+
+        with engine.connect() as connection:
+            for regra in REGRAS_DE_QUALIDADE:
+                tabelas_alvo = regra['tabelas_alvo']
+                if filtro_tipo == 'staging':
+                    tabelas_processar = [t for t in tabelas_alvo if t.endswith('_staging')]
+                else:
+                    tabelas_processar = [t for t in tabelas_alvo if not t.endswith('_staging')]
+
+                for tabela in tabelas_processar:
+                    logger.info(f"  -> Regra '{regra['nome']}' em '{tabela}'")
+                    try:
+                        # 1. Contar Total
+                        total = connection.execute(text(f'SELECT COUNT(*) FROM {tabela}')).scalar()
+                        if total == 0: continue
+
+                        # 2. Contar Falhas
+                        sql_falhas = text(f"SELECT COUNT(*) FROM {tabela} WHERE {regra['sql_filtro_falha']}")
+                        falhas = connection.execute(sql_falhas).scalar()
+                        
+                        percentual = (falhas / total) * 100
+                        
+                        # --- NOVA LÓGICA: Buscar Exemplos ---
+                        exemplos_json = []
+                        if falhas > 0:
+                            condicao = regra['sql_filtro_falha']
+                            sql_exemplos = text(f'SELECT * FROM {tabela} WHERE {condicao} LIMIT 20')
+                            df_exemplos = pd.read_sql_query(sql_exemplos, connection)
+                            df_exemplos = df_exemplos.where(pd.notnull(df_exemplos), None)
+                            
+                            cols_desejadas = ['cn', 'sAMAccountName', 'distinguishedName', 'id', 'name', 'ou', 'description']
+                            cols_existentes = [c for c in cols_desejadas if c in df_exemplos.columns]
+                            if cols_existentes:
+                                df_exemplos = df_exemplos[cols_existentes]
+                            
+                            exemplos_json = df_exemplos.to_dict(orient='records')
+                        # ------------------------------------
+
+                        RelatorioRegraNegocio.objects.create(
+                            nome_regra=regra['nome'],
+                            dimensao=regra['dimensao'],
+                            tabela_analisada=tabela,
+                            tipo_tabela=filtro_tipo.upper(),
+                            qtd_total_registros=total,
+                            qtd_falhas=falhas,
+                            percentual_falha=percentual,
+                            descricao_impacto=regra['impacto'],
+                            exemplos_falhas=exemplos_json
+                        )
+                    except Exception as sql_err:
+                        logger.error(f"Erro regra {regra['nome']}: {sql_err}")
+                        continue
+
+        return {'estado': 'CONCLUÍDO', 'mensagem': f'Regras de Negócio ({tipo_str}) concluídas.'}
+    except Exception as e:
+        logger.error(f"FALHA GERAL REGRAS: {e}", exc_info=True)
+        return {'estado': 'FALHOU', 'mensagem': str(e)}
+
+@shared_task(bind=True)
+def executar_regras_staging_task(self):
+    return _executar_regras_generica('staging')
+
+@shared_task(bind=True)
+def executar_regras_producao_task(self):
+    return _executar_regras_generica('producao')

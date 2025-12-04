@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sequence ETL Completo (Aprovado + Revisão de Estilo) &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sequence Governança Ativa (Tempo Real)" href="sequence_governanca.html" />
+    <link rel="prev" title="Diagrama Resolução de Incidentes" href="bpmn_resolucao.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sequence ETL Completo (Aprovado + Revisão de Estilo)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagrams/sequence_etl.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sequence-etl-completo-aprovado-revisao-de-estilo">
+<h1>Sequence ETL Completo (Aprovado + Revisão de Estilo)<a class="headerlink" href="#sequence-etl-completo-aprovado-revisao-de-estilo" title="Link to this heading"></a></h1>
+<p class="plantuml">
+<object data="../_images/plantuml-0deaca3cace29b313adfdb3b209a233c007449f4.svg" type="image/svg+xml" style="width:1383px;height:1073px;background:#FFFFFF;">
+<img src="../_images/plantuml-0deaca3cace29b313adfdb3b209a233c007449f4.png" alt="&#64;startuml
+!theme plain
+autonumber
+
+actor &quot;Administrador&quot; as Admin
+
+box &quot;Aplicação Web&quot; #FFFFFF
+    participant &quot;PainelControleView&quot; as View
+end box
+
+box &quot;Infraestrutura Assíncrona&quot; #F5F5F5
+    queue &quot;Redis (Broker)&quot; as Redis
+    participant &quot;Celery Worker&quot; as Worker
+end box
+
+box &quot;Persistência&quot; #EFEFEF
+    database &quot;PostgreSQL (Staging)&quot; as Staging
+    database &quot;PostgreSQL (Produção)&quot; as Prod
+end box
+
+participant &quot;LDAP Server (AD)&quot; as AD
+
+== Início ==
+Admin -&gt; View : Clica &quot;Executar Pipeline Completo&quot;
+View -&gt; Redis : enqueue(executar_pipeline_completo)
+View --&gt; Admin : &quot;Pipeline Iniciado&quot;
+
+== Background ==
+Redis -&gt; Worker : entregar tarefa
+activate Worker
+
+group Etapa 1: Extração
+    Worker -&gt; AD : Consulta LDAPS
+    AD --&gt; Worker : Objetos retornados
+    Worker -&gt; Worker : Gera arquivos CSV temporários
+end
+
+group Etapa 2: Limpeza (Pandas)
+    Worker -&gt; Worker : Remover caracteres nulos
+    Worker -&gt; Worker : Normalizar espaços e acentuação
+end
+
+group Etapa 3: Carga Staging
+    Worker -&gt; Staging : TRUNCATE
+    Worker -&gt; Staging : COPY BULK INSERT
+    note right: Dados armazenados em TEXT
+end
+
+group Etapa 4: Transformação Produção
+    Worker -&gt; Prod : TRUNCATE
+    Worker -&gt; Prod : INSERT SELECT FROM staging
+    note right
+        Conversão de tipos:
+        • INTEGER
+        • TIMESTAMPTZ
+        • UUID
+    end note
+
+    alt Erro de Conversão
+        Prod --&gt; Worker : SQLException
+        Worker -&gt; Prod : INSERT INTO etl_error_log
+    end
+end
+
+Worker -&gt; Prod : Atualizar ExecucaoPipeline(status=&quot;CONCLUÍDO&quot;)
+deactivate Worker
+
+&#64;enduml"/>
+
+</object></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpmn_resolucao.html" class="btn btn-neutral float-left" title="Diagrama Resolução de Incidentes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sequence_governanca.html" class="btn btn-neutral float-right" title="Sequence Governança Ativa (Tempo Real)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

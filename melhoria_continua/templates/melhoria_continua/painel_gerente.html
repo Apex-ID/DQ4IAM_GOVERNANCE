@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 40px; background-color: #e9ecef; }
+        .container { max-width: 1200px; margin: auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { margin-top: 40px; color: #34495e; }
+        
+        /* Cards de Incidente */
+        .card-incidente { border: 1px solid #ddd; border-left: 5px solid #dc3545; padding: 20px; margin-bottom: 20px; border-radius: 5px; background: #fff; display: flex; justify-content: space-between; align-items: flex-start; }
+        .card-info h3 { margin: 0 0 10px 0; color: #dc3545; }
+        .card-meta { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+        .card-desc { background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px solid #eee; }
+        
+        /* Botões de Ação */
+        .actions { display: flex; gap: 10px; flex-direction: column; min-width: 200px; }
+        .btn { padding: 10px; border: none; border-radius: 4px; cursor: pointer; color: white; font-weight: bold; }
+        .btn-approve { background-color: #28a745; }
+        .btn-reject { background-color: #dc3545; }
+        .btn-fix { background-color: #17a2b8; }
+        
+        /* Tabela de Histórico */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9em; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background: #f8f9fa; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.85em; color: white; }
+        .bg-green { background: #28a745; } .bg-red { background: #dc3545; } .bg-blue { background: #17a2b8; }
+
+        .btn-back { background: #333; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <a href="{% url 'painel_de_controle' %}" class="btn btn-back">&larr; Voltar ao Menu</a>
+        <h1>🛡️ Sala de Situação: Melhoria Contínua</h1>
+
+        {% if messages %}
+            <div style="background: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                {% for message in messages %}{{ message }}{% endfor %}
+            </div>
+        {% endif %}
+
+        <h2>⚠️ Incidentes Pendentes ({{ pendentes.count }})</h2>
+        {% for inc in pendentes %}
+            <div class="card-incidente">
+                <div class="card-info" style="flex: 1; margin-right: 20px;">
+                    <h3>{{ inc.regra_violada }}</h3>
+                    <div class="card-meta">
+                        <strong>Técnico:</strong> {{ inc.evento_auditoria.tecnico_ad_login }} | 
+                        <strong>Data:</strong> {{ inc.data_abertura|date:"d/m/Y H:i" }} |
+                        <strong>Objeto:</strong> {{ inc.evento_auditoria.objeto_nome }}
+                    </div>
+                    <div class="card-desc">
+                        {{ inc.descricao_incidente }}
+                    </div>
+                    <p style="font-size: 0.9em; color: #555; margin-top: 5px;">Responsabilidade: <strong>{{ inc.get_responsavel_resolucao_display }}</strong></p>
+                </div>
+
+                <form method="post" action="{% url 'tratar_incidente' pk=inc.id %}" class="actions">
+                    {% csrf_token %}
+                    <textarea name="observacao" placeholder="Justificativa da decisão..." rows="2" style="padding: 5px;"></textarea>
+                    
+                    <button type="submit" name="acao" value="aprovar" class="btn btn-approve">✅ Aprovar Exceção</button>
+                    <button type="submit" name="acao" value="rejeitar" class="btn btn-reject">🚫 Rejeitar (Exigir Correção)</button>
+                    <button type="submit" name="acao" value="corrigido" class="btn btn-fix">🔧 Marcar como Corrigido</button>
+                </form>
+            </div>
+        {% empty %}
+            <div style="text-align: center; padding: 40px; background: #f8f9fa; border: 1px dashed #ccc; border-radius: 5px; color: #777;">
+                <h2>Tudo limpo! 🎉</h2>
+                <p>Nenhum incidente de qualidade pendente no momento.</p>
+            </div>
+        {% endfor %}
+
+        <h2>📜 Histórico de Decisões Recentes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Regra</th>
+                    <th>Técnico</th>
+                    <th>Decisão</th>
+                    <th>Gerente</th>
+                    <th>Obs</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inc in resolvidos %}
+                <tr>
+                    <td>{{ inc.data_fechamento|date:"d/m H:i" }}</td>
+                    <td>{{ inc.regra_violada }}</td>
+                    <td>{{ inc.evento_auditoria.tecnico_ad_login }}</td>
+                    <td>
+                        {% if inc.status == 'APROVADO_EXCECAO' %}
+                            <span class="badge bg-green">Aprovado</span>
+                        {% elif inc.status == 'REJEITADO_CORRIGIR' %}
+                            <span class="badge bg-red">Rejeitado</span>
+                        {% else %}
+                            <span class="badge bg-blue">Corrigido</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ inc.gerente_decisor.username }}</td>
+                    <td>{{ inc.observacao_gerente|default:"-" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

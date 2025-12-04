@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; background-color: #f4f7f6; }
+        .container { max-width: 1100px; margin: auto; background-color: white; padding: 30px; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #28a745; color: white; } 
+        input[type="text"] { width: 95%; padding: 5px; border: 1px solid #ccc; border-radius: 3px; }
+        .btn { padding: 12px 20px; color: white; border: none; cursor: pointer; border-radius: 4px; font-size: 16px; }
+        .btn-primary { background-color: #007bff; }
+        .btn-success { background-color: #28a745; }
+        .config-box { background: #e9ecef; padding: 20px; border-radius: 5px; margin-top: 20px; border: 1px solid #ced4da; }
+    </style>
+    
+    <script>
+        function toggleCheckboxes(source) {
+            checkboxes = document.getElementsByName('col_selecionada');
+            for(var i=0, n=checkboxes.length;i<n;i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="/painel/" style="text-decoration: none; color: #666;">&larr; Voltar ao Painel</a>
+        <h1>🏗️ Construtor de Schemas (Data Architect)</h1>
+
+        {% if messages %}
+            <ul>{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>
+        {% endif %}
+
+        {% if not dados_extraidos %}
+        <div style="border: 2px dashed #ccc; padding: 40px; text-align: center; margin-top: 30px;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>Carregue o Dicionário de Dados (PDF ou DOCX):</p>
+                <input type="file" name="arquivo_dicionario" accept=".docx,.pdf" required>
+                <br><br>
+                <button type="submit" class="btn btn-primary">Ler Dicionário</button>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if dados_extraidos %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="acao_criar_tabela" value="1">
+
+            <h3>Revisão: {{ nome_arquivo }}</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%" style="text-align: center;">
+                            <input type="checkbox" onClick="toggleCheckboxes(this)" checked>
+                        </th>
+                        <th>Nome da Coluna (SQL)</th>
+                        <th>Tipo Sugerido</th>
+                        <th>Descrição Original</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in dados_extraidos %}
+                    <tr>
+                        <td style="text-align: center;">
+                            <input type="checkbox" name="col_selecionada" value="{{ forloop.counter0 }}" checked>
+                        </td>
+                        <td>
+                            <input type="text" name="col_nome" value="{{ item.coluna_sql }}">
+                        </td>
+                        <td>
+                            <input type="text" name="col_tipo" value="{{ item.tipo_sql }}" list="tipos_sql">
+                            <datalist id="tipos_sql">
+                                <option value="TEXT">
+                                <option value="VARCHAR(255)">
+                                <option value="INTEGER">
+                                <option value="TIMESTAMPTZ">
+                                <option value="UUID">
+                                <option value="BOOLEAN">
+                            </datalist>
+                        </td>
+                        <td style="color: #666; font-size: 0.9em;">{{ item.descricao|truncatechars:60 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="config-box">
+                <h3>Configuração de Destino</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <label><strong>Nome do Banco de Dados:</strong></label><br>
+                        <input type="text" name="nome_banco" value="apex_producao" required>
+                        <br>
+                        <input type="checkbox" name="criar_db" id="cdb"> <label for="cdb">Criar este banco (se não existir)?</label>
+                    </div>
+                    <div>
+                        <label><strong>Nome da Tabela:</strong></label><br>
+                        <input type="text" name="nome_tabela" value="{{ sugestao_tabela }}" required>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success" style="width: 100%;">🚀 CRIAR ESTRUTURA (SQL)</button>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="{% url 'upload_dicionario' %}" style="color: red;">Cancelar</a>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

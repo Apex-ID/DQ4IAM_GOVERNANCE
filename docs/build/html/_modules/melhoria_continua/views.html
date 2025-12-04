@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>melhoria_continua.views &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">melhoria_continua.views</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for melhoria_continua.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.views.decorators.csrf</span><span class="w"> </span><span class="kn">import</span> <span class="n">csrf_exempt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuditoriaAD</span><span class="p">,</span> <span class="n">IncidenteQualidade</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<div class="viewcode-block" id="api_receber_auditoria">
+<a class="viewcode-back" href="../../melhoria_continua.html#melhoria_continua.views.api_receber_auditoria">[docs]</a>
+<span class="nd">@csrf_exempt</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">api_receber_auditoria</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Endpoint API para receber logs enviados pelo Agente Windows.</span>
+
+<span class="sd">    **Método:** ``POST``  </span>
+<span class="sd">    **Content-Type:** ``application/json``</span>
+
+<span class="sd">    **Payload esperado (exemplo):**</span>
+
+<span class="sd">    .. code-block:: json</span>
+
+<span class="sd">        {</span>
+<span class="sd">            &quot;tecnico&quot;: &quot;admin.joao&quot;,</span>
+<span class="sd">            &quot;acao&quot;: &quot;CREATE&quot;,</span>
+<span class="sd">            &quot;tipo_objeto&quot;: &quot;USER&quot;,</span>
+<span class="sd">            &quot;objeto&quot;: &quot;cn=aluno.novo,ou=...&quot;,</span>
+<span class="sd">            &quot;detalhes&quot;: {}</span>
+<span class="sd">        }</span>
+
+<span class="sd">    **Retornos:**</span>
+<span class="sd">    - ``201`` – Registro criado com sucesso</span>
+<span class="sd">    - ``400`` – JSON inválido</span>
+<span class="sd">    - ``405`` – Método não permitido</span>
+<span class="sd">    - ``500`` – Erro interno</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">!=</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;erro&#39;</span><span class="p">:</span> <span class="s1">&#39;Método não permitido. Use POST.&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">405</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 1. Decodifica o JSON recebido</span>
+        <span class="n">dados</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        
+        <span class="c1"># 2. Extrai os campos (com valores padrão para evitar erro)</span>
+        <span class="n">tecnico</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tecnico&#39;</span><span class="p">,</span> <span class="s1">&#39;SISTEMA&#39;</span><span class="p">)</span>
+        <span class="n">acao</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;acao&#39;</span><span class="p">,</span> <span class="s1">&#39;UNKNOWN&#39;</span><span class="p">)</span>
+        <span class="n">tipo_obj</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tipo_objeto&#39;</span><span class="p">,</span> <span class="s1">&#39;UNKNOWN&#39;</span><span class="p">)</span>
+        <span class="n">objeto</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;objeto&#39;</span><span class="p">,</span> <span class="s1">&#39;Desconhecido&#39;</span><span class="p">)</span>
+        <span class="n">detalhes</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;detalhes&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">)</span> <span class="c1"># Pega o IP de quem enviou</span>
+
+        <span class="c1"># 3. Cria o registro de Auditoria</span>
+        <span class="n">registro</span> <span class="o">=</span> <span class="n">AuditoriaAD</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">tecnico_ad_login</span><span class="o">=</span><span class="n">tecnico</span><span class="p">,</span>
+            <span class="n">ip_origem</span><span class="o">=</span><span class="n">ip</span><span class="p">,</span>
+            <span class="n">tipo_acao</span><span class="o">=</span><span class="n">acao</span><span class="p">,</span>
+            <span class="n">tipo_objeto</span><span class="o">=</span><span class="n">tipo_obj</span><span class="p">,</span>
+            <span class="n">objeto_nome</span><span class="o">=</span><span class="n">objeto</span><span class="p">,</span>
+            <span class="n">dados_evento</span><span class="o">=</span><span class="n">detalhes</span><span class="p">,</span>
+            <span class="n">timestamp</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="p">)</span>
+        
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[API AUDITORIA] Novo evento recebido: </span><span class="si">{</span><span class="n">registro</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 4. (GATILHO FUTURO) Aqui chamaremos o Motor de Validação em Tempo Real</span>
+        <span class="c1"># verificar_regras_melhoria_continua(registro)</span>
+
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span>
+            <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;sucesso&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;mensagem&#39;</span><span class="p">:</span> <span class="s1">&#39;Evento registrado.&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;id_log&#39;</span><span class="p">:</span> <span class="n">registro</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;erro&#39;</span><span class="p">:</span> <span class="s1">&#39;JSON inválido.&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erro na API: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s1">&#39;erro&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)},</span> <span class="n">status</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="painel_gestao_incidentes">
+<a class="viewcode-back" href="../../melhoria_continua.html#melhoria_continua.views.painel_gestao_incidentes">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">painel_gestao_incidentes</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tela onde os gerentes veem os problemas e tomam decisões.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Busca apenas o que está pendente</span>
+    <span class="n">incidentes_pendentes</span> <span class="o">=</span> <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;PENDENTE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-data_abertura&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Busca histórico recente de resolvidos</span>
+    <span class="n">incidentes_resolvidos</span> <span class="o">=</span> <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;PENDENTE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-data_fechamento&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;Central de Melhoria Contínua (Gestão de Incidentes)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pendentes&#39;</span><span class="p">:</span> <span class="n">incidentes_pendentes</span><span class="p">,</span>
+        <span class="s1">&#39;resolvidos&#39;</span><span class="p">:</span> <span class="n">incidentes_resolvidos</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;melhoria_continua/painel_gerente.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="tratar_incidente">
+<a class="viewcode-back" href="../../melhoria_continua.html#melhoria_continua.views.tratar_incidente">[docs]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">tratar_incidente</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Processa a decisão do gerente (Aprovar ou Rejeitar).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">!=</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;painel_gestao_incidentes&#39;</span><span class="p">)</span>
+    
+    <span class="n">incidente</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">IncidenteQualidade</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="n">acao</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;acao&#39;</span><span class="p">)</span>
+    <span class="n">observacao</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;observacao&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">acao</span> <span class="o">==</span> <span class="s1">&#39;aprovar&#39;</span><span class="p">:</span>
+        <span class="n">incidente</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;APROVADO_EXCECAO&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Incidente aprovado como exceção.&#39;</span>
+    <span class="k">elif</span> <span class="n">acao</span> <span class="o">==</span> <span class="s1">&#39;rejeitar&#39;</span><span class="p">:</span>
+        <span class="n">incidente</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;REJEITADO_CORRIGIR&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Incidente rejeitado. Técnico será notificado para corrigir.&#39;</span>
+    <span class="k">elif</span> <span class="n">acao</span> <span class="o">==</span> <span class="s1">&#39;corrigido&#39;</span><span class="p">:</span>
+        <span class="n">incidente</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;CORRIGIDO&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Incidente marcado como corrigido.&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;painel_gestao_incidentes&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Registra quem decidiu e quando</span>
+    <span class="n">incidente</span><span class="o">.</span><span class="n">gerente_decisor</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+    <span class="n">incidente</span><span class="o">.</span><span class="n">observacao_gerente</span> <span class="o">=</span> <span class="n">observacao</span>
+    <span class="n">incidente</span><span class="o">.</span><span class="n">data_fechamento</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">incidente</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    
+    <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Sucesso: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;painel_gestao_incidentes&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

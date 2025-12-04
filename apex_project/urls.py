@@ -1,30 +1,42 @@
 """
-URL configuration for apex_project project.
+Configuração de URLs do projeto APEX GOVERNANCE.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+A lista `urlpatterns` define as rotas para as views.
+Inclui rotas para:
+- Admin
+- Autenticação
+- Apps do sistema
 """
+
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    #  ROTAS DE AUTENTICAÇÃO USUÁRIO
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    
     # URLs do Pipeline (Carga)
     path('', include('qualidade_ad.urls')),
-    # URLs de Análises Simples (Completude, Validade, Unicidade)
+    
+    # URLs de Análises Simples
     path('', include('analises_simples.urls')),
-    # URLs de Análises Relacionais (Acurácia, Consistência)
+    
+    # URLs de Análises Relacionais
     path('', include('analises_relacionais.urls')),
-    # URLs do Importador Dinâmico(Importação de CSV para Banco de Dados)
+
+    # URLs do Importador Dinâmico
     path('', include('importador_dinamico.urls')),
+
+    # URLs dos Relatórios Gerenciais (Report Center)
+    path('relatorios/', include('relatorios_gerenciais.urls')),
+
+    # URLs da Melhoria Contínua
+    path('', include('melhoria_continua.urls')),
+
+    # URLs do Construtor de Schemas
+    path('', include('construtor_schemas.urls')),
 ]

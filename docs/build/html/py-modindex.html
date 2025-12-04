@@ -42,9 +42,41 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Pacotes e Módulos</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">APEX_GOVERNANCE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#apex-governance">APEX_GOVERNANCE</a></li>
 </ul>
 
         </div>
@@ -80,6 +112,7 @@
    <a href="#cap-m"><strong>m</strong></a> | 
    <a href="#cap-p"><strong>p</strong></a> | 
    <a href="#cap-q"><strong>q</strong></a> | 
+   <a href="#cap-r"><strong>r</strong></a> | 
    <a href="#cap-t"><strong>t</strong></a>
    </div>
 
@@ -106,6 +139,11 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="analises_relacionais.html#module-analises_relacionais.logica_scorecard"><code class="xref">analises_relacionais.logica_scorecard</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations"><code class="xref">analises_relacionais.migrations</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -116,12 +154,32 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha"><code class="xref">analises_relacionais.migrations.0002_relatoriodqi_relatorioriscosenha</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0003_relatorioscorecard"><code class="xref">analises_relacionais.migrations.0003_relatorioscorecard</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="analises_relacionais.migrations.html#module-analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente"><code class="xref">analises_relacionais.migrations.0004_relatoriodqi_tipo_ambiente</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="analises_relacionais.html#module-analises_relacionais.models"><code class="xref">analises_relacionais.models</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="analises_relacionais.html#module-analises_relacionais.regras_sql"><code class="xref">analises_relacionais.regras_sql</code></a></td><td>
+       <a href="analises_relacionais.html#module-analises_relacionais.regras_producao"><code class="xref">analises_relacionais.regras_producao</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="analises_relacionais.html#module-analises_relacionais.regras_staging"><code class="xref">analises_relacionais.regras_staging</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -352,6 +410,11 @@
        <td>&#160;&#160;&#160;
        <a href="importador_dinamico.html#module-importador_dinamico.views"><code class="xref">importador_dinamico.views</code></a></td><td>
        <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="iniciar_sistema.html#module-iniciar_sistema"><code class="xref">iniciar_sistema</code></a></td><td>
+       <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-m"><td></td><td>
        <strong>m</strong></td><td></td></tr>
@@ -359,6 +422,57 @@
        <td></td>
        <td>
        <a href="manage.html#module-manage"><code class="xref">manage</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-5" style="display: none" alt="-" /></td>
+       <td>
+       <a href="melhoria_continua.html#module-melhoria_continua"><code class="xref">melhoria_continua</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.admin"><code class="xref">melhoria_continua.admin</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.apps"><code class="xref">melhoria_continua.apps</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.migrations.html#module-melhoria_continua.migrations"><code class="xref">melhoria_continua.migrations</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.migrations.html#module-melhoria_continua.migrations.0001_initial"><code class="xref">melhoria_continua.migrations.0001_initial</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.models"><code class="xref">melhoria_continua.models</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.signals"><code class="xref">melhoria_continua.signals</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.tests"><code class="xref">melhoria_continua.tests</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.urls"><code class="xref">melhoria_continua.urls</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-5">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="melhoria_continua.html#module-melhoria_continua.views"><code class="xref">melhoria_continua.views</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-p"><td></td><td>
@@ -373,84 +487,143 @@
        <strong>q</strong></td><td></td></tr>
      <tr>
        <td><img src="_static/minus.png" class="toggler"
-              id="toggle-5" style="display: none" alt="-" /></td>
+              id="toggle-6" style="display: none" alt="-" /></td>
        <td>
        <a href="qualidade_ad.html#module-qualidade_ad"><code class="xref">qualidade_ad</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.admin"><code class="xref">qualidade_ad.admin</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="qualidade_ad.html#module-qualidade_ad.agente_simulador"><code class="xref">qualidade_ad.agente_simulador</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.apps"><code class="xref">qualidade_ad.apps</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.migrations.html#module-qualidade_ad.migrations"><code class="xref">qualidade_ad.migrations</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.migrations.html#module-qualidade_ad.migrations.0001_initial"><code class="xref">qualidade_ad.migrations.0001_initial</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.models"><code class="xref">qualidade_ad.models</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline"><code class="xref">qualidade_ad.pipeline</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_1_extracao"><code class="xref">qualidade_ad.pipeline.etapa_1_extracao</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_2_limpeza"><code class="xref">qualidade_ad.pipeline.etapa_2_limpeza</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_3_preparacao_banco"><code class="xref">qualidade_ad.pipeline.etapa_3_preparacao_banco</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_4_carga_staging"><code class="xref">qualidade_ad.pipeline.etapa_4_carga_staging</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_5_transformacao"><code class="xref">qualidade_ad.pipeline.etapa_5_transformacao</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.tasks"><code class="xref">qualidade_ad.tasks</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.tests"><code class="xref">qualidade_ad.tests</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.urls"><code class="xref">qualidade_ad.urls</code></a></td><td>
        <em></em></td></tr>
-     <tr class="cg-5">
+     <tr class="cg-6">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="qualidade_ad.html#module-qualidade_ad.views"><code class="xref">qualidade_ad.views</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-r"><td></td><td>
+       <strong>r</strong></td><td></td></tr>
+     <tr>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-7" style="display: none" alt="-" /></td>
+       <td>
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais"><code class="xref">relatorios_gerenciais</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.admin"><code class="xref">relatorios_gerenciais.admin</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.apps"><code class="xref">relatorios_gerenciais.apps</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.catalogo_formulas"><code class="xref">relatorios_gerenciais.catalogo_formulas</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.dicionario_dados"><code class="xref">relatorios_gerenciais.dicionario_dados</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.migrations.html#module-relatorios_gerenciais.migrations"><code class="xref">relatorios_gerenciais.migrations</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.models"><code class="xref">relatorios_gerenciais.models</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.tests"><code class="xref">relatorios_gerenciais.tests</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.urls"><code class="xref">relatorios_gerenciais.urls</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-7">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="relatorios_gerenciais.html#module-relatorios_gerenciais.views"><code class="xref">relatorios_gerenciais.views</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-t"><td></td><td>
@@ -470,7 +643,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Sergio Santana dos Santos.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

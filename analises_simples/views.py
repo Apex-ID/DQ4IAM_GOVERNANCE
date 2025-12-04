@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db import connection
+from django.contrib.auth.decorators import login_required
 
 # Importe TODOS os models
 from .models import (
@@ -23,6 +24,7 @@ from .tasks import (
     executar_unicidade_personalizada_task
 )
 
+@login_required
 def dashboard_analises(request):
     """
     View principal do Dashboard de Análises.
@@ -53,24 +55,24 @@ def dashboard_analises(request):
 
     # Queries de Histórico (Ordenados por Data Descrescente)
     ultimos_relatorios_usuarios = RelatorioCompletude.objects.all().order_by('-timestamp_inicio')[:5]
-    ultimos_relatorios_gerais = RelatorioCompletudeGeral.objects.all().order_by('-timestamp_inicio')[:4]
-    ultimos_relatorios_validade = RelatorioValidadeFormato.objects.all().order_by('-timestamp_inicio')[:4]
+    ultimos_relatorios_gerais = RelatorioCompletudeGeral.objects.all().order_by('-timestamp_inicio')[:5]
+    ultimos_relatorios_validade = RelatorioValidadeFormato.objects.all().order_by('-timestamp_inicio')[:5]
     
     ultimos_relatorios_unicidade_staging = RelatorioUnicidadeGeral.objects.filter(
         tabela_analisada__endswith='_staging'
-    ).order_by('-timestamp_inicio')[:4]
+    ).order_by('-timestamp_inicio')[:5]
     
     ultimos_relatorios_unicidade_producao = RelatorioUnicidadeGeral.objects.exclude(
         tabela_analisada__endswith='_staging'
-    ).order_by('-timestamp_inicio')[:4]
+    ).order_by('-timestamp_inicio')[:5]
 
     ultimas_regras_staging = RelatorioRegraNegocio.objects.filter(
         tipo_tabela='STAGING'
-    ).order_by('-timestamp_inicio')[:10]
+    ).order_by('-timestamp_inicio')[:50]
     
     ultimas_regras_producao = RelatorioRegraNegocio.objects.filter(
         tipo_tabela='PRODUÇÃO'
-    ).order_by('-timestamp_inicio')[:10]
+    ).order_by('-timestamp_inicio')[:50]
 
     ultimos_relatorios_personalizados = RelatorioUnicidadePersonalizada.objects.all().order_by('-timestamp_inicio')[:5]
 
@@ -89,6 +91,7 @@ def dashboard_analises(request):
 
 # --- Views de Detalhe ---
 
+@login_required
 def detalhe_relatorio_geral(request, pk):
     relatorio = get_object_or_404(RelatorioCompletudeGeral, pk=pk)
     colunas_vazias = []
@@ -104,6 +107,7 @@ def detalhe_relatorio_geral(request, pk):
     }
     return render(request, 'analises_simples/detalhe_relatorio.html', context)
 
+@login_required
 def detalhe_relatorio_validade(request, pk):
     relatorio = get_object_or_404(RelatorioValidadeFormato, pk=pk)
     erros = relatorio.detalhamento_erros.items() if relatorio.detalhamento_erros else []
@@ -115,8 +119,8 @@ def detalhe_relatorio_validade(request, pk):
     }
     return render(request, 'analises_simples/detalhe_relatorio_validade.html', context)
 
+@login_required
 def detalhe_relatorio_unicidade(request, pk):
-    # CORREÇÃO: Agora usa RelatorioUnicidadeGeral, e não precisa de 'ultimas_regras'
     relatorio = get_object_or_404(RelatorioUnicidadeGeral, pk=pk)
     
     detalhes_colunas = []
@@ -131,7 +135,6 @@ def detalhe_relatorio_unicidade(request, pk):
         'titulo': f"Detalhe Unicidade: {relatorio.tabela_analisada}",
         'relatorio': relatorio,
         'detalhes_colunas': detalhes_colunas
-        # Removido 'ultimas_regras', que causava o erro
     }
     return render(request, 'analises_simples/detalhe_relatorio_unicidade.html', context)
 
@@ -148,6 +151,7 @@ def detalhe_relatorio_regras(request, pk):
 
 # --- View de Configuração Personalizada ---
 
+@login_required
 def configuracao_unicidade(request):
     tabelas_disponiveis = [
         'ad_users_staging', 'ad_computers_staging', 
@@ -191,6 +195,7 @@ def configuracao_unicidade(request):
     }
     return render(request, 'analises_simples/configuracao_unicidade.html', context)
 
+@login_required
 def detalhe_relatorio_personalizado(request, pk):
     relatorio = get_object_or_404(RelatorioUnicidadePersonalizada, pk=pk)
     

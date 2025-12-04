@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; background-color: #f4f7f6; }
+        .container { max-width: 1000px; margin: auto; background-color: white; padding: 30px; border-radius: 8px; }
+        .box { background: #e9ecef; padding: 20px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ccc; }
+        select, input { padding: 8px; width: 100%; margin-bottom: 10px; box-sizing: border-box; }
+        .btn { padding: 10px 20px; color: white; border: none; cursor: pointer; border-radius: 4px; width: 100%; }
+        .btn-primary { background-color: #007bff; }
+        .btn-success { background-color: #28a745; }
+        
+        .mapping-row { display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .col-dest { flex: 1; font-weight: bold; color: #0056b3; }
+        .arrow { width: 50px; text-align: center; font-size: 20px; color: #666; }
+        .col-orig { flex: 1; }
+    </style>
+
+    <script>
+        function carregarTabelas() {
+            const bancoSelect = document.getElementById('id_banco_destino');
+            const tabelaSelect = document.getElementById('id_tabela_destino');
+            const bancoNome = bancoSelect.value;
+
+            console.log("Buscando tabelas para o banco:", bancoNome);
+
+            // Limpa e mostra status de carregando
+            tabelaSelect.innerHTML = '<option value="">Carregando...</option>';
+            tabelaSelect.disabled = true;
+
+            if (bancoNome) {
+                fetch(`/api/tabelas/?banco=${bancoNome}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Erro na API");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Tabelas recebidas:", data.tabelas);
+                        tabelaSelect.innerHTML = '<option value="" disabled selected>-- Selecione a Tabela --</option>';
+                        
+                        if (data.tabelas && data.tabelas.length > 0) {
+                            data.tabelas.forEach(tabela => {
+                                const option = document.createElement('option');
+                                option.value = tabela;
+                                option.textContent = tabela;
+                                tabelaSelect.appendChild(option);
+                            });
+                            tabelaSelect.disabled = false;
+                        } else {
+                            tabelaSelect.innerHTML = '<option value="">Nenhuma tabela encontrada neste banco</option>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro JS:', error);
+                        tabelaSelect.innerHTML = '<option value="">Erro ao carregar tabelas</option>';
+                    });
+            } else {
+                tabelaSelect.innerHTML = '<option value="" disabled selected>-- Selecione o Banco primeiro --</option>';
+                tabelaSelect.disabled = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="/painel/" style="color: #666; text-decoration: none;">&larr; Voltar ao Painel</a>
+        <h1>🔄 ETL Builder: Mapeamento de Dados</h1>
+
+        {% if messages %}
+            <ul>{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>
+        {% endif %}
+
+        {% if not cols_destino %}
+        <form method="post" class="box">
+            {% csrf_token %}
+            <h3>1. Selecione Origem e Destino</h3>
+            
+            <label>Tabela de Origem (Staging):</label>
+            <select name="tabela_origem" required>
+                <option value="" disabled selected>-- Selecione a tabela com dados brutos --</option>
+                {% for tb in tabelas_staging %}
+                    <option value="{{ tb }}" {% if sel_origem == tb %}selected{% endif %}>{{ tb }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Banco de Destino (Produção):</label>
+            <select name="banco_destino" id="id_banco_destino" onchange="carregarTabelas()" required>
+                <option value="" disabled selected>-- Selecione o Banco de Dados --</option>
+                {% for banco in lista_bancos %}
+                    <option value="{{ banco }}" {% if sel_banco_dest == banco %}selected{% endif %}>{{ banco }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Tabela de Destino (Produção):</label>
+            <select name="tabela_destino" id="id_tabela_destino" required disabled>
+                <option value="" disabled selected>-- Selecione o Banco primeiro --</option>
+            </select>
+
+            <br><br>
+            <button type="submit" name="btn_carregar_colunas" class="btn btn-primary">Carregar Colunas para Mapear</button>
+        </form>
+        {% endif %}
+
+        {% if cols_destino %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="tabela_origem_final" value="{{ sel_origem }}">
+            <input type="hidden" name="banco_destino_final" value="{{ sel_banco_dest }}">
+            <input type="hidden" name="tabela_destino_final" value="{{ sel_tabela_dest }}">
+
+            <h3>2. Realize o Mapeamento (De/Para)</h3>
+            <p>Origem: <strong>{{ sel_origem }}</strong> &rarr; Destino: <strong>{{ sel_banco_dest }}.{{ sel_tabela_dest }}</strong></p>
+
+            <div class="box" style="background: white; border: 2px solid #007bff;">
+                <div class="mapping-row" style="background: #f8f9fa; font-weight: bold;">
+                    <div class="col-dest">Coluna de Destino (Produção)</div>
+                    <div class="arrow">&larr;</div>
+                    <div class="col-orig">Vem de qual coluna da Origem?</div>
+                </div>
+
+                {% for col_dest in cols_destino %}
+                    {% if col_dest.nome != 'id' and 'metadata' not in col_dest.nome %}
+                    <div class="mapping-row">
+                        <div class="col-dest">
+                            {{ col_dest.nome }} <small style="color:#666">({{ col_dest.tipo }})</small>
+                        </div>
+                        <div class="arrow">&larr;</div>
+                        <div class="col-orig">
+                            <select name="map_{{ col_dest.nome }}">
+                                <option value="">-- Ignorar / Deixar Nulo --</option>
+                                {% for col_orig in cols_origem %}
+                                    <option value="{{ col_orig.nome }}" {% if col_orig.nome == col_dest.nome %}selected{% endif %}>
+                                        {{ col_orig.nome }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <button type="submit" name="btn_executar_carga" class="btn btn-success">
+                🚀 INICIAR CARGA DE DADOS
+            </button>
+            <br><br>
+            <a href="{% url 'definir_mapeamento' %}" style="color:red; text-align: center; display: block;">Cancelar</a>
+        </form>
+        {% endif %}
+
+    </div>
+</body>
+</html>

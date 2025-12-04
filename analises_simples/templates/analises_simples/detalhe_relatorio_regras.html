@@ -4,54 +4,76 @@
     <meta charset="UTF-8">
     <title>{{ titulo }}</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; margin: 20px; }
-        .container { max-width: 900px; margin: auto; }
-        h1, h2 { border-bottom: 2px solid #eee; }
+        body { font-family: sans-serif; line-height: 1.6; margin: 20px; background-color: #f4f7f6; }
+        .container { max-width: 1000px; margin: auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1, h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
         .box-destaque { padding: 20px; border-radius: 5px; margin: 20px 0; border: 1px solid #ddd; }
-        .destaque-bom { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
-        .destaque-ruim { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
-        .impacto { background-color: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .status-sucesso { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+        .status-falhou { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9em; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        @media print { .no-print { display: none; } }
+        th { background-color: #f8f9fa; }
+        
+        .btn-back { text-decoration: none; background: #333; color: white; padding: 8px 15px; border-radius: 4px; font-size: 0.9em; }
+        
+        @media print { 
+            .no-print { display: none; } 
+            body { background-color: white; }
+            .container { box-shadow: none; border: none; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'dashboard_analises' %}" class="no-print">&larr; Voltar ao Dashboard</a>
-        <h1>{{ titulo }}</h1>
-        <p>Executado em: {{ relatorio.timestamp_inicio }} | Ambiente: <strong>{{ relatorio.tipo_tabela }}</strong></p>
+        <div class="no-print" style="margin-bottom: 20px;">
+            <a href="{% url 'dashboard_analises' %}" class="btn-back">&larr; Voltar ao Dashboard</a>
+            <button onclick="window.print()" style="float: right; cursor: pointer;">🖨️ Salvar PDF</button>
+        </div>
 
+        <h1>{{ titulo }}</h1>
+        <p><strong>Executado em:</strong> {{ relatorio.timestamp_inicio }} | <strong>Tabela:</strong> {{ relatorio.tabela_analisada }} ({{ relatorio.tipo_tabela }})</p>
+        
         <div class="box-destaque {{ status_classe }}">
             <h2>Resultado da Auditoria</h2>
-            <p style="font-size: 1.2em;">
-                A regra <strong>"{{ relatorio.nome_regra }}"</strong> identificou 
-                <strong>{{ relatorio.qtd_falhas }}</strong> violações em 
-                <strong>{{ relatorio.qtd_total_registros }}</strong> registros analisados.
-            </p>
-            <p>Taxa de Falha: <strong>{{ relatorio.percentual_falha|floatformat:2 }}%</strong></p>
+            <p><strong>Falhas Encontradas:</strong> {{ relatorio.qtd_falhas }} de {{ relatorio.qtd_total_registros }} registros.</p>
+            <p><strong>Taxa de Falha:</strong> {{ relatorio.percentual_falha|floatformat:2 }}%</p>
         </div>
 
-        <div class="impacto">
-            <h3>Impacto no Negócio / Risco</h3>
-            <p>{{ relatorio.descricao_impacto }}</p>
-        </div>
+        <h3>Impacto no Negócio</h3>
+        <p style="font-size: 1.1em; color: #555;">{{ relatorio.descricao_impacto }}</p>
+        <p><strong>Dimensão DAMA:</strong> {{ relatorio.dimensao }}</p>
 
-        <h2>Detalhes Técnicos</h2>
-        <table>
-            <tr>
-                <th>Tabela Analisada</th>
-                <td>{{ relatorio.tabela_analisada }}</td>
-            </tr>
-            <tr>
-                <th>Dimensão de Qualidade</th>
-                <td>{{ relatorio.dimensao }}</td>
-            </tr>
-            <tr>
-                <th>Registros Conformes</th>
-                <td>{{ relatorio.qtd_total_registros|add:relatorio.qtd_falhas|stringformat:"s"|slice:"1:" }} (Cálculo aproximado)</td>
-            </tr>
-        </table>
+        {% if relatorio.exemplos_falhas %}
+            <h2 style="margin-top: 40px; color: #dc3545;">Evidências (Amostra de Falhas)</h2>
+            <p>Abaixo estão listados os primeiros 20 registros que não atendem à regra.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        {% for key in relatorio.exemplos_falhas.0.keys %}
+                            <th style="text-transform: capitalize;">{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for falha in relatorio.exemplos_falhas %}
+                        <tr>
+                            {% for valor in falha.values %}
+                                <td>{{ valor|default:"-" }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            {% if relatorio.qtd_falhas > 0 %}
+                <p><em>Falhas foram detectadas, mas os detalhes não puderam ser carregados.</em></p>
+            {% else %}
+                <h3 style="color: green; margin-top: 30px;">✅ Nenhum problema encontrado.</h3>
+            {% endif %}
+        {% endif %}
     </div>
 </body>
 </html>

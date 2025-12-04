@@ -1,3 +1,6 @@
+Analises Relacionais
+====================
+
 analises\_relacionais package
 =============================
 
@@ -28,6 +31,14 @@ analises\_relacionais.apps module
    :show-inheritance:
    :undoc-members:
 
+analises\_relacionais.logica\_scorecard module
+----------------------------------------------
+
+.. automodule:: analises_relacionais.logica_scorecard
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 analises\_relacionais.models module
 -----------------------------------
 
@@ -36,10 +47,18 @@ analises\_relacionais.models module
    :show-inheritance:
    :undoc-members:
 
-analises\_relacionais.regras\_sql module
-----------------------------------------
+analises\_relacionais.regras\_producao module
+---------------------------------------------
 
-.. automodule:: analises_relacionais.regras_sql
+.. automodule:: analises_relacionais.regras_producao
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+analises\_relacionais.regras\_staging module
+--------------------------------------------
+
+.. automodule:: analises_relacionais.regras_staging
    :members:
    :show-inheritance:
    :undoc-members:

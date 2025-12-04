@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qualidade_ad.agente_simulador &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">qualidade_ad.agente_simulador</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for qualidade_ad.agente_simulador</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c1"># Configuração</span>
+<span class="n">URL_API</span> <span class="o">=</span> <span class="s2">&quot;http://127.0.0.1:8000/api/auditoria/receber/&quot;</span>
+<span class="n">TECNICOS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;admin.joao&quot;</span><span class="p">,</span> <span class="s2">&quot;admin.maria&quot;</span><span class="p">,</span> <span class="s2">&quot;suporte.pedro&quot;</span><span class="p">,</span> <span class="s2">&quot;automacao.script&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="gerar_evento_simulado">
+<a class="viewcode-back" href="../../qualidade_ad.html#qualidade_ad.agente_simulador.gerar_evento_simulado">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gerar_evento_simulado</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gera um evento de AD aleatório.</span>
+<span class="sd">    Alguns violarão as regras de negócio propositalmente.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tipo</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;USER&#39;</span><span class="p">,</span> <span class="s1">&#39;GROUP&#39;</span><span class="p">,</span> <span class="s1">&#39;COMPUTER&#39;</span><span class="p">])</span>
+    <span class="n">acao</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;CREATE&#39;</span><span class="p">,</span> <span class="s1">&#39;UPDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">])</span>
+    <span class="n">tecnico</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">TECNICOS</span><span class="p">)</span>
+    
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;tecnico&quot;</span><span class="p">:</span> <span class="n">tecnico</span><span class="p">,</span>
+        <span class="s2">&quot;acao&quot;</span><span class="p">:</span> <span class="n">acao</span><span class="p">,</span>
+        <span class="s2">&quot;tipo_objeto&quot;</span><span class="p">:</span> <span class="n">tipo</span><span class="p">,</span>
+        <span class="s2">&quot;objeto&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;detalhes&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+
+    <span class="c1"># CENÁRIO 1: VIOLAÇÃO - Usuário sem Gerente (Regra de Completude)</span>
+    <span class="k">if</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s1">&#39;USER&#39;</span> <span class="ow">and</span> <span class="n">acao</span> <span class="o">==</span> <span class="s1">&#39;CREATE&#39;</span> <span class="ow">and</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span> <span class="c1"># 40% de chance de erro</span>
+        <span class="n">nome</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;aluno.teste.</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">9999</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;objeto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;CN=</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">,OU=Alunos,DC=ufs,DC=br&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;detalhes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;sAMAccountName&quot;</span><span class="p">:</span> <span class="n">nome</span><span class="p">,</span>
+            <span class="s2">&quot;manager&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span> <span class="c1"># &lt;--- ERRO: Vazio!</span>
+        <span class="p">}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️  [SIMULADOR] Gerando ERRO: Usuário sem gerente (</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CENÁRIO 2: VIOLAÇÃO - Usuário no Container Errado (Regra de Consistência)</span>
+    <span class="k">elif</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s1">&#39;USER&#39;</span> <span class="ow">and</span> <span class="n">acao</span> <span class="o">==</span> <span class="s1">&#39;CREATE&#39;</span> <span class="ow">and</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="p">:</span>
+        <span class="n">nome</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;funcionario.</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">9999</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;objeto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;CN=</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">,CN=Users,DC=ufs,DC=br&quot;</span> <span class="c1"># &lt;--- ERRO: CN=Users</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;detalhes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;sAMAccountName&quot;</span><span class="p">:</span> <span class="n">nome</span><span class="p">,</span>
+            <span class="s2">&quot;manager&quot;</span><span class="p">:</span> <span class="s2">&quot;CN=Gerente,OU=TI...&quot;</span>
+        <span class="p">}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️  [SIMULADOR] Gerando ERRO: Usuário fora de padrão (</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CENÁRIO 3: VIOLAÇÃO - Alteração em Grupo Admin (Regra de Segurança)</span>
+    <span class="k">elif</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s1">&#39;GROUP&#39;</span> <span class="ow">and</span> <span class="n">acao</span> <span class="o">==</span> <span class="s1">&#39;UPDATE&#39;</span> <span class="ow">and</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="p">:</span>
+        <span class="n">grupo</span> <span class="o">=</span> <span class="s2">&quot;Domain Admins&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;objeto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;CN=</span><span class="si">{</span><span class="n">grupo</span><span class="si">}</span><span class="s2">,CN=Users,DC=ufs,DC=br&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;detalhes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;member&quot;</span><span class="p">:</span> <span class="s2">&quot;adicionou hacker_01&quot;</span><span class="p">}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🚨 [SIMULADOR] Gerando ALERTA: Alteração em Grupo Crítico (</span><span class="si">{</span><span class="n">grupo</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CENÁRIO 4: SUCESSO - Tudo certo</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nome</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;objeto.ok.</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">9999</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;objeto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;CN=</span><span class="si">{</span><span class="n">nome</span><span class="si">}</span><span class="s2">,OU=Correto,DC=ufs,DC=br&quot;</span>
+        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;detalhes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;manager&quot;</span><span class="p">:</span> <span class="s2">&quot;CN=Chefe,OU=TI...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Tudo certo&quot;</span><span class="p">}</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ [SIMULADOR] Gerando evento normal...&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">payload</span></div>
+
+
+<div class="viewcode-block" id="enviar_para_api">
+<a class="viewcode-back" href="../../qualidade_ad.html#qualidade_ad.agente_simulador.enviar_para_api">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">enviar_para_api</span><span class="p">():</span>
+    <span class="n">evento</span> <span class="o">=</span> <span class="n">gerar_evento_simulado</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">URL_API</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">evento</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   -&gt; Enviado com sucesso! ID: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_log&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   -&gt; Erro no envio: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   -&gt; Falha de conexão: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- INICIANDO AGENTE SIMULADOR DE AD ---&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Alvo: </span><span class="si">{</span><span class="n">URL_API</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">enviar_para_api</span><span class="p">()</span>
+        <span class="c1"># Espera entre 2 e 5 segundos para o próximo evento</span>
+        <span class="n">tempo_espera</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">tempo_espera</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

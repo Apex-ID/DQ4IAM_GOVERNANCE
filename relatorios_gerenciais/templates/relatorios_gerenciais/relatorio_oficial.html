@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }} - Relatório de Auditoria</title>
+    <style>
+        /* --- CONFIGURAÇÕES GERAIS E DE IMPRESSÃO --- */
+        body { 
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; 
+            color: #333; 
+            line-height: 1.5; 
+            background-color: #525659; /* Fundo cinza (visualização web) */
+            margin: 0;
+            padding: 20px;
+        }
+        
+        /* Folha A4 */
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 15mm 20mm; /* Margens de impressão */
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        @media print {
+            body { background: white; margin: 0; padding: 0; }
+            .page { box-shadow: none; margin: 0; width: 100%; max-width: 100%; padding: 0; }
+            .no-print-bar { display: none !important; }
+            @page { margin: 1.5cm; size: A4; }
+            
+            /* Quebra de página inteligente */
+            table { page-break-inside: auto; }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            thead { display: table-header-group; } 
+            tfoot { display: table-footer-group; }
+            h1, h2, h3 { page-break-after: avoid; }
+        }
+
+        /* --- ESTILOS DO RELATÓRIO --- */
+        
+        /* Cabeçalho */
+        .header { 
+            border-bottom: 2px solid #001f3f; 
+            padding-bottom: 10px; 
+            margin-bottom: 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+        }
+        .header-logo h1 { 
+            margin: 0; font-size: 24px; color: #001f3f; text-transform: uppercase; letter-spacing: 1px; 
+        }
+        .header-logo .sub { 
+            font-size: 12px; color: #666; font-weight: normal; display: block; margin-top: 2px; 
+        }
+        .header-meta { 
+            text-align: right; font-size: 11px; color: #555; 
+        }
+
+        /* Caixas de Resumo */
+        .summary-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .summary-box {
+            flex: 1;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .score-box {
+            flex: 0 0 120px;
+            text-align: center;
+            background: #eef2f5;
+            border: 1px solid #dde2e6;
+        }
+        .score-val { 
+            font-size: 32px; font-weight: bold; color: #001f3f; line-height: 1; display: block; 
+        }
+        .score-label { 
+            font-size: 10px; text-transform: uppercase; color: #666; letter-spacing: 0.5px; 
+        }
+
+        .info-row { margin-bottom: 6px; font-size: 13px; }
+        .info-label { font-weight: bold; color: #555; width: 120px; display: inline-block; }
+
+        /* Box de Impacto */
+        .impacto-box {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            font-size: 12px;
+            color: #856404;
+        }
+
+        /* Tabelas de Dados */
+        .data-section { margin-top: 30px; }
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 11px; 
+            border: 1px solid #dee2e6;
+        }
+        th { 
+            background: #001f3f; 
+            color: white; 
+            text-align: left; 
+            padding: 8px; 
+            font-weight: 600; 
+            border-bottom: 2px solid #001f3f;
+        }
+        td { 
+            padding: 8px; 
+            border-bottom: 1px solid #eee; 
+            vertical-align: top; 
+            color: #333;
+        }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        tr:hover { background-color: #f1f1f1; }
+
+        /* Destaques na Tabela */
+        .cell-error { color: #dc3545; font-weight: bold; }
+        .cell-key { font-family: 'Courier New', monospace; font-weight: 600; }
+
+        /* Barra de Ações (Web) */
+        .no-print-bar {
+            max-width: 210mm;
+            margin: 0 auto 20px auto;
+            text-align: right;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn { 
+            padding: 8px 16px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-size: 13px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border: none; 
+            margin-left: 10px;
+        }
+        .btn-print { background-color: #007bff; color: white; }
+        .btn-back { background-color: #6c757d; color: white; }
+        .btn:hover { opacity: 0.9; }
+
+        /* Rodapé */
+        .footer {
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 10px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <a href="javascript:history.back()" class="btn btn-back">Voltar</a>
+        <button onclick="window.print()" class="btn btn-print">🖨️ Salvar como PDF</button>
+    </div>
+
+    <div class="page">
+        
+        <div class="header">
+            <div class="header-logo">
+                <h1>APEX Governance</h1>
+                <span class="sub">Relatório de Auditoria e Conformidade</span>
+            </div>
+            <div class="header-meta">
+                <strong>Gerado em:</strong> {{ data_geracao|date:"d/m/Y H:i" }}<br>
+                <strong>Sistema:</strong> {{ sistema }}<br>
+                <strong>Versão:</strong> {{ versao }}
+            </div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-box">
+                <div class="info-row"><span class="info-label">Análise:</span> {{ titulo }}</div>
+                <div class="info-row"><span class="info-label">Fonte de Dados:</span> {{ obj.tabela_analisada }}{{ obj.tabelas_envolvidas }}</div>
+                <div class="info-row"><span class="info-label">Data dos Dados:</span> {{ obj.timestamp_inicio|date:"d/m/Y H:i" }}</div>
+                <div class="info-row"><span class="info-label">Dimensão DAMA:</span> {{ formula.titulo }}</div>
+                
+                {% if obj.descricao_impacto %}
+                <div class="impacto-box">
+                    <strong>⚠️ Impacto no Negócio / Risco:</strong><br>
+                    {{ obj.descricao_impacto }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="summary-box score-box">
+                <span class="score-label">Índice de Qualidade</span>
+                <span class="score-val" style="color: 
+                    {% if tipo == 'regra' and obj.percentual_consistencia == 100 %}#28a745
+                    {% elif tipo == 'completude' and obj.percentual_completude_geral > 90 %}#28a745
+                    {% elif tipo == 'validade' and obj.percentual_validade > 99 %}#28a745
+                    {% elif tipo == 'unicidade' and obj.media_unicidade == 100 %}#28a745
+                    {% else %}#dc3545{% endif %};">
+                    
+                    {% if tipo == 'regra' %}{{ obj.percentual_consistencia|floatformat:1 }}%
+                    {% elif tipo == 'completude' %}{{ obj.percentual_completude_geral|floatformat:1 }}%
+                    {% elif tipo == 'validade' %}{{ obj.percentual_validade|floatformat:1 }}%
+                    {% elif tipo == 'unicidade' %}{{ obj.media_unicidade|floatformat:1 }}%
+                    {% endif %}
+                </span>
+                <br>
+                <div style="font-size: 11px; text-align: center; margin-top: 10px; color: #555;">
+                    {% if tipo == 'regra' %}
+                        Analisados: <strong>{{ total_analisado }}</strong><br>
+                        Falhas: <strong style="color: #dc3545;">{{ total_falhas }}</strong>
+                    {% elif tipo == 'completude' %}
+                        Total Células: {{ obj.total_celulas }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Metodologia de Cálculo</div>
+            <p style="font-size: 12px; margin: 0;">
+                <strong>Definição:</strong> {{ formula.desc }}<br>
+                <strong>Fórmula Aplicada:</strong> <code style="background:#eee; padding:2px 4px;">{{ formula.formula }}</code>
+            </p>
+        </div>
+
+        <div class="data-section">
+            <div class="section-title">Evidências e Detalhamento</div>
+            
+            {% if detalhes_enrich %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="25%">Atributo (Negócio)</th>
+                            <th width="25%">Coluna Técnica</th>
+                            <th width="40%">Descrição do Campo</th>
+                            <th width="10%" style="text-align: center;">Falhas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in detalhes_enrich %}
+                        <tr>
+                            <td><strong>{{ item.coluna_negocio }}</strong></td>
+                            <td class="cell-key">{{ item.coluna_tecnica }}{{ item.nome }}</td>
+                            <td>{{ item.descricao }}</td>
+                            <td style="text-align: center;" class="{% if item.falhas > 0 or item.duplicatas > 0 %}cell-error{% endif %}">
+                                {{ item.falhas }}{{ item.duplicatas }}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="4" style="text-align: center; padding: 20px;">Nenhum dado disponível.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            {% elif tipo == 'regra' %}
+                
+                {% if lista_exemplos %}
+                    <p style="font-size: 12px; color: #666; margin-bottom: 10px;">
+                        Abaixo estão listados os registros que não estão em conformidade (Amostra das primeiras ocorrências).
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                {% for key in lista_exemplos.0.keys %}
+                                    <th style="text-transform: capitalize;">{{ key }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ex in lista_exemplos %}
+                            <tr>
+                                {% for chave, valor in ex.items %}
+                                    <td>
+                                        {% if chave == 'detalhe' %}
+                                            <span class="cell-error">{{ valor }}</span>
+                                        {% else %}
+                                            {{ valor|default:"-"|truncatechars:80 }}
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    {% if total_falhas > 0 %}
+                        <p style="font-size: 12px; color: #dc3545;">
+                            <em>Falhas foram detectadas (Total: {{ total_falhas }}), mas os detalhes técnicos não foram gravados neste log.</em>
+                        </p>
+                    {% else %}
+                        <div style="text-align: center; padding: 20px; background: #e6fffa; border: 1px solid #b2f5ea; border-radius: 5px; color: #285e61; font-size: 14px;">
+                            <strong>✅ CONFORME:</strong> Nenhuma inconsistência foi encontrada nesta execução. Todos os registros atendem à regra.
+                        </div>
+                    {% endif %}
+                {% endif %}
+                
+            {% endif %}
+        </div>
+
+        <div class="footer">
+            Relatório gerado automaticamente pelo sistema <strong>APEX GOVERNANCE</strong>.<br>
+            Documento para uso interno. As informações contidas aqui são confidenciais.
+        </div>
+    </div>
+
+</body>
+</html>

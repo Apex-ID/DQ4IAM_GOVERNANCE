@@ -20,6 +20,13 @@
     </style>
 </head>
 <body>
+    <div style="text-align: right; padding: 10px;">
+    Olá, <strong>{{ user.username }}</strong> | 
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" style="background:none; border:none; color:red; cursor:pointer; text-decoration:underline;">Sair</button>
+    </form>
+</div>
     <div class="container">
         <a href="{% url 'dashboard_analises' %}" class="no-print">&larr; Voltar ao Dashboard</a>
 

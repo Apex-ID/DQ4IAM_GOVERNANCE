@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatorios Gerenciais &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Relatorios Gerenciais.Migrations" href="relatorios_gerenciais.migrations.html" />
+    <link rel="prev" title="Qualidade Ad.Pipeline" href="qualidade_ad.pipeline.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#apex-governance">APEX_GOVERNANCE</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html">Analises Relacionais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html#analises-relacionais-package">analises_relacionais package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_simples.html">Analises Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_simples.html#analises-simples-package">analises_simples package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apex_project.html">Apex Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apex_project.html#apex-project-package">apex_project package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="carga_manual.html">Carga Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="carga_manual.html#module-carga_manual">carga_manual module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html">Importador Dinamico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html#importador-dinamico-package">importador_dinamico package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iniciar_sistema.html">Iniciar Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iniciar_sistema.html#module-iniciar_sistema">iniciar_sistema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">Manage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#module-manage">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.html">Melhoria Continua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.html#melhoria-continua-package">melhoria_continua package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html">Preparar Banco Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html#module-preparar_banco_dados">preparar_banco_dados module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualidade_ad.html">Qualidade Ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualidade_ad.html#qualidade-ad-package">qualidade_ad package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Relatorios Gerenciais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relatorios-gerenciais-package">relatorios_gerenciais package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="relatorios_gerenciais.migrations.html">Relatorios Gerenciais.Migrations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="relatorios_gerenciais.migrations.html#relatorios-gerenciais-migrations-package">relatorios_gerenciais.migrations package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.admin">relatorios_gerenciais.admin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.apps">relatorios_gerenciais.apps module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig"><code class="docutils literal notranslate"><span class="pre">RelatoriosGerenciaisConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.catalogo_formulas">relatorios_gerenciais.catalogo_formulas module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.dicionario_dados">relatorios_gerenciais.dicionario_dados module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relatorios_gerenciais.dicionario_dados.obter_info_coluna"><code class="docutils literal notranslate"><span class="pre">obter_info_coluna()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.models">relatorios_gerenciais.models module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.tests">relatorios_gerenciais.tests module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.urls">relatorios_gerenciais.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais.views">relatorios_gerenciais.views module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relatorios_gerenciais.views.central_relatorios"><code class="docutils literal notranslate"><span class="pre">central_relatorios()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#relatorios_gerenciais.views.relatorio_oficial_impressao"><code class="docutils literal notranslate"><span class="pre">relatorio_oficial_impressao()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-relatorios_gerenciais">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html">Transformacao Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html#module-transformacao_manual">transformacao_manual module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">Relatorios Gerenciais</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/relatorios_gerenciais.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="relatorios-gerenciais">
+<h1>Relatorios Gerenciais<a class="headerlink" href="#relatorios-gerenciais" title="Link to this heading"></a></h1>
+</section>
+<section id="relatorios-gerenciais-package">
+<h1>relatorios_gerenciais package<a class="headerlink" href="#relatorios-gerenciais-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="relatorios_gerenciais.migrations.html">Relatorios Gerenciais.Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relatorios_gerenciais.migrations.html#relatorios-gerenciais-migrations-package">relatorios_gerenciais.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relatorios_gerenciais.migrations.html#module-relatorios_gerenciais.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-relatorios_gerenciais.admin">
+<span id="relatorios-gerenciais-admin-module"></span><h2>relatorios_gerenciais.admin module<a class="headerlink" href="#module-relatorios_gerenciais.admin" title="Link to this heading"></a></h2>
+</section>
+<section id="module-relatorios_gerenciais.apps">
+<span id="relatorios-gerenciais-apps-module"></span><h2>relatorios_gerenciais.apps module<a class="headerlink" href="#module-relatorios_gerenciais.apps" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="relatorios_gerenciais.apps.RelatoriosGerenciaisConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relatorios_gerenciais.apps.</span></span><span class="sig-name descname"><span class="pre">RelatoriosGerenciaisConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/relatorios_gerenciais/apps.html#RelatoriosGerenciaisConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.default_auto_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'relatorios_gerenciais'</span></em><a class="headerlink" href="#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-relatorios_gerenciais.catalogo_formulas">
+<span id="relatorios-gerenciais-catalogo-formulas-module"></span><h2>relatorios_gerenciais.catalogo_formulas module<a class="headerlink" href="#module-relatorios_gerenciais.catalogo_formulas" title="Link to this heading"></a></h2>
+</section>
+<section id="module-relatorios_gerenciais.dicionario_dados">
+<span id="relatorios-gerenciais-dicionario-dados-module"></span><h2>relatorios_gerenciais.dicionario_dados module<a class="headerlink" href="#module-relatorios_gerenciais.dicionario_dados" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="relatorios_gerenciais.dicionario_dados.obter_info_coluna">
+<span class="sig-prename descclassname"><span class="pre">relatorios_gerenciais.dicionario_dados.</span></span><span class="sig-name descname"><span class="pre">obter_info_coluna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tabela</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coluna</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/relatorios_gerenciais/dicionario_dados.html#obter_info_coluna"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relatorios_gerenciais.dicionario_dados.obter_info_coluna" title="Link to this definition"></a></dt>
+<dd><p>Retorna (Nome Amigável, Descrição) ou valores padrão.</p>
+</dd></dl>
+
+</section>
+<section id="module-relatorios_gerenciais.models">
+<span id="relatorios-gerenciais-models-module"></span><h2>relatorios_gerenciais.models module<a class="headerlink" href="#module-relatorios_gerenciais.models" title="Link to this heading"></a></h2>
+</section>
+<section id="module-relatorios_gerenciais.tests">
+<span id="relatorios-gerenciais-tests-module"></span><h2>relatorios_gerenciais.tests module<a class="headerlink" href="#module-relatorios_gerenciais.tests" title="Link to this heading"></a></h2>
+</section>
+<section id="module-relatorios_gerenciais.urls">
+<span id="relatorios-gerenciais-urls-module"></span><h2>relatorios_gerenciais.urls module<a class="headerlink" href="#module-relatorios_gerenciais.urls" title="Link to this heading"></a></h2>
+</section>
+<section id="module-relatorios_gerenciais.views">
+<span id="relatorios-gerenciais-views-module"></span><h2>relatorios_gerenciais.views module<a class="headerlink" href="#module-relatorios_gerenciais.views" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="relatorios_gerenciais.views.central_relatorios">
+<span class="sig-prename descclassname"><span class="pre">relatorios_gerenciais.views.</span></span><span class="sig-name descname"><span class="pre">central_relatorios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/relatorios_gerenciais/views.html#central_relatorios"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relatorios_gerenciais.views.central_relatorios" title="Link to this definition"></a></dt>
+<dd><p>Tela principal que lista todos os relatórios para impressão.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="relatorios_gerenciais.views.relatorio_oficial_impressao">
+<span class="sig-prename descclassname"><span class="pre">relatorios_gerenciais.views.</span></span><span class="sig-name descname"><span class="pre">relatorio_oficial_impressao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tipo_metrica</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/relatorios_gerenciais/views.html#relatorio_oficial_impressao"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relatorios_gerenciais.views.relatorio_oficial_impressao" title="Link to this definition"></a></dt>
+<dd><p>Gera o PDF oficial.</p>
+</dd></dl>
+
+</section>
+<section id="module-relatorios_gerenciais">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-relatorios_gerenciais" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qualidade_ad.pipeline.html" class="btn btn-neutral float-left" title="Qualidade Ad.Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="relatorios_gerenciais.migrations.html" class="btn btn-neutral float-right" title="Relatorios Gerenciais.Migrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

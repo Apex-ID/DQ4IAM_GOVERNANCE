@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'analises_relacionais',
     'importador_dinamico',
     'django_extensions',
+    'relatorios_gerenciais',
+    'melhoria_continua',
+    'construtor_schemas',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Maceio'
 
 USE_I18N = True
 
@@ -160,3 +163,18 @@ CACHES = {
         }
     }
 }
+
+
+# Configuração de Login/Logout
+LOGIN_URL = 'login'                # Se alguém tentar entrar sem permissão, vai pra cá
+LOGIN_REDIRECT_URL = 'painel_de_controle' # Depois de logar, vai para o Painel Principal
+LOGOUT_REDIRECT_URL = 'login'      # Depois de sair, volta para a tela de login
+
+
+STATIC_URL = 'static/'
+
+
+import os
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]

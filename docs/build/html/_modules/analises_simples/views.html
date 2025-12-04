@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>analises_simples.views &mdash; APEX_GOVERNANCE 20/01/2025 documentation</title>
+  <title>analises_simples.views &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=e2184e81"></script>
+      <script src="../../_static/documentation_options.js?v=c0c8e3fa"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -39,8 +39,43 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"></div>
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -69,6 +104,7 @@
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">get_object_or_404</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">messages</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">connection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">login_required</span>
 
 <span class="c1"># Importe TODOS os models</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
@@ -93,6 +129,7 @@
 
 <div class="viewcode-block" id="dashboard_analises">
 <a class="viewcode-back" href="../../analises_simples.html#analises_simples.views.dashboard_analises">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">dashboard_analises</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    View principal do Dashboard de Análises.</span>
@@ -123,24 +160,24 @@
 
     <span class="c1"># Queries de Histórico (Ordenados por Data Descrescente)</span>
     <span class="n">ultimos_relatorios_usuarios</span> <span class="o">=</span> <span class="n">RelatorioCompletude</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
-    <span class="n">ultimos_relatorios_gerais</span> <span class="o">=</span> <span class="n">RelatorioCompletudeGeral</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
-    <span class="n">ultimos_relatorios_validade</span> <span class="o">=</span> <span class="n">RelatorioValidadeFormato</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">ultimos_relatorios_gerais</span> <span class="o">=</span> <span class="n">RelatorioCompletudeGeral</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">ultimos_relatorios_validade</span> <span class="o">=</span> <span class="n">RelatorioValidadeFormato</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     
     <span class="n">ultimos_relatorios_unicidade_staging</span> <span class="o">=</span> <span class="n">RelatorioUnicidadeGeral</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
         <span class="n">tabela_analisada__endswith</span><span class="o">=</span><span class="s1">&#39;_staging&#39;</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     
     <span class="n">ultimos_relatorios_unicidade_producao</span> <span class="o">=</span> <span class="n">RelatorioUnicidadeGeral</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span>
         <span class="n">tabela_analisada__endswith</span><span class="o">=</span><span class="s1">&#39;_staging&#39;</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
     <span class="n">ultimas_regras_staging</span> <span class="o">=</span> <span class="n">RelatorioRegraNegocio</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
         <span class="n">tipo_tabela</span><span class="o">=</span><span class="s1">&#39;STAGING&#39;</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span>
     
     <span class="n">ultimas_regras_producao</span> <span class="o">=</span> <span class="n">RelatorioRegraNegocio</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
         <span class="n">tipo_tabela</span><span class="o">=</span><span class="s1">&#39;PRODUÇÃO&#39;</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">50</span><span class="p">]</span>
 
     <span class="n">ultimos_relatorios_personalizados</span> <span class="o">=</span> <span class="n">RelatorioUnicidadePersonalizada</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
@@ -162,6 +199,7 @@
 
 <div class="viewcode-block" id="detalhe_relatorio_geral">
 <a class="viewcode-back" href="../../analises_simples.html#analises_simples.views.detalhe_relatorio_geral">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">detalhe_relatorio_geral</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
     <span class="n">relatorio</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">RelatorioCompletudeGeral</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
     <span class="n">colunas_vazias</span> <span class="o">=</span> <span class="p">[]</span>
@@ -180,6 +218,7 @@
 
 <div class="viewcode-block" id="detalhe_relatorio_validade">
 <a class="viewcode-back" href="../../analises_simples.html#analises_simples.views.detalhe_relatorio_validade">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">detalhe_relatorio_validade</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
     <span class="n">relatorio</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">RelatorioValidadeFormato</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
     <span class="n">erros</span> <span class="o">=</span> <span class="n">relatorio</span><span class="o">.</span><span class="n">detalhamento_erros</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">relatorio</span><span class="o">.</span><span class="n">detalhamento_erros</span> <span class="k">else</span> <span class="p">[]</span>
@@ -194,8 +233,8 @@
 
 <div class="viewcode-block" id="detalhe_relatorio_unicidade">
 <a class="viewcode-back" href="../../analises_simples.html#analises_simples.views.detalhe_relatorio_unicidade">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">detalhe_relatorio_unicidade</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
-    <span class="c1"># CORREÇÃO: Agora usa RelatorioUnicidadeGeral, e não precisa de &#39;ultimas_regras&#39;</span>
     <span class="n">relatorio</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">RelatorioUnicidadeGeral</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
     
     <span class="n">detalhes_colunas</span> <span class="o">=</span> <span class="p">[]</span>
@@ -210,7 +249,6 @@
         <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Detalhe Unicidade: </span><span class="si">{</span><span class="n">relatorio</span><span class="o">.</span><span class="n">tabela_analisada</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="s1">&#39;relatorio&#39;</span><span class="p">:</span> <span class="n">relatorio</span><span class="p">,</span>
         <span class="s1">&#39;detalhes_colunas&#39;</span><span class="p">:</span> <span class="n">detalhes_colunas</span>
-        <span class="c1"># Removido &#39;ultimas_regras&#39;, que causava o erro</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;analises_simples/detalhe_relatorio_unicidade.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
 
@@ -233,6 +271,7 @@
 
 <div class="viewcode-block" id="configuracao_unicidade">
 <a class="viewcode-back" href="../../analises_simples.html#analises_simples.views.configuracao_unicidade">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">configuracao_unicidade</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">tabelas_disponiveis</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s1">&#39;ad_users_staging&#39;</span><span class="p">,</span> <span class="s1">&#39;ad_computers_staging&#39;</span><span class="p">,</span> 
@@ -279,6 +318,7 @@
 
 <div class="viewcode-block" id="detalhe_relatorio_personalizado">
 <a class="viewcode-back" href="../../analises_simples.html#analises_simples.views.detalhe_relatorio_personalizado">[docs]</a>
+<span class="nd">@login_required</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">detalhe_relatorio_personalizado</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
     <span class="n">relatorio</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">RelatorioUnicidadePersonalizada</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
     
@@ -298,7 +338,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Sergio Santana dos Santos.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

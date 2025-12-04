@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qualidade_ad package &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+  <title>Qualidade Ad &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="qualidade_ad.migrations package" href="qualidade_ad.migrations.html" />
-    <link rel="prev" title="preparar_banco_dados module" href="preparar_banco_dados.html" /> 
+    <link rel="next" title="Qualidade Ad.Migrations" href="qualidade_ad.migrations.html" />
+    <link rel="prev" title="Preparar Banco Dados" href="preparar_banco_dados.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,22 +42,98 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Pacotes e Módulos</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">APEX_GOVERNANCE</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html">analises_relacionais package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analises_simples.html">analises_simples package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="apex_project.html">apex_project package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="carga_manual.html">carga_manual module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html">importador_dinamico package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html">preparar_banco_dados module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">qualidade_ad package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="qualidade_ad.migrations.html">qualidade_ad.migrations package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qualidade_ad.pipeline.html">qualidade_ad.pipeline package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#apex-governance">APEX_GOVERNANCE</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html">Analises Relacionais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html#analises-relacionais-package">analises_relacionais package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_simples.html">Analises Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_simples.html#analises-simples-package">analises_simples package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apex_project.html">Apex Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apex_project.html#apex-project-package">apex_project package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="carga_manual.html">Carga Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="carga_manual.html#module-carga_manual">carga_manual module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html">Importador Dinamico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html#importador-dinamico-package">importador_dinamico package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iniciar_sistema.html">Iniciar Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iniciar_sistema.html#module-iniciar_sistema">iniciar_sistema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">Manage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#module-manage">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.html">Melhoria Continua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.html#melhoria-continua-package">melhoria_continua package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html">Preparar Banco Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html#module-preparar_banco_dados">preparar_banco_dados module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Qualidade Ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qualidade-ad-package">qualidade_ad package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.migrations.html">Qualidade Ad.Migrations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.migrations.html#qualidade-ad-migrations-package">qualidade_ad.migrations package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.pipeline.html">Qualidade Ad.Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.pipeline.html#qualidade-ad-pipeline-package">qualidade_ad.pipeline package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html">transformacao_manual module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.admin">qualidade_ad.admin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.agente_simulador">qualidade_ad.agente_simulador module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.agente_simulador.enviar_para_api"><code class="docutils literal notranslate"><span class="pre">enviar_para_api()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.agente_simulador.gerar_evento_simulado"><code class="docutils literal notranslate"><span class="pre">gerar_evento_simulado()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.apps">qualidade_ad.apps module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.apps.QualidadeAdConfig"><code class="docutils literal notranslate"><span class="pre">QualidadeAdConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.models">qualidade_ad.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.ExecucaoPipeline"><code class="docutils literal notranslate"><span class="pre">ExecucaoPipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.LogEtapa"><code class="docutils literal notranslate"><span class="pre">LogEtapa</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.tasks">qualidade_ad.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.tests">qualidade_ad.tests module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.urls">qualidade_ad.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.views">qualidade_ad.views module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.views.painel_de_controle"><code class="docutils literal notranslate"><span class="pre">painel_de_controle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relatorios_gerenciais.html">Relatorios Gerenciais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relatorios_gerenciais.html#relatorios-gerenciais-package">relatorios_gerenciais package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html">Transformacao Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html#module-transformacao_manual">transformacao_manual module</a></li>
 </ul>
 </li>
 </ul>
@@ -76,8 +152,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">APEX_GOVERNANCE</a></li>
-      <li class="breadcrumb-item active">qualidade_ad package</li>
+          <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">Qualidade Ad</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/qualidade_ad.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,13 +163,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="qualidade-ad-package">
+  <section id="qualidade-ad">
+<h1>Qualidade Ad<a class="headerlink" href="#qualidade-ad" title="Link to this heading"></a></h1>
+</section>
+<section id="qualidade-ad-package">
 <h1>qualidade_ad package<a class="headerlink" href="#qualidade-ad-package" title="Link to this heading"></a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="qualidade_ad.migrations.html">qualidade_ad.migrations package</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="qualidade_ad.migrations.html">Qualidade Ad.Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qualidade_ad.migrations.html#qualidade-ad-migrations-package">qualidade_ad.migrations package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="qualidade_ad.migrations.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qualidade_ad.migrations.html#module-qualidade_ad.migrations.0001_initial">qualidade_ad.migrations.0001_initial module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="qualidade_ad.migrations.html#qualidade_ad.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
@@ -107,7 +187,8 @@
 <li class="toctree-l2"><a class="reference internal" href="qualidade_ad.migrations.html#module-qualidade_ad.migrations">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="qualidade_ad.pipeline.html">qualidade_ad.pipeline package</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="qualidade_ad.pipeline.html">Qualidade Ad.Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qualidade_ad.pipeline.html#qualidade-ad-pipeline-package">qualidade_ad.pipeline package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="qualidade_ad.pipeline.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qualidade_ad.pipeline.html#module-qualidade_ad.pipeline.etapa_1_extracao">qualidade_ad.pipeline.etapa_1_extracao module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="qualidade_ad.pipeline.html#qualidade_ad.pipeline.etapa_1_extracao.executar_extracao_ad"><code class="docutils literal notranslate"><span class="pre">executar_extracao_ad()</span></code></a></li>
@@ -141,6 +222,21 @@
 </section>
 <section id="module-qualidade_ad.admin">
 <span id="qualidade-ad-admin-module"></span><h2>qualidade_ad.admin module<a class="headerlink" href="#module-qualidade_ad.admin" title="Link to this heading"></a></h2>
+</section>
+<section id="module-qualidade_ad.agente_simulador">
+<span id="qualidade-ad-agente-simulador-module"></span><h2>qualidade_ad.agente_simulador module<a class="headerlink" href="#module-qualidade_ad.agente_simulador" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="qualidade_ad.agente_simulador.enviar_para_api">
+<span class="sig-prename descclassname"><span class="pre">qualidade_ad.agente_simulador.</span></span><span class="sig-name descname"><span class="pre">enviar_para_api</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qualidade_ad/agente_simulador.html#enviar_para_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qualidade_ad.agente_simulador.enviar_para_api" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qualidade_ad.agente_simulador.gerar_evento_simulado">
+<span class="sig-prename descclassname"><span class="pre">qualidade_ad.agente_simulador.</span></span><span class="sig-name descname"><span class="pre">gerar_evento_simulado</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/qualidade_ad/agente_simulador.html#gerar_evento_simulado"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qualidade_ad.agente_simulador.gerar_evento_simulado" title="Link to this definition"></a></dt>
+<dd><p>Gera um evento de AD aleatório.
+Alguns violarão as regras de negócio propositalmente.</p>
+</dd></dl>
+
 </section>
 <section id="module-qualidade_ad.apps">
 <span id="qualidade-ad-apps-module"></span><h2>qualidade_ad.apps module<a class="headerlink" href="#module-qualidade_ad.apps" title="Link to this heading"></a></h2>
@@ -402,14 +498,14 @@ object the first time, the query is executed.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="preparar_banco_dados.html" class="btn btn-neutral float-left" title="preparar_banco_dados module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="qualidade_ad.migrations.html" class="btn btn-neutral float-right" title="qualidade_ad.migrations package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="preparar_banco_dados.html" class="btn btn-neutral float-left" title="Preparar Banco Dados" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qualidade_ad.migrations.html" class="btn btn-neutral float-right" title="Qualidade Ad.Migrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Sergio Santana dos Santos.</p>
+    <p>&#169; Copyright .</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

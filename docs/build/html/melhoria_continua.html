@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melhoria Continua &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Melhoria Continua.Migrations" href="melhoria_continua.migrations.html" />
+    <link rel="prev" title="Manage" href="manage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html#apex-governance">APEX_GOVERNANCE</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html">Analises Relacionais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_relacionais.html#analises-relacionais-package">analises_relacionais package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_simples.html">Analises Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analises_simples.html#analises-simples-package">analises_simples package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apex_project.html">Apex Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apex_project.html#apex-project-package">apex_project package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="carga_manual.html">Carga Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="carga_manual.html#module-carga_manual">carga_manual module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html">Importador Dinamico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importador_dinamico.html#importador-dinamico-package">importador_dinamico package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iniciar_sistema.html">Iniciar Sistema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iniciar_sistema.html#module-iniciar_sistema">iniciar_sistema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">Manage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#module-manage">manage module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Melhoria Continua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#melhoria-continua-package">melhoria_continua package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="melhoria_continua.migrations.html">Melhoria Continua.Migrations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="melhoria_continua.migrations.html#melhoria-continua-migrations-package">melhoria_continua.migrations package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.admin">melhoria_continua.admin module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.admin.AuditoriaADAdmin"><code class="docutils literal notranslate"><span class="pre">AuditoriaADAdmin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.admin.IncidenteQualidadeAdmin"><code class="docutils literal notranslate"><span class="pre">IncidenteQualidadeAdmin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.admin.PerfilGerenteAdmin"><code class="docutils literal notranslate"><span class="pre">PerfilGerenteAdmin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.apps">melhoria_continua.apps module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.apps.MelhoriaContinuaConfig"><code class="docutils literal notranslate"><span class="pre">MelhoriaContinuaConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.models">melhoria_continua.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.models.AuditoriaAD"><code class="docutils literal notranslate"><span class="pre">AuditoriaAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.models.IncidenteQualidade"><code class="docutils literal notranslate"><span class="pre">IncidenteQualidade</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.models.PerfilGerente"><code class="docutils literal notranslate"><span class="pre">PerfilGerente</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.signals">melhoria_continua.signals module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.signals.validar_evento_ad"><code class="docutils literal notranslate"><span class="pre">validar_evento_ad()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.tests">melhoria_continua.tests module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.urls">melhoria_continua.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua.views">melhoria_continua.views module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.views.api_receber_auditoria"><code class="docutils literal notranslate"><span class="pre">api_receber_auditoria()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.views.painel_gestao_incidentes"><code class="docutils literal notranslate"><span class="pre">painel_gestao_incidentes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#melhoria_continua.views.tratar_incidente"><code class="docutils literal notranslate"><span class="pre">tratar_incidente()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-melhoria_continua">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html">Preparar Banco Dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparar_banco_dados.html#module-preparar_banco_dados">preparar_banco_dados module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualidade_ad.html">Qualidade Ad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualidade_ad.html#qualidade-ad-package">qualidade_ad package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relatorios_gerenciais.html">Relatorios Gerenciais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relatorios_gerenciais.html#relatorios-gerenciais-package">relatorios_gerenciais package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html">Transformacao Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transformacao_manual.html#module-transformacao_manual">transformacao_manual module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">Melhoria Continua</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/melhoria_continua.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="melhoria-continua">
+<h1>Melhoria Continua<a class="headerlink" href="#melhoria-continua" title="Link to this heading"></a></h1>
+</section>
+<section id="melhoria-continua-package">
+<h1>melhoria_continua package<a class="headerlink" href="#melhoria-continua-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="melhoria_continua.migrations.html">Melhoria Continua.Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melhoria_continua.migrations.html#melhoria-continua-migrations-package">melhoria_continua.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.migrations.html#module-melhoria_continua.migrations.0001_initial">melhoria_continua.migrations.0001_initial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="melhoria_continua.migrations.html#melhoria_continua.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="melhoria_continua.migrations.html#module-melhoria_continua.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-melhoria_continua.admin">
+<span id="melhoria-continua-admin-module"></span><h2>melhoria_continua.admin module<a class="headerlink" href="#module-melhoria_continua.admin" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.admin.AuditoriaADAdmin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.admin.</span></span><span class="sig-name descname"><span class="pre">AuditoriaADAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/admin.html#AuditoriaADAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.admin.AuditoriaADAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.AuditoriaADAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('timestamp',</span> <span class="pre">'tecnico_ad_login',</span> <span class="pre">'tipo_acao',</span> <span class="pre">'tipo_objeto',</span> <span class="pre">'violou_regras')</span></em><a class="headerlink" href="#melhoria_continua.admin.AuditoriaADAdmin.list_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.AuditoriaADAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('violou_regras',</span> <span class="pre">'tipo_acao',</span> <span class="pre">'tipo_objeto',</span> <span class="pre">'timestamp')</span></em><a class="headerlink" href="#melhoria_continua.admin.AuditoriaADAdmin.list_filter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="melhoria_continua.admin.AuditoriaADAdmin.media">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#melhoria_continua.admin.AuditoriaADAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.AuditoriaADAdmin.readonly_fields">
+<span class="sig-name descname"><span class="pre">readonly_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('timestamp',)</span></em><a class="headerlink" href="#melhoria_continua.admin.AuditoriaADAdmin.readonly_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.AuditoriaADAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('objeto_nome',</span> <span class="pre">'tecnico_ad_login',</span> <span class="pre">'dados_evento')</span></em><a class="headerlink" href="#melhoria_continua.admin.AuditoriaADAdmin.search_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.admin.IncidenteQualidadeAdmin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.admin.</span></span><span class="sig-name descname"><span class="pre">IncidenteQualidadeAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/admin.html#IncidenteQualidadeAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.admin.IncidenteQualidadeAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.IncidenteQualidadeAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('id',</span> <span class="pre">'regra_violada',</span> <span class="pre">'status',</span> <span class="pre">'responsavel_resolucao',</span> <span class="pre">'data_abertura')</span></em><a class="headerlink" href="#melhoria_continua.admin.IncidenteQualidadeAdmin.list_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.IncidenteQualidadeAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('status',</span> <span class="pre">'responsavel_resolucao',</span> <span class="pre">'data_abertura')</span></em><a class="headerlink" href="#melhoria_continua.admin.IncidenteQualidadeAdmin.list_filter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="melhoria_continua.admin.IncidenteQualidadeAdmin.media">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#melhoria_continua.admin.IncidenteQualidadeAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.IncidenteQualidadeAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('regra_violada',</span> <span class="pre">'descricao_incidente')</span></em><a class="headerlink" href="#melhoria_continua.admin.IncidenteQualidadeAdmin.search_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.admin.PerfilGerenteAdmin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.admin.</span></span><span class="sig-name descname"><span class="pre">PerfilGerenteAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/admin.html#PerfilGerenteAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.admin.PerfilGerenteAdmin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.PerfilGerenteAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('usuario',</span> <span class="pre">'responsabilidade')</span></em><a class="headerlink" href="#melhoria_continua.admin.PerfilGerenteAdmin.list_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.PerfilGerenteAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('responsabilidade',)</span></em><a class="headerlink" href="#melhoria_continua.admin.PerfilGerenteAdmin.list_filter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="melhoria_continua.admin.PerfilGerenteAdmin.media">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#melhoria_continua.admin.PerfilGerenteAdmin.media" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.admin.PerfilGerenteAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('usuario__username',</span> <span class="pre">'responsabilidade')</span></em><a class="headerlink" href="#melhoria_continua.admin.PerfilGerenteAdmin.search_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-melhoria_continua.apps">
+<span id="melhoria-continua-apps-module"></span><h2>melhoria_continua.apps module<a class="headerlink" href="#module-melhoria_continua.apps" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.apps.MelhoriaContinuaConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.apps.</span></span><span class="sig-name descname"><span class="pre">MelhoriaContinuaConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/apps.html#MelhoriaContinuaConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.apps.MelhoriaContinuaConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.apps.MelhoriaContinuaConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#melhoria_continua.apps.MelhoriaContinuaConfig.default_auto_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.apps.MelhoriaContinuaConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'melhoria_continua'</span></em><a class="headerlink" href="#melhoria_continua.apps.MelhoriaContinuaConfig.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.apps.MelhoriaContinuaConfig.ready">
+<span class="sig-name descname"><span class="pre">ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/apps.html#MelhoriaContinuaConfig.ready"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.apps.MelhoriaContinuaConfig.ready" title="Link to this definition"></a></dt>
+<dd><p>Override this method in subclasses to run code when Django starts.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-melhoria_continua.models">
+<span id="melhoria-continua-models-module"></span><h2>melhoria_continua.models module<a class="headerlink" href="#module-melhoria_continua.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.models.</span></span><span class="sig-name descname"><span class="pre">AuditoriaAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/models.html#AuditoriaAD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Tabela de Rastreabilidade Total (Audit Log).
+Recebe dados brutos do Agente no Servidor Windows.
+Registra TUDO que os técnicos fazem, certo ou errado.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.DoesNotExist">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.MultipleObjectsReturned">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.dados_evento">
+<span class="sig-name descname"><span class="pre">dados_evento</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.dados_evento" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.get_next_by_timestamp">
+<span class="sig-name descname"><span class="pre">get_next_by_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.get_next_by_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.get_previous_by_timestamp">
+<span class="sig-name descname"><span class="pre">get_previous_by_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">timestamp&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.get_previous_by_timestamp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.incidentequalidade_set">
+<span class="sig-name descname"><span class="pre">incidentequalidade_set</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.incidentequalidade_set" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.ip_origem">
+<span class="sig-name descname"><span class="pre">ip_origem</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.ip_origem" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.objeto_guid">
+<span class="sig-name descname"><span class="pre">objeto_guid</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.objeto_guid" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.objeto_nome">
+<span class="sig-name descname"><span class="pre">objeto_nome</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.objeto_nome" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.tecnico_ad_login">
+<span class="sig-name descname"><span class="pre">tecnico_ad_login</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.tecnico_ad_login" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.timestamp">
+<span class="sig-name descname"><span class="pre">timestamp</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.timestamp" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.tipo_acao">
+<span class="sig-name descname"><span class="pre">tipo_acao</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.tipo_acao" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.tipo_objeto">
+<span class="sig-name descname"><span class="pre">tipo_objeto</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.tipo_objeto" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.AuditoriaAD.violou_regras">
+<span class="sig-name descname"><span class="pre">violou_regras</span></span><a class="headerlink" href="#melhoria_continua.models.AuditoriaAD.violou_regras" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.models.</span></span><span class="sig-name descname"><span class="pre">IncidenteQualidade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/models.html#IncidenteQualidade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>O ‘Ticket’ gerado quando uma ação viola a Melhoria Contínua.
+Requer intervenção do Gerente.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.DoesNotExist">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.MultipleObjectsReturned">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.STATUS_CHOICES">
+<span class="sig-name descname"><span class="pre">STATUS_CHOICES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('PENDENTE',</span> <span class="pre">'Pendente</span> <span class="pre">de</span> <span class="pre">Análise'),</span> <span class="pre">('APROVADO_EXCECAO',</span> <span class="pre">'Aprovado</span> <span class="pre">(Exceção</span> <span class="pre">Permitida)'),</span> <span class="pre">('REJEITADO_CORRIGIR',</span> <span class="pre">'Rejeitado</span> <span class="pre">(Necessita</span> <span class="pre">Correção)'),</span> <span class="pre">('CORRIGIDO',</span> <span class="pre">'Corrigido</span> <span class="pre">pelo</span> <span class="pre">Técnico')]</span></em><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.STATUS_CHOICES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.data_abertura">
+<span class="sig-name descname"><span class="pre">data_abertura</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.data_abertura" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.data_fechamento">
+<span class="sig-name descname"><span class="pre">data_fechamento</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.data_fechamento" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.descricao_incidente">
+<span class="sig-name descname"><span class="pre">descricao_incidente</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.descricao_incidente" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.evento_auditoria">
+<span class="sig-name descname"><span class="pre">evento_auditoria</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.evento_auditoria" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.evento_auditoria_id">
+<span class="sig-name descname"><span class="pre">evento_auditoria_id</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.evento_auditoria_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.gerente_decisor">
+<span class="sig-name descname"><span class="pre">gerente_decisor</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.gerente_decisor" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.gerente_decisor_id">
+<span class="sig-name descname"><span class="pre">gerente_decisor_id</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.gerente_decisor_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.get_next_by_data_abertura">
+<span class="sig-name descname"><span class="pre">get_next_by_data_abertura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">data_abertura&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.get_next_by_data_abertura" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.get_previous_by_data_abertura">
+<span class="sig-name descname"><span class="pre">get_previous_by_data_abertura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">data_abertura&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.get_previous_by_data_abertura" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.get_responsavel_resolucao_display">
+<span class="sig-name descname"><span class="pre">get_responsavel_resolucao_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">responsavel_resolucao&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.get_responsavel_resolucao_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.get_status_display">
+<span class="sig-name descname"><span class="pre">get_status_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">status&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.get_status_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.observacao_gerente">
+<span class="sig-name descname"><span class="pre">observacao_gerente</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.observacao_gerente" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.regra_violada">
+<span class="sig-name descname"><span class="pre">regra_violada</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.regra_violada" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.responsavel_resolucao">
+<span class="sig-name descname"><span class="pre">responsavel_resolucao</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.responsavel_resolucao" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.IncidenteQualidade.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#melhoria_continua.models.IncidenteQualidade.status" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melhoria_continua.models.</span></span><span class="sig-name descname"><span class="pre">PerfilGerente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/models.html#PerfilGerente"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.models.PerfilGerente" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Estende o usuário do Django para atribuir uma responsabilidade de governança.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.DoesNotExist">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.MultipleObjectsReturned">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.get_responsabilidade_display">
+<span class="sig-name descname"><span class="pre">get_responsabilidade_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">responsabilidade&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.get_responsabilidade_display" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.responsabilidade">
+<span class="sig-name descname"><span class="pre">responsabilidade</span></span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.responsabilidade" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.usuario">
+<span class="sig-name descname"><span class="pre">usuario</span></span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.usuario" title="Link to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a one-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Restaurant.place</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardOneToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melhoria_continua.models.PerfilGerente.usuario_id">
+<span class="sig-name descname"><span class="pre">usuario_id</span></span><a class="headerlink" href="#melhoria_continua.models.PerfilGerente.usuario_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-melhoria_continua.signals">
+<span id="melhoria-continua-signals-module"></span><h2>melhoria_continua.signals module<a class="headerlink" href="#module-melhoria_continua.signals" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="melhoria_continua.signals.validar_evento_ad">
+<span class="sig-prename descclassname"><span class="pre">melhoria_continua.signals.</span></span><span class="sig-name descname"><span class="pre">validar_evento_ad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sender</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/signals.html#validar_evento_ad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.signals.validar_evento_ad" title="Link to this definition"></a></dt>
+<dd><p>Gatilho disparado toda vez que um novo log de auditoria chega.
+Verifica regras de negócio e abre incidentes se necessário.</p>
+</dd></dl>
+
+</section>
+<section id="module-melhoria_continua.tests">
+<span id="melhoria-continua-tests-module"></span><h2>melhoria_continua.tests module<a class="headerlink" href="#module-melhoria_continua.tests" title="Link to this heading"></a></h2>
+</section>
+<section id="module-melhoria_continua.urls">
+<span id="melhoria-continua-urls-module"></span><h2>melhoria_continua.urls module<a class="headerlink" href="#module-melhoria_continua.urls" title="Link to this heading"></a></h2>
+</section>
+<section id="module-melhoria_continua.views">
+<span id="melhoria-continua-views-module"></span><h2>melhoria_continua.views module<a class="headerlink" href="#module-melhoria_continua.views" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="melhoria_continua.views.api_receber_auditoria">
+<span class="sig-prename descclassname"><span class="pre">melhoria_continua.views.</span></span><span class="sig-name descname"><span class="pre">api_receber_auditoria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/views.html#api_receber_auditoria"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.views.api_receber_auditoria" title="Link to this definition"></a></dt>
+<dd><p>Endpoint API para receber logs enviados pelo Agente Windows.</p>
+<p><strong>Método:</strong> <code class="docutils literal notranslate"><span class="pre">POST</span></code>
+<strong>Content-Type:</strong> <code class="docutils literal notranslate"><span class="pre">application/json</span></code></p>
+<p><strong>Payload esperado (exemplo):</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tecnico&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin.joao&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;acao&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CREATE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tipo_objeto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USER&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;objeto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cn=aluno.novo,ou=...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;detalhes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Retornos:</strong>
+- <code class="docutils literal notranslate"><span class="pre">201</span></code> – Registro criado com sucesso
+- <code class="docutils literal notranslate"><span class="pre">400</span></code> – JSON inválido
+- <code class="docutils literal notranslate"><span class="pre">405</span></code> – Método não permitido
+- <code class="docutils literal notranslate"><span class="pre">500</span></code> – Erro interno</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="melhoria_continua.views.painel_gestao_incidentes">
+<span class="sig-prename descclassname"><span class="pre">melhoria_continua.views.</span></span><span class="sig-name descname"><span class="pre">painel_gestao_incidentes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/views.html#painel_gestao_incidentes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.views.painel_gestao_incidentes" title="Link to this definition"></a></dt>
+<dd><p>Tela onde os gerentes veem os problemas e tomam decisões.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="melhoria_continua.views.tratar_incidente">
+<span class="sig-prename descclassname"><span class="pre">melhoria_continua.views.</span></span><span class="sig-name descname"><span class="pre">tratar_incidente</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/melhoria_continua/views.html#tratar_incidente"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#melhoria_continua.views.tratar_incidente" title="Link to this definition"></a></dt>
+<dd><p>Processa a decisão do gerente (Aprovar ou Rejeitar).</p>
+</dd></dl>
+
+</section>
+<section id="module-melhoria_continua">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-melhoria_continua" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="manage.html" class="btn btn-neutral float-left" title="Manage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="melhoria_continua.migrations.html" class="btn btn-neutral float-right" title="Melhoria Continua.Migrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

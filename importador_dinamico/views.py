@@ -6,8 +6,15 @@ import os
 import datetime
 from .forms import UploadCSVForm
 from .tasks import executar_importacao_dinamica_task
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def upload_csv_view(request):
+    """
+    Passo 1 da Importação Dinâmica: Upload do arquivo CSV.
+    Salva o arquivo temporariamente para processamento.
+    """
     if request.method == 'POST':
         form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
@@ -26,7 +33,13 @@ def upload_csv_view(request):
     
     return render(request, 'importador_dinamico/passo1_upload.html', {'form': form})
 
+
+@login_required
 def configurar_importacao_view(request):
+    """
+    Passo 2: Configuração de colunas e banco de destino.
+    Dispara a tarefa Celery para criar o banco e importar os dados.
+    """
     file_path = request.session.get('csv_path')
     
     if not file_path or not os.path.exists(file_path):

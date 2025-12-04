@@ -11,7 +11,10 @@
         .btn:hover { opacity: 0.9; }
         .btn-secondary { background-color: #6c757d; }
         .btn-purple { background-color: #6f42c1; }
-        .btn-orange { background-color: #fd7e14; } /* Cor para Relacional */
+        .btn-orange { background-color: #fd7e14; }
+        
+        /* NOVA COR para o botão de Relatórios Gerenciais */
+        .btn-navy { background-color: #001f3f; } 
         
         .messages { list-style: none; padding: 0; }
         .messages .success { border: 1px solid #155724; background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
@@ -48,13 +51,13 @@
                 1. Pipeline Completo (Extrair do AD)
             </button>
             <button type="submit" name="acao_importar_arquivos" class="btn btn-secondary">
-                2. Importar de Arquivos Locais (temp_data)
+                2. Importar de Arquivos Locais (temp_data) .CSV
             </button>
         </form>
 
         <hr style="margin-top: 30px;">
         
-        <h2>Histórico de Execuções do Pipeline (Carga)</h2>
+        <h2>Histórico de Execuções do Pipeline (Carga AD)</h2>
         {% for execucao in ultimas_execucoes %}
             <div class="execucao">
                 <div class="execucao-header">
@@ -91,7 +94,7 @@
         
         <hr style="margin-top: 40px;">
         
-        <div style="display: flex; gap: 20px; justify-content: center;">
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
             <a href="{% url 'dashboard_analises' %}" class="btn btn-purple" style="width: auto; padding: 15px 30px;">
                 Dashboard de Métricas Simples &rarr;
             </a>
@@ -99,8 +102,24 @@
             <a href="{% url 'dashboard_relacional' %}" class="btn btn-orange" style="width: auto; padding: 15px 30px;">
                 Dashboard Relacional (Cruzamentos) &rarr;
             </a>
-            <a href="{% url 'upload_csv' %}" class="btn" style="background-color: #17a2b8; color: white;">
+
+            <a href="{% url 'upload_csv' %}" class="btn" style="background-color: #17a2b8; color: white; width: auto; padding: 15px 30px;">
                 Ferramenta: Criar Novo Banco a partir de CSV
+            </a>
+
+            <a href="{% url 'central_relatorios' %}" class="btn btn-navy" style="width: auto; padding: 15px 30px;">
+                📄 Central de Relatórios (PDF)
+            </a>
+
+            <a href="{% url 'painel_gestao_incidentes' %}" class="btn" style="background-color: #28a745; color: white; width: auto; padding: 15px 30px;">
+                🛡️ Área de Gestão (Incidentes)
+            </a>
+            <a href="{% url 'upload_csv' %}" class="btn" style="background-color: #17a2b8; color: white; width: auto; padding: 15px 30px;">
+                Ferramenta: Criar Novo Banco a partir de CSV
+            </a>
+
+            <a href="{% url 'historico_cargas' %}" class="btn" style="background-color: #6c757d; color: white; width: auto; padding: 15px 30px;">
+                📜 Histórico de Cargas (ETL Builder)
             </a>
         </div>
 

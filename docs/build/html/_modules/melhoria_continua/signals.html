@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>melhoria_continua.signals &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Formulas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">melhoria_continua.signals</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for melhoria_continua.signals</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.db.models.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">post_save</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.dispatch</span><span class="w"> </span><span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuditoriaAD</span><span class="p">,</span> <span class="n">IncidenteQualidade</span>
+
+<div class="viewcode-block" id="validar_evento_ad">
+<a class="viewcode-back" href="../../melhoria_continua.html#melhoria_continua.signals.validar_evento_ad">[docs]</a>
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">AuditoriaAD</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validar_evento_ad</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gatilho disparado toda vez que um novo log de auditoria chega.</span>
+<span class="sd">    Verifica regras de negócio e abre incidentes se necessário.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">created</span><span class="p">:</span>
+        <span class="k">return</span>  <span class="c1"># Só analisa registros novos</span>
+
+    <span class="n">dados</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">dados_evento</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="n">violation_found</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># --- REGRA 1: CRIAÇÃO DE USUÁRIO SEM GERENTE ---</span>
+    <span class="c1"># Se a ação for CREATE e o tipo for USER</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">tipo_acao</span> <span class="o">==</span> <span class="s1">&#39;CREATE&#39;</span> <span class="ow">and</span> <span class="n">instance</span><span class="o">.</span><span class="n">tipo_objeto</span> <span class="o">==</span> <span class="s1">&#39;USER&#39;</span><span class="p">:</span>
+        <span class="n">gerente</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;manager&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">gerente</span><span class="p">:</span>
+            <span class="n">violation_found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">evento_auditoria</span><span class="o">=</span><span class="n">instance</span><span class="p">,</span>
+                <span class="n">regra_violada</span><span class="o">=</span><span class="s2">&quot;Criação de Usuário sem Gerente&quot;</span><span class="p">,</span>
+                <span class="n">descricao_incidente</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;O técnico </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">tecnico_ad_login</span><span class="si">}</span><span class="s2"> criou o usuário </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">objeto_nome</span><span class="si">}</span><span class="s2"> sem definir o campo &#39;manager&#39;.&quot;</span><span class="p">,</span>
+                <span class="n">responsavel_resolucao</span><span class="o">=</span><span class="s1">&#39;AD_ADMIN&#39;</span><span class="p">,</span> <span class="c1"># Define quem resolve</span>
+                <span class="n">status</span><span class="o">=</span><span class="s1">&#39;PENDENTE&#39;</span>
+            <span class="p">)</span>
+
+    <span class="c1"># --- REGRA 2: USUÁRIO CRIADO FORA DO PADRÃO (OU ERRADA) ---</span>
+    <span class="c1"># Exemplo: Criou na raiz &quot;CN=Users&quot; em vez de uma OU específica</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">tipo_acao</span> <span class="o">==</span> <span class="s1">&#39;CREATE&#39;</span> <span class="ow">and</span> <span class="n">instance</span><span class="o">.</span><span class="n">tipo_objeto</span> <span class="o">==</span> <span class="s1">&#39;USER&#39;</span><span class="p">:</span>
+        <span class="n">dn</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">objeto_nome</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># DistinguishedName</span>
+        <span class="k">if</span> <span class="s2">&quot;CN=USERS,&quot;</span> <span class="ow">in</span> <span class="n">dn</span><span class="p">:</span>
+            <span class="n">violation_found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">evento_auditoria</span><span class="o">=</span><span class="n">instance</span><span class="p">,</span>
+                <span class="n">regra_violada</span><span class="o">=</span><span class="s2">&quot;Usuário criado em Container Padrão&quot;</span><span class="p">,</span>
+                <span class="n">descricao_incidente</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;O objeto </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">objeto_nome</span><span class="si">}</span><span class="s2"> foi criado na pasta padrão &#39;CN=Users&#39;. Deveria estar em uma OU departamental.&quot;</span><span class="p">,</span>
+                <span class="n">responsavel_resolucao</span><span class="o">=</span><span class="s1">&#39;AD_ADMIN&#39;</span><span class="p">,</span>
+                <span class="n">status</span><span class="o">=</span><span class="s1">&#39;PENDENTE&#39;</span>
+            <span class="p">)</span>
+
+    <span class="c1"># --- REGRA 3: ALTERAÇÃO EM GRUPO CRÍTICO (ADMINS) ---</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="o">.</span><span class="n">tipo_objeto</span> <span class="o">==</span> <span class="s1">&#39;GROUP&#39;</span> <span class="ow">and</span> <span class="s1">&#39;ADMIN&#39;</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">objeto_nome</span><span class="o">.</span><span class="n">upper</span><span class="p">():</span>
+        <span class="c1"># Qualquer mexida em grupo de admin gera um alerta preventivo</span>
+        <span class="n">violation_found</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">evento_auditoria</span><span class="o">=</span><span class="n">instance</span><span class="p">,</span>
+            <span class="n">regra_violada</span><span class="o">=</span><span class="s2">&quot;Alteração em Grupo Crítico&quot;</span><span class="p">,</span>
+            <span class="n">descricao_incidente</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;O grupo administrativo </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">objeto_nome</span><span class="si">}</span><span class="s2"> foi modificado por </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="n">tecnico_ad_login</span><span class="si">}</span><span class="s2">. Requer validação imediata.&quot;</span><span class="p">,</span>
+            <span class="n">responsavel_resolucao</span><span class="o">=</span><span class="s1">&#39;AD_ADMIN&#39;</span><span class="p">,</span>
+            <span class="n">status</span><span class="o">=</span><span class="s1">&#39;PENDENTE&#39;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Se houve violação, marca o log original como &quot;Violou Regras&quot;</span>
+    <span class="k">if</span> <span class="n">violation_found</span><span class="p">:</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">violou_regras</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

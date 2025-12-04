@@ -1,3 +1,6 @@
+Qualidade Ad
+============
+
 qualidade\_ad package
 =====================
 
@@ -17,6 +20,14 @@ qualidade\_ad.admin module
 --------------------------
 
 .. automodule:: qualidade_ad.admin
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+qualidade\_ad.agente\_simulador module
+--------------------------------------
+
+.. automodule:: qualidade_ad.agente_simulador
    :members:
    :show-inheritance:
    :undoc-members:

@@ -2,12 +2,14 @@
     
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .tasks import (
     executar_pipeline_completo_task, 
     importar_arquivos_existentes_task
 )
 from .models import ExecucaoPipeline
 
+@login_required
 def painel_de_controle(request):
     """
     View do painel de controle do pipeline (ETL).

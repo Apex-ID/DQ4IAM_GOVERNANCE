@@ -1,3 +1,6 @@
+Modules
+=======
+
 APEX_GOVERNANCE
 ===============
 
@@ -9,7 +12,10 @@ APEX_GOVERNANCE
    apex_project
    carga_manual
    importador_dinamico
+   iniciar_sistema
    manage
+   melhoria_continua
    preparar_banco_dados
    qualidade_ad
+   relatorios_gerenciais
    transformacao_manual
