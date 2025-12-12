@@ -6,47 +6,105 @@ Diagrama de Implantação (Infraestrutura Física)
    @startuml
    !theme plain
    skinparam linetype ortho
-   title Implantação Física — APEX GOVERNANCE
+   title Arquitetura Completa — Implantação Física + Componentes Lógicos
 
-   node "Servidor de Aplicação (Linux) - App Server" as LinuxNode {
-       component "Django (Gunicorn / Uvicorn)" as Django
-       component "Celery Workers" as Celery
-       queue "Redis (Broker)" as Redis
+   ' ============================================================
+   ' FRONTEND
+   ' ============================================================
+   node "Frontend Layer (Cliente)" as Front {
+       [Navegador (Painel Django)] as BrowserOld
+       [React App (Novo Painel)] as React
+   }
+
+   ' ============================================================
+   ' SERVIDOR LINUX (BACKEND + CELERY + REDIS)
+   ' ============================================================
+   node "Servidor de Aplicação (Linux)" as LinuxNode {
+
+       node "Backend Layer (Django)" as Backend {
+           component "Django Core" as DjangoCore {
+               [Views MVT] as MVT
+               [API REST (DRF)] as API
+               [Admin Panel] as Admin
+           }
+       }
+
+       node "Execução Assíncrona" as Async {
+           [Celery Workers] as Workers
+           queue "Redis (Broker / Cache)" as Redis
+       }
+
        folder "Static / Media" as Static
    }
 
-   node "Servidor de Banco (Windows / DB Server)" as WinNode {
+   ' ============================================================
+   ' SERVIDOR WINDOWS (POSTGRES)
+   ' ============================================================
+   node "Servidor de Banco (Windows)" as WinNode {
        database "PostgreSQL 16" as Postgres
    }
 
+   ' ============================================================
+   ' AGENTE DA REDE
+   ' ============================================================
    node "Agente na Rede (Windows Service)" as AgentNode {
        [Agente AD Monitor] as AgentService
    }
 
+   ' ============================================================
+   ' INFRAESTRUTURA CORPORATIVA
+   ' ============================================================
    node "Infraestrutura Corporativa" as Corp {
        [Active Directory (Domain Controller)] as AD
    }
 
-   ' Conexões principais
-   LinuxNode --> WinNode : TCP/IP (5432) - conexões DB
-   LinuxNode --> Redis : TCP/IP (6379) - broker
-   AgentNode --> LinuxNode : HTTPS (443) / API POST /api/auditoria/
-   AgentNode --> AD : Leitura local / Event Viewer
-   LinuxNode --> Corp : LDAP/LDAPS (389/636) - leitura AD (quando aplicável)
+   ' ============================================================
+   ' FLUXOS E CONEXÕES
+   ' ============================================================
 
-   ' Observações de implantação
+   ' Frontend <-> Backend
+   BrowserOld --> MVT : HTTP (HTML)
+   React --> API : HTTPS (REST / JWT)
+
+   ' Backend <-> DB
+   MVT ..> Postgres : lê/escreve
+   API ..> Postgres : lê/escreve
+   Workers --> Postgres : ETL / Auditoria / Scorecard
+
+   ' Backend <-> Redis
+   MVT --> Redis : enqueue task
+   API --> Redis : enqueue task
+   Redis --> Workers : entrega tarefa
+
+   ' Linux <-> Windows Server
+   LinuxNode --> WinNode : TCP/IP 5432 (DB)
+
+   ' Agente AD
+   AgentService --> API : HTTPS 443 (POST /api/auditoria/)
+   AgentService --> AD : leitura direta (Event Viewer)
+
+   ' Backend <-> Active Directory
+   DjangoCore --> AD : LDAP/LDAPS (389/636)
+
+   ' Observações
    note left of LinuxNode
      App Server:
      • Ubuntu 24.04 LTS
      • Gunicorn/Uvicorn + Nginx
-     • Celery workers (auto-scale via systemd / supervisor)
+     • Celery workers (systemd/supervisor)
    end note
 
    note right of WinNode
      DB Server:
-     • Windows 10/Server
-     • PostgreSQL 16 (standalone / replica opcional)
+     • Windows Server
+     • PostgreSQL 16 Standalone/Replica
    end note
 
-   note bottom: Backup / Snapshot schedule, Firewall rules, TLS mutual auth (agent ↔ API)
+   note bottom
+     Segurança:
+     • TLS entre Agente e API
+     • Firewall restritivo entre Linux <-> Windows
+     • Snapshots do DB e Backup incremental
+   end note
+
    @enduml

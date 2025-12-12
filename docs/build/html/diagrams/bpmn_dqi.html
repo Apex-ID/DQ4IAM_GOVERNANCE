@@ -48,8 +48,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
 <ul class="current">
@@ -72,6 +72,9 @@
 <li class="toctree-l1"><a class="reference internal" href="database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul>
@@ -108,6 +111,41 @@
 </section>
 <section id="motor-de-auditoria-e-calculo-dqi">
 <h1>Motor de Auditoria e Cálculo DQI<a class="headerlink" href="#motor-de-auditoria-e-calculo-dqi" title="Link to this heading"></a></h1>
+<p class="plantuml">
+<object data="../_images/plantuml-90278497725900d8b84a1202d2fbcaddc1bc6865.svg" type="image/svg+xml" style="width:1239px;height:717px;background:#FFFFFF;">
+<img src="../_images/plantuml-90278497725900d8b84a1202d2fbcaddc1bc6865.png" alt="&#64;startuml
+!theme plain
+skinparam linetype ortho
+title Motor de Auditoria (DQI) — Swimlanes
+
+|Auditor|
+start
+:Solicita &quot;Executar Auditoria (Produção)&quot;;
+
+|Web / Django|
+:Enfileira tarefa executar_regras_producao;
+
+|Broker (Redis)|
+:Fila de auditoria;
+
+|Worker / Engine|
+:Carrega lista de regras (28);
+
+repeat
+  :Executa SELECT COUNT(*) e SELECT WHERE &lt;condição&gt;;
+  :Calcula % conformidade;
+  :INSERT RelatorioAnaliseRelacional;
+repeat while (Restam regras?) is yes
+
+:Calcula DQI (ponderado);
+:INSERT RelatorioDQI;
+
+|Persistência (Postgres)|
+stop
+
+&#64;enduml"/>
+
+</object></p>
 </section>
 
 

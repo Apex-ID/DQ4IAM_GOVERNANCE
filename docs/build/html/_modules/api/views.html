@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>api.views &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">api.views</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for api.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">viewsets</span><span class="p">,</span> <span class="n">views</span><span class="p">,</span> <span class="n">status</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.response</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.permissions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework.decorators</span><span class="w"> </span><span class="kn">import</span> <span class="n">action</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">melhoria_continua.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">IncidenteQualidade</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">analises_relacionais.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">RelatorioDQI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qualidade_ad.tasks</span><span class="w"> </span><span class="kn">import</span> <span class="n">executar_pipeline_completo_task</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.serializers</span><span class="w"> </span><span class="kn">import</span> <span class="n">IncidenteSerializer</span><span class="p">,</span> <span class="n">DQISerializer</span>
+
+<span class="c1"># --- Endpoint 1: Dashboard Principal ---</span>
+<div class="viewcode-block" id="DashboardAPIView">
+<a class="viewcode-back" href="../../api_docs.html#api.views.DashboardAPIView">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DashboardAPIView</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
+
+<div class="viewcode-block" id="DashboardAPIView.get">
+<a class="viewcode-back" href="../../api_docs.html#api.views.DashboardAPIView.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">ultimo_dqi</span> <span class="o">=</span> <span class="n">RelatorioDQI</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-data_calculo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="n">dqi_data</span> <span class="o">=</span> <span class="n">DQISerializer</span><span class="p">(</span><span class="n">ultimo_dqi</span><span class="p">)</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="n">ultimo_dqi</span> <span class="k">else</span> <span class="p">{}</span>
+
+        <span class="n">pendentes</span> <span class="o">=</span> <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;PENDENTE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">em_tratamento</span> <span class="o">=</span> <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">status__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PENDENTE&#39;</span><span class="p">,</span> <span class="s1">&#39;RESOLVIDO&#39;</span><span class="p">,</span> <span class="s1">&#39;REJEITADO&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+        <span class="n">dados</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;dqi&quot;</span><span class="p">:</span> <span class="n">dqi_data</span><span class="p">,</span>
+            <span class="s2">&quot;incidentes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;pendentes&quot;</span><span class="p">:</span> <span class="n">pendentes</span><span class="p">,</span>
+                <span class="s2">&quot;em_tratamento&quot;</span><span class="p">:</span> <span class="n">em_tratamento</span><span class="p">,</span>
+                <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">pendentes</span> <span class="o">+</span> <span class="n">em_tratamento</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;status_sistema&quot;</span><span class="p">:</span> <span class="s2">&quot;Operacional&quot;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span></div>
+</div>
+
+
+<span class="c1"># --- Endpoint 2: Gestão de Incidentes ---</span>
+<div class="viewcode-block" id="IncidenteViewSet">
+<a class="viewcode-back" href="../../api_docs.html#api.views.IncidenteViewSet">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IncidenteViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">IncidenteQualidade</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-data_abertura&#39;</span><span class="p">)</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">IncidenteSerializer</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
+
+<div class="viewcode-block" id="IncidenteViewSet.get_queryset">
+<a class="viewcode-back" href="../../api_docs.html#api.views.IncidenteViewSet.get_queryset">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span>
+        <span class="n">status_filter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status_filter</span><span class="p">:</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="n">status_filter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">queryset</span></div>
+
+
+<div class="viewcode-block" id="IncidenteViewSet.aprovar_excecao">
+<a class="viewcode-back" href="../../api_docs.html#api.views.IncidenteViewSet.aprovar_excecao">[docs]</a>
+    <span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">])</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">aprovar_excecao</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">incidente</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="n">incidente</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;APROVADO&#39;</span> 
+        <span class="n">incidente</span><span class="o">.</span><span class="n">observacao_gerente</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;observacao&#39;</span><span class="p">,</span> <span class="s1">&#39;Aprovado via API&#39;</span><span class="p">)</span>
+        <span class="n">incidente</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;Incidente aprovado como exceção&#39;</span><span class="p">})</span></div>
+</div>
+
+
+<span class="c1"># --- Endpoint 3: Disparar Processos ---</span>
+<div class="viewcode-block" id="PipelineAPIView">
+<a class="viewcode-back" href="../../api_docs.html#api.views.PipelineAPIView">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PipelineAPIView</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">IsAuthenticated</span><span class="p">]</span>
+
+<div class="viewcode-block" id="PipelineAPIView.post">
+<a class="viewcode-back" href="../../api_docs.html#api.views.PipelineAPIView.post">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">executar_pipeline_completo_task</span><span class="o">.</span><span class="n">delay</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;mensagem&quot;</span><span class="p">:</span> <span class="s2">&quot;Pipeline iniciado em background&quot;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_202_ACCEPTED</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

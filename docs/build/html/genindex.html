@@ -45,8 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
 <ul>
@@ -69,6 +69,9 @@
 <li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul>
@@ -456,7 +459,16 @@
         <li><a href="apex_project.html#module-apex_project.wsgi">module</a>
 </li>
       </ul></li>
+      <li>
+    api.views
+
+      <ul>
+        <li><a href="api_docs.html#module-api.views">module</a>
+</li>
+      </ul></li>
       <li><a href="melhoria_continua.html#melhoria_continua.views.api_receber_auditoria">api_receber_auditoria() (in module melhoria_continua.views)</a>
+</li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.aprovar_excecao">aprovar_excecao() (api.views.IncidenteViewSet method)</a>
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioScorecard.arquivo_csv">arquivo_csv (analises_relacionais.models.RelatorioScorecard attribute)</a>
 </li>
@@ -476,9 +488,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_relacionais.html#analises_relacionais.views.baixar_csv_scorecard">baixar_csv_scorecard() (in module analises_relacionais.views)</a>
 </li>
+      <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.base_fields">base_fields (importador_dinamico.forms.UploadCSVForm attribute)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH">BaseConhecimentoRH (class in qualidade_ad.models)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.base_fields">base_fields (importador_dinamico.forms.UploadCSVForm attribute)</a>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.DoesNotExist">BaseConhecimentoRH.DoesNotExist</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.MultipleObjectsReturned">BaseConhecimentoRH.MultipleObjectsReturned</a>
+</li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.basename">basename (api.views.IncidenteViewSet attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -493,14 +513,16 @@
         <li><a href="carga_manual.html#module-carga_manual">module</a>
 </li>
       </ul></li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.cargo_correto">cargo_correto (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
       <li><a href="carga_manual.html#carga_manual.carregar_dados_manualmente">carregar_dados_manualmente() (in module carga_manual)</a>
 </li>
       <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.views.central_relatorios">central_relatorios() (in module relatorios_gerenciais.views)</a>
 </li>
-      <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.coluna_analisada">coluna_analisada (analises_simples.models.RelatorioUnicidade attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.coluna_analisada">coluna_analisada (analises_simples.models.RelatorioUnicidade attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadePersonalizada.colunas_combinadas">colunas_combinadas (analises_simples.models.RelatorioUnicidadePersonalizada attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.views.configuracao_unicidade">configuracao_unicidade() (in module analises_simples.views)</a>
@@ -525,9 +547,15 @@
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.views.dashboard_scorecard">dashboard_scorecard() (in module analises_relacionais.views)</a>
 </li>
+      <li><a href="api_docs.html#api.views.DashboardAPIView">DashboardAPIView (class in api.views)</a>
+</li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.data_abertura">data_abertura (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.data_fechamento">data_fechamento (melhoria_continua.models.IncidenteQualidade attribute)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.data_importacao">data_importacao (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.data_processamento">data_processamento (qualidade_ad.models.UsuarioUnificado attribute)</a>
 </li>
       <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.declared_fields">declared_fields (importador_dinamico.forms.UploadCSVForm attribute)</a>
 </li>
@@ -545,6 +573,10 @@
         <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.apps.RelatoriosGerenciaisConfig.default_auto_field">(relatorios_gerenciais.apps.RelatoriosGerenciaisConfig attribute)</a>
 </li>
       </ul></li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.departamento_correto">departamento_correto (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.departamento_rh">departamento_rh (qualidade_ad.models.MapeamentoDepartamentoGrupo attribute)</a>
+</li>
       <li><a href="analises_relacionais.migrations.html#analises_relacionais.migrations.0001_initial.Migration.dependencies">dependencies (analises_relacionais.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
@@ -589,6 +621,10 @@
       </ul></li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.descricao_incidente">descricao_incidente (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.description">description (api.views.IncidenteViewSet attribute)</a>
+</li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.detail">detail (api.views.IncidenteViewSet attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.detalhamento_erros">detalhamento_erros (analises_simples.models.RelatorioValidadeFormato attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadeGeral.detalhe_por_coluna">detalhe_por_coluna (analises_simples.models.RelatorioUnicidadeGeral attribute)</a>
@@ -605,6 +641,8 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.views.detalhe_relatorio_validade">detalhe_relatorio_validade() (in module analises_simples.views)</a>
 </li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.deve_estar_ativo">deve_estar_ativo (qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.dimensao">dimensao (analises_simples.models.RelatorioRegraNegocio attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidade.duplicatas_encontradas">duplicatas_encontradas (analises_simples.models.RelatorioUnicidade property)</a>
@@ -615,6 +653,10 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.email_correto">email_correto (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.email_oficial">email_oficial (qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
       <li><a href="qualidade_ad.html#qualidade_ad.agente_simulador.enviar_para_api">enviar_para_api() (in module qualidade_ad.agente_simulador)</a>
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.etapa_nome">etapa_nome (qualidade_ad.models.LogEtapa attribute)</a>
@@ -633,10 +675,10 @@
 </li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.DoesNotExist">ExecucaoPipeline.DoesNotExist</a>
 </li>
-      <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.MultipleObjectsReturned">ExecucaoPipeline.MultipleObjectsReturned</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.MultipleObjectsReturned">ExecucaoPipeline.MultipleObjectsReturned</a>
+</li>
       <li><a href="analises_simples.logica_de_analise.html#analises_simples.logica_de_analise.logica_validade.executar_analise_de_validade">executar_analise_de_validade() (in module analises_simples.logica_de_analise.logica_validade)</a>
 </li>
       <li><a href="qualidade_ad.pipeline.html#qualidade_ad.pipeline.etapa_4_carga_staging.executar_carga_staging">executar_carga_staging() (in module qualidade_ad.pipeline.etapa_4_carga_staging)</a>
@@ -683,13 +725,21 @@
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.logica_scorecard.gerar_scorecard_detalhado">gerar_scorecard_detalhado() (in module analises_relacionais.logica_scorecard)</a>
 </li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.gerente_correto_login">gerente_correto_login (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.gerente_decisor">gerente_decisor (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.gerente_decisor_id">gerente_decisor_id (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
+      <li><a href="api_docs.html#api.views.DashboardAPIView.get">get() (api.views.DashboardAPIView method)</a>
+</li>
       <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_etapa_nome_display">get_etapa_nome_display() (qualidade_ad.models.LogEtapa method)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.get_next_by_data_abertura">get_next_by_data_abertura() (melhoria_continua.models.IncidenteQualidade method)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.get_next_by_data_importacao">get_next_by_data_importacao() (qualidade_ad.models.BaseConhecimentoRH method)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.get_next_by_data_processamento">get_next_by_data_processamento() (qualidade_ad.models.UsuarioUnificado method)</a>
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.get_next_by_timestamp">get_next_by_timestamp() (analises_relacionais.models.RelatorioDQI method)</a>
 
@@ -729,6 +779,10 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.get_previous_by_data_importacao">get_previous_by_data_importacao() (qualidade_ad.models.BaseConhecimentoRH method)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.get_previous_by_data_processamento">get_previous_by_data_processamento() (qualidade_ad.models.UsuarioUnificado method)</a>
+</li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.get_previous_by_timestamp">get_previous_by_timestamp() (analises_relacionais.models.RelatorioDQI method)</a>
 
       <ul>
@@ -769,6 +823,8 @@
         <li><a href="transformacao_manual.html#transformacao_manual.get_process_function_sql">(in module transformacao_manual)</a>
 </li>
       </ul></li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.get_queryset">get_queryset() (api.views.IncidenteViewSet method)</a>
+</li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.get_responsabilidade_display">get_responsabilidade_display() (melhoria_continua.models.PerfilGerente method)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.get_responsavel_resolucao_display">get_responsavel_resolucao_display() (melhoria_continua.models.IncidenteQualidade method)</a>
@@ -781,6 +837,8 @@
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.get_status_display">(qualidade_ad.models.LogEtapa method)</a>
 </li>
       </ul></li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.grupos_calculados">grupos_calculados (qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -819,6 +877,8 @@
         <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.id">(qualidade_ad.models.ExecucaoPipeline attribute)</a>
 </li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.id">(qualidade_ad.models.LogEtapa attribute)</a>
+</li>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.id">(qualidade_ad.models.MapeamentoDepartamentoGrupo attribute)</a>
 </li>
       </ul></li>
       <li>
@@ -905,6 +965,8 @@
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.admin.IncidenteQualidadeAdmin">IncidenteQualidadeAdmin (class in melhoria_continua.admin)</a>
 </li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet">IncidenteViewSet (class in api.views)</a>
+</li>
       <li>
     iniciar_sistema
 
@@ -975,6 +1037,12 @@
         <li><a href="manage.html#module-manage">module</a>
 </li>
       </ul></li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo">MapeamentoDepartamentoGrupo (class in qualidade_ad.models)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.DoesNotExist">MapeamentoDepartamentoGrupo.DoesNotExist</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.MultipleObjectsReturned">MapeamentoDepartamentoGrupo.MultipleObjectsReturned</a>
+</li>
       <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm.media">media (importador_dinamico.forms.UploadCSVForm property)</a>
 
       <ul>
@@ -1189,6 +1257,8 @@
 </li>
         <li><a href="apex_project.html#module-apex_project.wsgi">apex_project.wsgi</a>
 </li>
+        <li><a href="api_docs.html#module-api.views">api.views</a>
+</li>
         <li><a href="carga_manual.html#module-carga_manual">carga_manual</a>
 </li>
         <li><a href="importador_dinamico.html#module-importador_dinamico">importador_dinamico</a>
@@ -1305,6 +1375,8 @@
       <ul>
         <li><a href="analises_simples.html#analises_simples.apps.AnalisesSimplesConfig.name">(analises_simples.apps.AnalisesSimplesConfig attribute)</a>
 </li>
+        <li><a href="api_docs.html#api.views.IncidenteViewSet.name">(api.views.IncidenteViewSet attribute)</a>
+</li>
         <li><a href="importador_dinamico.html#importador_dinamico.apps.ImportadorDinamicoConfig.name">(importador_dinamico.apps.ImportadorDinamicoConfig attribute)</a>
 </li>
         <li><a href="melhoria_continua.html#melhoria_continua.apps.MelhoriaContinuaConfig.name">(melhoria_continua.apps.MelhoriaContinuaConfig attribute)</a>
@@ -1318,6 +1390,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.nome_analise">nome_analise (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
 </li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.nome_completo">nome_completo (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+
+      <ul>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.nome_completo">(qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
+      </ul></li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.nome_regra">nome_regra (analises_simples.models.RelatorioRegraNegocio attribute)</a>
 </li>
   </ul></td>
@@ -1355,17 +1433,23 @@
 </li>
         <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.objects">(melhoria_continua.models.PerfilGerente attribute)</a>
 </li>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.objects">(qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.objects">(qualidade_ad.models.ExecucaoPipeline attribute)</a>
 </li>
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.objects">(qualidade_ad.models.LogEtapa attribute)</a>
 </li>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.objects">(qualidade_ad.models.MapeamentoDepartamentoGrupo attribute)</a>
+</li>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.objects">(qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.objeto_guid">objeto_guid (melhoria_continua.models.AuditoriaAD attribute)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.AuditoriaAD.objeto_nome">objeto_nome (melhoria_continua.models.AuditoriaAD attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.observacao_gerente">observacao_gerente (melhoria_continua.models.IncidenteQualidade attribute)</a>
 </li>
       <li><a href="relatorios_gerenciais.html#relatorios_gerenciais.dicionario_dados.obter_info_coluna">obter_info_coluna() (in module relatorios_gerenciais.dicionario_dados)</a>
@@ -1432,8 +1516,6 @@
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletudeGeral.percentual_completude_geral">percentual_completude_geral (analises_simples.models.RelatorioCompletudeGeral attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioAnaliseRelacional.percentual_consistencia">percentual_consistencia (analises_relacionais.models.RelatorioAnaliseRelacional attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioRegraNegocio.percentual_falha">percentual_falha (analises_simples.models.RelatorioRegraNegocio attribute)</a>
@@ -1444,6 +1526,8 @@
         <li><a href="analises_simples.html#analises_simples.models.RelatorioUnicidadePersonalizada.percentual_unicidade">(analises_simples.models.RelatorioUnicidadePersonalizada attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioValidadeFormato.percentual_validade">percentual_validade (analises_simples.models.RelatorioValidadeFormato attribute)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente">PerfilGerente (class in melhoria_continua.models)</a>
@@ -1453,6 +1537,22 @@
       <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.MultipleObjectsReturned">PerfilGerente.MultipleObjectsReturned</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin">PerfilGerenteAdmin (class in melhoria_continua.admin)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.perfis_origem">perfis_origem (qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
+      <li><a href="api_docs.html#api.views.DashboardAPIView.permission_classes">permission_classes (api.views.DashboardAPIView attribute)</a>
+
+      <ul>
+        <li><a href="api_docs.html#api.views.IncidenteViewSet.permission_classes">(api.views.IncidenteViewSet attribute)</a>
+</li>
+        <li><a href="api_docs.html#api.views.PipelineAPIView.permission_classes">(api.views.PipelineAPIView attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_docs.html#api.views.PipelineAPIView">PipelineAPIView (class in api.views)</a>
+</li>
+      <li><a href="api_docs.html#api.views.PipelineAPIView.post">post() (api.views.PipelineAPIView method)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.prefixo_grupo_ad">prefixo_grupo_ad (qualidade_ad.models.MapeamentoDepartamentoGrupo attribute)</a>
 </li>
       <li>
     preparar_banco_dados
@@ -1597,6 +1697,8 @@
 </li>
       </ul></li>
       <li><a href="qualidade_ad.html#qualidade_ad.apps.QualidadeAdConfig">QualidadeAdConfig (class in qualidade_ad.apps)</a>
+</li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.queryset">queryset (api.views.IncidenteViewSet attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1776,6 +1878,12 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.samaccountname">samaccountname (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+
+      <ul>
+        <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.samaccountname">(qualidade_ad.models.UsuarioUnificado attribute)</a>
+</li>
+      </ul></li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_completude">score_completude (analises_relacionais.models.RelatorioDQI attribute)</a>
 </li>
       <li><a href="analises_relacionais.html#analises_relacionais.models.RelatorioDQI.score_consistencia">score_consistencia (analises_relacionais.models.RelatorioDQI attribute)</a>
@@ -1794,13 +1902,15 @@
         <li><a href="melhoria_continua.html#melhoria_continua.admin.PerfilGerenteAdmin.search_fields">(melhoria_continua.admin.PerfilGerenteAdmin attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.sem_cargo">sem_cargo (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.sem_departamento">sem_departamento (analises_simples.models.RelatorioCompletude attribute)</a>
 </li>
       <li><a href="analises_simples.html#analises_simples.models.RelatorioCompletude.sem_gerente">sem_gerente (analises_simples.models.RelatorioCompletude attribute)</a>
+</li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.serializer_class">serializer_class (api.views.IncidenteViewSet attribute)</a>
 </li>
       <li><a href="melhoria_continua.html#melhoria_continua.models.IncidenteQualidade.status">status (melhoria_continua.models.IncidenteQualidade attribute)</a>
 
@@ -1818,6 +1928,10 @@
         <li><a href="qualidade_ad.html#qualidade_ad.models.LogEtapa.STATUS_CHOICES">(qualidade_ad.models.LogEtapa attribute)</a>
 </li>
       </ul></li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.status_rh">status_rh (qualidade_ad.models.BaseConhecimentoRH attribute)</a>
+</li>
+      <li><a href="api_docs.html#api.views.IncidenteViewSet.suffix">suffix (api.views.IncidenteViewSet attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1951,11 +2065,17 @@
 </li>
       <li><a href="importador_dinamico.html#importador_dinamico.forms.UploadCSVForm">UploadCSVForm (class in importador_dinamico.forms)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.usuario">usuario (melhoria_continua.models.PerfilGerente attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="melhoria_continua.html#melhoria_continua.models.PerfilGerente.usuario_id">usuario_id (melhoria_continua.models.PerfilGerente attribute)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado">UsuarioUnificado (class in qualidade_ad.models)</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.DoesNotExist">UsuarioUnificado.DoesNotExist</a>
+</li>
+      <li><a href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.MultipleObjectsReturned">UsuarioUnificado.MultipleObjectsReturned</a>
 </li>
   </ul></td>
 </tr></table>

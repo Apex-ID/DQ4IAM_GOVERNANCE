@@ -8,11 +8,8 @@ Motor de Auditoria e Cálculo DQI
 
    @startuml
    !theme plain
-   !pragma useActivityDiagram
    skinparam linetype ortho
-
    title Motor de Auditoria (DQI) — Swimlanes
-   end title
 
    |Auditor|
    start
@@ -31,7 +28,7 @@ Motor de Auditoria e Cálculo DQI
      :Executa SELECT COUNT(*) e SELECT WHERE <condição>;
      :Calcula % conformidade;
      :INSERT RelatorioAnaliseRelacional;
-   repeat while (restam regras?) is (sim)
+   repeat while (Restam regras?) is yes
 
    :Calcula DQI (ponderado);
    :INSERT RelatorioDQI;

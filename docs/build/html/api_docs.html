@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API REST (Backend Headless) &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules" href="modules.html" />
+    <link rel="prev" title="Diagrama de Implantação (Infraestrutura Logica + Serviços)" href="diagrams/architecture_logic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="diagrams/use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#especificacoes-tecnicas">Especificações Técnicas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#autenticacao-jwt">Autenticação (JWT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#endpoints-principais">Endpoints Principais</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-kpis">Dashboard &amp; KPIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gestao-de-incidentes">Gestão de Incidentes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engenharia-de-dados-etl">Engenharia de Dados (ETL)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#estrutura-do-codigo-views">Estrutura do Código (Views)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.DashboardAPIView"><code class="docutils literal notranslate"><span class="pre">DashboardAPIView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.DashboardAPIView.get"><code class="docutils literal notranslate"><span class="pre">DashboardAPIView.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.DashboardAPIView.permission_classes"><code class="docutils literal notranslate"><span class="pre">DashboardAPIView.permission_classes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.IncidenteViewSet"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.aprovar_excecao"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.aprovar_excecao()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.basename"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.basename</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.description"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.detail"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.detail</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.get_queryset"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.get_queryset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.name"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.permission_classes"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.permission_classes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.queryset"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.queryset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.serializer_class"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.serializer_class</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.IncidenteViewSet.suffix"><code class="docutils literal notranslate"><span class="pre">IncidenteViewSet.suffix</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api.views.PipelineAPIView"><code class="docutils literal notranslate"><span class="pre">PipelineAPIView</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PipelineAPIView.permission_classes"><code class="docutils literal notranslate"><span class="pre">PipelineAPIView.permission_classes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api.views.PipelineAPIView.post"><code class="docutils literal notranslate"><span class="pre">PipelineAPIView.post()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API REST (Backend Headless)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_docs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-rest-backend-headless">
+<h1>API REST (Backend Headless)<a class="headerlink" href="#api-rest-backend-headless" title="Link to this heading"></a></h1>
+<p>O APEX GOVERNANCE evoluiu para uma arquitetura desacoplada. Este módulo expõe os dados e funcionalidades do sistema via <strong>JSON</strong>, permitindo a conexão com interfaces modernas (como React, Vue ou Mobile).</p>
+</section>
+<section id="especificacoes-tecnicas">
+<h1>Especificações Técnicas<a class="headerlink" href="#especificacoes-tecnicas" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><strong>Padrão:</strong> RESTful</p></li>
+<li><p><strong>Formato de Dados:</strong> JSON</p></li>
+<li><p><strong>Autenticação:</strong> JWT (JSON Web Token)</p></li>
+<li><p><strong>Base URL:</strong> <code class="docutils literal notranslate"><span class="pre">/api/v1/</span></code></p></li>
+<li><p><strong>Documentação Interativa:</strong> Swagger UI / OpenAPI 3.0</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para visualizar a documentação interativa e testar as requisições em tempo real, acesse a rota:
+<strong>http://localhost:8000/api/v1/docs/</strong></p>
+</div>
+<section id="autenticacao-jwt">
+<h2>Autenticação (JWT)<a class="headerlink" href="#autenticacao-jwt" title="Link to this heading"></a></h2>
+<p>Para acessar qualquer endpoint protegido, o cliente deve primeiro obter um token.</p>
+<ol class="arabic simple">
+<li><p><strong>Obter Token (Login):</strong>
+* <strong>POST</strong> <code class="docutils literal notranslate"><span class="pre">/api/v1/token/</span></code>
+* <strong>Body:</strong> <code class="docutils literal notranslate"><span class="pre">{&quot;username&quot;:</span> <span class="pre">&quot;admin&quot;,</span> <span class="pre">&quot;password&quot;:</span> <span class="pre">&quot;...&quot;}</span></code>
+* <strong>Response:</strong> <code class="docutils literal notranslate"><span class="pre">{&quot;access&quot;:</span> <span class="pre">&quot;...&quot;,</span> <span class="pre">&quot;refresh&quot;:</span> <span class="pre">&quot;...&quot;}</span></code></p></li>
+<li><p><strong>Usar Token:</strong>
+Envie o cabeçalho em todas as requisições subsequentes:
+<code class="docutils literal notranslate"><span class="pre">Authorization:</span> <span class="pre">Bearer</span> <span class="pre">&lt;seu_token_access&gt;</span></code></p></li>
+</ol>
+</section>
+<section id="endpoints-principais">
+<h2>Endpoints Principais<a class="headerlink" href="#endpoints-principais" title="Link to this heading"></a></h2>
+<p>Abaixo estão listados os principais controladores da API.</p>
+<section id="dashboard-kpis">
+<h3>Dashboard &amp; KPIs<a class="headerlink" href="#dashboard-kpis" title="Link to this heading"></a></h3>
+<dl class="http get">
+<dt class="sig sig-object http" id="get--api-v1-dashboard-resumo-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/api/v1/dashboard/resumo/</span></span><a class="headerlink" href="#get--api-v1-dashboard-resumo-" title="Link to this definition"></a></dt>
+<dd><p>Retorna os indicadores consolidados para a tela inicial do Frontend.</p>
+<p><strong>Exemplo de Resposta:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dqi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;score_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">98.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;score_completude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;incidentes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;pendentes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;em_tratamento&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;status_sistema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Operacional&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="gestao-de-incidentes">
+<h3>Gestão de Incidentes<a class="headerlink" href="#gestao-de-incidentes" title="Link to this heading"></a></h3>
+<dl class="http get">
+<dt class="sig sig-object http" id="get--api-v1-incidentes-">
+<span class="sig-name descname"><span class="pre">GET</span> </span><span class="sig-name descname"><span class="pre">/api/v1/incidentes/</span></span><a class="headerlink" href="#get--api-v1-incidentes-" title="Link to this definition"></a></dt>
+<dd><p>Lista todos os incidentes de qualidade detectados. Suporta filtros via query params (ex: <code class="docutils literal notranslate"><span class="pre">?status=PENDENTE</span></code>).</p>
+</dd></dl>
+
+<dl class="http post">
+<dt class="sig sig-object http" id="post--api-v1-incidentes-id-aprovar_excecao-">
+<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/api/v1/incidentes/{id}/aprovar_excecao/</span></span><a class="headerlink" href="#post--api-v1-incidentes-id-aprovar_excecao-" title="Link to this definition"></a></dt>
+<dd><p>Ação executada pelo Gerente para ignorar uma violação de regra, justificando como exceção de negócio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observacao</strong> – Texto justificando a aprovação.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="engenharia-de-dados-etl">
+<h3>Engenharia de Dados (ETL)<a class="headerlink" href="#engenharia-de-dados-etl" title="Link to this heading"></a></h3>
+<dl class="http post">
+<dt class="sig sig-object http" id="post--api-v1-pipeline-executar-">
+<span class="sig-name descname"><span class="pre">POST</span> </span><span class="sig-name descname"><span class="pre">/api/v1/pipeline/executar/</span></span><a class="headerlink" href="#post--api-v1-pipeline-executar-" title="Link to this definition"></a></dt>
+<dd><p>Dispara o pipeline de extração e transformação do Active Directory em background (Celery).</p>
+<p><strong>Status Code:</strong> 202 Accepted</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="estrutura-do-codigo-views">
+<h2>Estrutura do Código (Views)<a class="headerlink" href="#estrutura-do-codigo-views" title="Link to this heading"></a></h2>
+<p>Abaixo, a documentação automática das Classes (Views) implementadas no Django Rest Framework.</p>
+<dl class="py class" id="module-api.views">
+<dt class="sig sig-object py" id="api.views.DashboardAPIView">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">DashboardAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#DashboardAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.DashboardAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Constructor. Called in the URLconf; can contain helpful extra
+keyword arguments, and other things.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.DashboardAPIView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#DashboardAPIView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.DashboardAPIView.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.DashboardAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></em><a class="headerlink" href="#api.views.DashboardAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">IncidenteViewSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#IncidenteViewSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.IncidenteViewSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelViewSet</span></code></p>
+<p>Constructor. Called in the URLconf; can contain helpful extra
+keyword arguments, and other things.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.aprovar_excecao">
+<span class="sig-name descname"><span class="pre">aprovar_excecao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#IncidenteViewSet.aprovar_excecao"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.IncidenteViewSet.aprovar_excecao" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.basename">
+<span class="sig-name descname"><span class="pre">basename</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.basename" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.description" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.detail">
+<span class="sig-name descname"><span class="pre">detail</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.detail" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#IncidenteViewSet.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.IncidenteViewSet.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Get the list of items for this view.
+This must be an iterable, and may be a queryset.
+Defaults to using <cite>self.queryset</cite>.</p>
+<p>This method should always be used rather than accessing <cite>self.queryset</cite>
+directly, as <cite>self.queryset</cite> gets evaluated only once, and those results
+are cached for all subsequent requests.</p>
+<p>You may want to override this if you need to provide different
+querysets depending on the incoming request.</p>
+<p>(Eg. return a list of items that is specific to the user)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;QuerySet</span> <span class="pre">[&lt;IncidenteQualidade:</span> <span class="pre">Incidente</span> <span class="pre">#6</span> <span class="pre">(PENDENTE):</span> <span class="pre">Usuário</span> <span class="pre">criado</span> <span class="pre">em</span> <span class="pre">Container</span> <span class="pre">Padrão&gt;,</span> <span class="pre">&lt;IncidenteQualidade:</span> <span class="pre">Incidente</span> <span class="pre">#5</span> <span class="pre">(PENDENTE):</span> <span class="pre">Alteração</span> <span class="pre">em</span> <span class="pre">Grupo</span> <span class="pre">Crítico&gt;,</span> <span class="pre">&lt;IncidenteQualidade:</span> <span class="pre">Incidente</span> <span class="pre">#4</span> <span class="pre">(REJEITADO_CORRIGIR):</span> <span class="pre">Criação</span> <span class="pre">de</span> <span class="pre">Usuário</span> <span class="pre">sem</span> <span class="pre">Gerente&gt;,</span> <span class="pre">&lt;IncidenteQualidade:</span> <span class="pre">Incidente</span> <span class="pre">#3</span> <span class="pre">(PENDENTE):</span> <span class="pre">Criação</span> <span class="pre">de</span> <span class="pre">Usuário</span> <span class="pre">sem</span> <span class="pre">Gerente&gt;,</span> <span class="pre">&lt;IncidenteQualidade:</span> <span class="pre">Incidente</span> <span class="pre">#2</span> <span class="pre">(REJEITADO_CORRIGIR):</span> <span class="pre">Usuário</span> <span class="pre">criado</span> <span class="pre">em</span> <span class="pre">Container</span> <span class="pre">Padrão&gt;,</span> <span class="pre">&lt;IncidenteQualidade:</span> <span class="pre">Incidente</span> <span class="pre">#1</span> <span class="pre">(CORRIGIDO):</span> <span class="pre">Criação</span> <span class="pre">de</span> <span class="pre">Usuário</span> <span class="pre">sem</span> <span class="pre">Gerente&gt;]&gt;</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.queryset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#api.views.IncidenteViewSet.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">IncidenteSerializer</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.IncidenteViewSet.suffix">
+<span class="sig-name descname"><span class="pre">suffix</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#api.views.IncidenteViewSet.suffix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="api.views.PipelineAPIView">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">api.views.</span></span><span class="sig-name descname"><span class="pre">PipelineAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PipelineAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PipelineAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Constructor. Called in the URLconf; can contain helpful extra
+keyword arguments, and other things.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="api.views.PipelineAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></em><a class="headerlink" href="#api.views.PipelineAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="api.views.PipelineAPIView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/api/views.html#PipelineAPIView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#api.views.PipelineAPIView.post" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="diagrams/architecture_logic.html" class="btn btn-neutral float-left" title="Diagrama de Implantação (Infraestrutura Logica + Serviços)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagrama de Implantação (Infraestrutura Logica + Serviços) &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c0c8e3fa"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API REST (Backend Headless)" href="../api_docs.html" />
+    <link rel="prev" title="Diagrama de Implantação (Infraestrutura Física)" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            APEX_GOVERNANCE
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Engenharia de Requisitos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html">Non Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="use_cases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn.html">Pipeline ETL (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn.html#pipeline-etl">Pipeline ETL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_dqi.html">Diagrama Motor de Auditoria &amp; DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_dqi.html#motor-de-auditoria-e-calculo-dqi">Motor de Auditoria e Cálculo DQI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_real.html">Diagrama Governança Ativa (Monitoramento em Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_real.html#governanca-ativa-bpmn-style">Governança Ativa (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_resolucao.html">Diagrama Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn_resolucao.html#resolucao-de-incidentes-bpmn-style">Resolução de Incidentes (BPMN-style)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_etl.html">Sequence ETL Completo (Aprovado + Revisão de Estilo)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_governanca.html">Sequence Governança Ativa (Tempo Real)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_motor.html">Sequence Motor de Auditoria / DQI (Aprovado + Refinado)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_resolucao.html">Sequence Resolução de Incidentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_classes.html">Domain Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_classes.html#modelo-de-dominio-conceitual">Modelo de Domínio (Conceitual)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_classes.html">Project Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_erd.html">Database Erd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">APEX_GOVERNANCE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Diagrama de Implantação (Infraestrutura Logica + Serviços)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/diagrams/architecture_logic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="diagrama-de-implantacao-infraestrutura-logica-servicos">
+<h1>Diagrama de Implantação (Infraestrutura Logica + Serviços)<a class="headerlink" href="#diagrama-de-implantacao-infraestrutura-logica-servicos" title="Link to this heading"></a></h1>
+<p class="plantuml">
+<object data="../_images/plantuml-2603f6720bc0fd9b40b0ce8b43ff13ae9512f856.svg" type="image/svg+xml" style="width:2828px;height:834px;background:#FFFFFF;">
+<img src="../_images/plantuml-2603f6720bc0fd9b40b0ce8b43ff13ae9512f856.png" alt="&#64;startuml
+!theme plain
+skinparam linetype ortho
+title Arquitetura Interna — Módulos de Código e Serviços
+
+' ============================================================
+' FRONTEND e API
+' ============================================================
+package &quot;Camada Web (Django)&quot; {
+
+    component &quot;Views MVT\n(HTML)&quot; as MVT
+    component &quot;API REST\n(DRF)&quot; as API
+
+    package &quot;Painéis / UI&quot; {
+        component &quot;Painel ETL&quot; as UI_ETL
+        component &quot;Painel Qualidade (DAMA)&quot; as UI_DAMA
+        component &quot;Painel Relacional&quot; as UI_REL
+        component &quot;Painel Governança&quot; as UI_GOV
+    }
+
+    MVT --&gt; UI_ETL
+    MVT --&gt; UI_DAMA
+    MVT --&gt; UI_REL
+    MVT --&gt; UI_GOV
+
+    API --&gt; MVT : Suporte híbrido
+}
+
+' ============================================================
+' CAMADA DE SERVIÇOS DE DOMÍNIO
+' ============================================================
+package &quot;Serviços Internos (Domain Services)&quot; {
+
+    component &quot;PipelineService\n(ETL)&quot; as Pipeline
+    component &quot;LogicaUnicidade\n(Utils)&quot; as Unicidade
+    component &quot;MotorRegrasSQL\n(Service)&quot; as Regras
+    component &quot;LogicaScorecard\n(Utils)&quot; as Scorecard
+    component &quot;AuditSignals\n(Django Signals)&quot; as Signals
+}
+
+' ============================================================
+' CAMADA DE TASKS (Celery)
+' ============================================================
+package &quot;Tarefas Assíncronas (Celery Tasks)&quot; {
+
+    component &quot;ETLTasks&quot; as ETLTasks
+    component &quot;SimplesTasks&quot; as SimplesTasks
+    component &quot;RelacionalTasks&quot; as RelacionalTasks
+    component &quot;EngenhariaTasks&quot; as EngenhariaTasks
+}
+
+' Ligações Views/API -&gt; Tasks
+MVT --&gt; ETLTasks : delay()
+MVT --&gt; SimplesTasks : delay()
+MVT --&gt; RelacionalTasks : delay()
+MVT --&gt; EngenhariaTasks : delay()
+
+API --&gt; ETLTasks : delay()
+API --&gt; SimplesTasks : delay()
+API --&gt; RelacionalTasks : delay()
+API --&gt; EngenhariaTasks : delay()
+
+' Tasks -&gt; Domain Services
+ETLTasks ..&gt; Pipeline : executa
+SimplesTasks ..&gt; Unicidade : usa
+SimplesTasks ..&gt; Regras : regras SQL simples
+RelacionalTasks ..&gt; Regras : regras SQL avançadas
+RelacionalTasks ..&gt; Scorecard : cálculos avançados
+
+' ============================================================
+' CAMADA DE MODELS (Django ORM)
+' ============================================================
+package &quot;Models (ORM)&quot; {
+
+    component &quot;ExecucaoPipeline&quot;
+    component &quot;LogEtapa&quot;
+
+    component &quot;RelatorioCompletude&quot;
+    component &quot;RelatorioValidade&quot;
+    component &quot;RelatorioUnicidade&quot;
+    component &quot;RelatorioUnicidadePersonalizada&quot;
+
+    component &quot;RelatorioRegraNegocio&quot;
+    component &quot;RelatorioAnaliseRelacional&quot;
+
+    component &quot;RelatorioDQI&quot;
+    component &quot;RelatorioRiscoSenha&quot;
+    component &quot;RelatorioScorecard&quot;
+
+    component &quot;MapeamentoCarga&quot;
+    component &quot;HistoricoCarga&quot;
+
+    component &quot;AuditoriaAD&quot;
+    component &quot;IncidenteQualidade&quot;
+    component &quot;PerfilGerente&quot;
+}
+
+' Conexões Services -&gt; Models
+Pipeline --&gt; ExecucaoPipeline
+Pipeline --&gt; LogEtapa
+
+Unicidade --&gt; RelatorioUnicidade
+SimplesTasks --&gt; RelatorioRegraNegocio
+
+Regras --&gt; RelatorioRegraNegocio
+Regras --&gt; RelatorioAnaliseRelacional
+Regras --&gt; RelatorioDQI
+
+Scorecard --&gt; RelatorioScorecard
+
+Signals --&gt; IncidenteQualidade
+Signals --&gt; AuditoriaAD
+
+EngenhariaTasks --&gt; MapeamentoCarga
+EngenhariaTasks --&gt; HistoricoCarga
+
+&#64;enduml"/>
+
+</object></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Diagrama de Implantação (Infraestrutura Física)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api_docs.html" class="btn btn-neutral float-right" title="API REST (Backend Headless)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -45,8 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
 <ul>
@@ -69,6 +69,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul>
@@ -155,6 +158,64 @@
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Log </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">etapa_nome</span><span class="si">}</span><span class="s2"> (Execução #</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">execucao</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">) - </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+    
+<div class="viewcode-block" id="BaseConhecimentoRH">
+<a class="viewcode-back" href="../../qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseConhecimentoRH</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tabela que armazena a Cópia Dourada (Source of Truth) importada do sistema acadêmico/RH.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">samaccountname</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Chave de cruzamento</span>
+    <span class="n">status_rh</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Ativo, Cancelado, Concluído</span>
+    <span class="n">departamento_correto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cargo_correto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">gerente_correto_login</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nome_completo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">email_correto</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">data_importacao</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">samaccountname</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status_rh</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+
+<div class="viewcode-block" id="MapeamentoDepartamentoGrupo">
+<a class="viewcode-back" href="../../qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MapeamentoDepartamentoGrupo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Traduz o nome do setor no CSV para o nome do Grupo no AD.</span>
+<span class="sd">    Ex: &#39;DCOMP - DEPARTAMENTO DE COMPUTAÇÃO&#39; -&gt; &#39;GG_DCOMP&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">departamento_rh</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Como vem no CSV</span>
+    <span class="n">prefixo_grupo_ad</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Ex: GG_DCOMP</span></div>
+
+    
+    <span class="c1"># Se quiser separar por tipo (Admin/Impressão), pode ter sufixos</span>
+    <span class="c1"># Mas o básico é saber qual a sigla da unidade.</span>
+
+<div class="viewcode-block" id="UsuarioUnificado">
+<a class="viewcode-back" href="../../qualidade_ad.html#qualidade_ad.models.UsuarioUnificado">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">UsuarioUnificado</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    O &#39;Golden Record&#39;. Representa o estado DESEJADO do usuário no AD</span>
+<span class="sd">    após processar todas as suas linhas do CSV.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">samaccountname</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nome_completo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">email_oficial</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    
+    <span class="c1"># Status calculado: Se tiver pelo menos 1 vínculo ativo, é TRUE.</span>
+    <span class="n">deve_estar_ativo</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Lista calculada de grupos que ele DEVE ter (JSON)</span>
+    <span class="c1"># Ex: [&#39;GG_CP_ADMINISTRATIVO&#39;, &#39;GG_MEIOAMB_DISCENTES&#39;]</span>
+    <span class="n">grupos_calculados</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">JSONField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    
+    <span class="c1"># Log de quais linhas do CSV geraram esse registro</span>
+    <span class="n">perfis_origem</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">JSONField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    
+    <span class="n">data_processamento</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    </div>
 
 </pre></div>
 

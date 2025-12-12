@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Analises Relacionais" href="analises_relacionais.html" />
-    <link rel="prev" title="Diagrama de Implantação (Infraestrutura Física)" href="diagrams/architecture.html" /> 
+    <link rel="prev" title="API REST (Backend Headless)" href="api_docs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,8 +48,8 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
 <ul>
@@ -72,6 +72,9 @@
 <li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul class="current">
@@ -669,6 +672,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="qualidade_ad.html#module-qualidade_ad.models">qualidade_ad.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.cargo_correto"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.cargo_correto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.data_importacao"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.data_importacao</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.departamento_correto"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.departamento_correto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.email_correto"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.email_correto</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.gerente_correto_login"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.gerente_correto_login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.get_next_by_data_importacao"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.get_next_by_data_importacao()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.get_previous_by_data_importacao"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.get_previous_by_data_importacao()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.nome_completo"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.nome_completo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.objects"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.samaccountname"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.samaccountname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.BaseConhecimentoRH.status_rh"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH.status_rh</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline"><code class="docutils literal notranslate"><span class="pre">ExecucaoPipeline</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">ExecucaoPipeline.DoesNotExist</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.ExecucaoPipeline.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">ExecucaoPipeline.MultipleObjectsReturned</span></code></a></li>
@@ -704,6 +723,30 @@
 <li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.LogEtapa.status"><code class="docutils literal notranslate"><span class="pre">LogEtapa.status</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.LogEtapa.timestamp_fim"><code class="docutils literal notranslate"><span class="pre">LogEtapa.timestamp_fim</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.LogEtapa.timestamp_inicio"><code class="docutils literal notranslate"><span class="pre">LogEtapa.timestamp_inicio</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.departamento_rh"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo.departamento_rh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.id"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.objects"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.MapeamentoDepartamentoGrupo.prefixo_grupo_ad"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo.prefixo_grupo_ad</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.data_processamento"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.data_processamento</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.deve_estar_ativo"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.deve_estar_ativo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.email_oficial"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.email_oficial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.get_next_by_data_processamento"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.get_next_by_data_processamento()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.get_previous_by_data_processamento"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.get_previous_by_data_processamento()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.grupos_calculados"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.grupos_calculados</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.nome_completo"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.nome_completo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.objects"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.perfis_origem"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.perfis_origem</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="qualidade_ad.html#qualidade_ad.models.UsuarioUnificado.samaccountname"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado.samaccountname</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -768,7 +811,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="diagrams/architecture.html" class="btn btn-neutral float-left" title="Diagrama de Implantação (Infraestrutura Física)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_docs.html" class="btn btn-neutral float-left" title="API REST (Backend Headless)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="analises_relacionais.html" class="btn btn-neutral float-right" title="Analises Relacionais" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

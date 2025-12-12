@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modules" href="../modules.html" />
+    <link rel="next" title="Diagrama de Implantação (Infraestrutura Logica + Serviços)" href="architecture_logic.html" />
     <link rel="prev" title="Database Erd" href="database_erd.html" /> 
 </head>
 
@@ -48,8 +48,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
 <ul class="current">
@@ -72,6 +72,9 @@
 <li class="toctree-l1"><a class="reference internal" href="database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul>
@@ -106,53 +109,111 @@
   <section id="diagrama-de-implantacao-infraestrutura-fisica">
 <h1>Diagrama de Implantação (Infraestrutura Física)<a class="headerlink" href="#diagrama-de-implantacao-infraestrutura-fisica" title="Link to this heading"></a></h1>
 <p class="plantuml">
-<object data="../_images/plantuml-7122b0c12c574af94cef335589e87fa15bcc2dbb.svg" type="image/svg+xml" style="width:2177px;height:591px;background:#FFFFFF;">
-<img src="../_images/plantuml-7122b0c12c574af94cef335589e87fa15bcc2dbb.png" alt="&#64;startuml
+<object data="../_images/plantuml-e9daafe5bcb59930c536e23e4a0afc6ec6aae30e.svg" type="image/svg+xml" style="width:1432px;height:1038px;background:#FFFFFF;">
+<img src="../_images/plantuml-e9daafe5bcb59930c536e23e4a0afc6ec6aae30e.png" alt="&#64;startuml
 !theme plain
 skinparam linetype ortho
-title Implantação Física — APEX GOVERNANCE
+title Arquitetura Completa — Implantação Física + Componentes Lógicos
 
-node &quot;Servidor de Aplicação (Linux) - App Server&quot; as LinuxNode {
-    component &quot;Django (Gunicorn / Uvicorn)&quot; as Django
-    component &quot;Celery Workers&quot; as Celery
-    queue &quot;Redis (Broker)&quot; as Redis
+' ============================================================
+' FRONTEND
+' ============================================================
+node &quot;Frontend Layer (Cliente)&quot; as Front {
+    [Navegador (Painel Django)] as BrowserOld
+    [React App (Novo Painel)] as React
+}
+
+' ============================================================
+' SERVIDOR LINUX (BACKEND + CELERY + REDIS)
+' ============================================================
+node &quot;Servidor de Aplicação (Linux)&quot; as LinuxNode {
+
+    node &quot;Backend Layer (Django)&quot; as Backend {
+        component &quot;Django Core&quot; as DjangoCore {
+            [Views MVT] as MVT
+            [API REST (DRF)] as API
+            [Admin Panel] as Admin
+        }
+    }
+
+    node &quot;Execução Assíncrona&quot; as Async {
+        [Celery Workers] as Workers
+        queue &quot;Redis (Broker / Cache)&quot; as Redis
+    }
+
     folder &quot;Static / Media&quot; as Static
 }
 
-node &quot;Servidor de Banco (Windows / DB Server)&quot; as WinNode {
+' ============================================================
+' SERVIDOR WINDOWS (POSTGRES)
+' ============================================================
+node &quot;Servidor de Banco (Windows)&quot; as WinNode {
     database &quot;PostgreSQL 16&quot; as Postgres
 }
 
+' ============================================================
+' AGENTE DA REDE
+' ============================================================
 node &quot;Agente na Rede (Windows Service)&quot; as AgentNode {
     [Agente AD Monitor] as AgentService
 }
 
+' ============================================================
+' INFRAESTRUTURA CORPORATIVA
+' ============================================================
 node &quot;Infraestrutura Corporativa&quot; as Corp {
     [Active Directory (Domain Controller)] as AD
 }
 
-' Conexões principais
-LinuxNode --&gt; WinNode : TCP/IP (5432) - conexões DB
-LinuxNode --&gt; Redis : TCP/IP (6379) - broker
-AgentNode --&gt; LinuxNode : HTTPS (443) / API POST /api/auditoria/
-AgentNode --&gt; AD : Leitura local / Event Viewer
-LinuxNode --&gt; Corp : LDAP/LDAPS (389/636) - leitura AD (quando aplicável)
+' ============================================================
+' FLUXOS E CONEXÕES
+' ============================================================
 
-' Observações de implantação
+' Frontend &lt;-&gt; Backend
+BrowserOld --&gt; MVT : HTTP (HTML)
+React --&gt; API : HTTPS (REST / JWT)
+
+' Backend &lt;-&gt; DB
+MVT ..&gt; Postgres : lê/escreve
+API ..&gt; Postgres : lê/escreve
+Workers --&gt; Postgres : ETL / Auditoria / Scorecard
+
+' Backend &lt;-&gt; Redis
+MVT --&gt; Redis : enqueue task
+API --&gt; Redis : enqueue task
+Redis --&gt; Workers : entrega tarefa
+
+' Linux &lt;-&gt; Windows Server
+LinuxNode --&gt; WinNode : TCP/IP 5432 (DB)
+
+' Agente AD
+AgentService --&gt; API : HTTPS 443 (POST /api/auditoria/)
+AgentService --&gt; AD : leitura direta (Event Viewer)
+
+' Backend &lt;-&gt; Active Directory
+DjangoCore --&gt; AD : LDAP/LDAPS (389/636)
+
+' Observações
 note left of LinuxNode
   App Server:
   • Ubuntu 24.04 LTS
   • Gunicorn/Uvicorn + Nginx
-  • Celery workers (auto-scale via systemd / supervisor)
+  • Celery workers (systemd/supervisor)
 end note
 
 note right of WinNode
   DB Server:
-  • Windows 10/Server
-  • PostgreSQL 16 (standalone / replica opcional)
+  • Windows Server
+  • PostgreSQL 16 Standalone/Replica
 end note
 
-note bottom: Backup / Snapshot schedule, Firewall rules, TLS mutual auth (agent ↔ API)
+note bottom
+  Segurança:
+  • TLS entre Agente e API
+  • Firewall restritivo entre Linux &lt;-&gt; Windows
+  • Snapshots do DB e Backup incremental
+end note
+
 &#64;enduml"/>
 
 </object></p>
@@ -163,7 +224,7 @@ note bottom: Backup / Snapshot schedule, Firewall rules, TLS mutual auth (agent 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="database_erd.html" class="btn btn-neutral float-left" title="Database Erd" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="architecture_logic.html" class="btn btn-neutral float-right" title="Diagrama de Implantação (Infraestrutura Logica + Serviços)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

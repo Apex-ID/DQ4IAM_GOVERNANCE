@@ -38,6 +38,9 @@ Este documento detalha a arquitetura, requisitos, métricas matemáticas e diagr
    diagrams/project_classes
    diagrams/database_erd
    diagrams/architecture
+   diagrams/architecture_logic
+
+   api_docs
 
 .. toctree::
    :maxdepth: 2

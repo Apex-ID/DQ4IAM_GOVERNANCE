@@ -48,8 +48,8 @@
 <li class="toctree-l1"><a class="reference internal" href="requirements/functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements/non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html">Catálogo de Fórmulas e Métricas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/formulas.html#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modelagem e Arquitetura (UML)</span></p>
 <ul>
@@ -72,6 +72,9 @@
 <li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul class="current">
@@ -116,8 +119,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.models">qualidade_ad.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.BaseConhecimentoRH"><code class="docutils literal notranslate"><span class="pre">BaseConhecimentoRH</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.ExecucaoPipeline"><code class="docutils literal notranslate"><span class="pre">ExecucaoPipeline</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.LogEtapa"><code class="docutils literal notranslate"><span class="pre">LogEtapa</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo"><code class="docutils literal notranslate"><span class="pre">MapeamentoDepartamentoGrupo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qualidade_ad.models.UsuarioUnificado"><code class="docutils literal notranslate"><span class="pre">UsuarioUnificado</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-qualidade_ad.tasks">qualidade_ad.tasks module</a></li>
@@ -259,6 +265,96 @@ Alguns violarão as regras de negócio propositalmente.</p>
 </section>
 <section id="module-qualidade_ad.models">
 <span id="qualidade-ad-models-module"></span><h2>qualidade_ad.models module<a class="headerlink" href="#module-qualidade_ad.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qualidade_ad.models.</span></span><span class="sig-name descname"><span class="pre">BaseConhecimentoRH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/qualidade_ad/models.html#BaseConhecimentoRH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Tabela que armazena a Cópia Dourada (Source of Truth) importada do sistema acadêmico/RH.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.DoesNotExist">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.MultipleObjectsReturned">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.cargo_correto">
+<span class="sig-name descname"><span class="pre">cargo_correto</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.cargo_correto" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.data_importacao">
+<span class="sig-name descname"><span class="pre">data_importacao</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.data_importacao" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.departamento_correto">
+<span class="sig-name descname"><span class="pre">departamento_correto</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.departamento_correto" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.email_correto">
+<span class="sig-name descname"><span class="pre">email_correto</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.email_correto" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.gerente_correto_login">
+<span class="sig-name descname"><span class="pre">gerente_correto_login</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.gerente_correto_login" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.get_next_by_data_importacao">
+<span class="sig-name descname"><span class="pre">get_next_by_data_importacao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">data_importacao&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.get_next_by_data_importacao" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.get_previous_by_data_importacao">
+<span class="sig-name descname"><span class="pre">get_previous_by_data_importacao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">data_importacao&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.get_previous_by_data_importacao" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.nome_completo">
+<span class="sig-name descname"><span class="pre">nome_completo</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.nome_completo" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.samaccountname">
+<span class="sig-name descname"><span class="pre">samaccountname</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.samaccountname" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.BaseConhecimentoRH.status_rh">
+<span class="sig-name descname"><span class="pre">status_rh</span></span><a class="headerlink" href="#qualidade_ad.models.BaseConhecimentoRH.status_rh" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="qualidade_ad.models.ExecucaoPipeline">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qualidade_ad.models.</span></span><span class="sig-name descname"><span class="pre">ExecucaoPipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/qualidade_ad/models.html#ExecucaoPipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qualidade_ad.models.ExecucaoPipeline" title="Link to this definition"></a></dt>
@@ -464,6 +560,136 @@ object the first time, the query is executed.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="qualidade_ad.models.LogEtapa.timestamp_inicio">
 <span class="sig-name descname"><span class="pre">timestamp_inicio</span></span><a class="headerlink" href="#qualidade_ad.models.LogEtapa.timestamp_inicio" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qualidade_ad.models.</span></span><span class="sig-name descname"><span class="pre">MapeamentoDepartamentoGrupo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/qualidade_ad/models.html#MapeamentoDepartamentoGrupo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Traduz o nome do setor no CSV para o nome do Grupo no AD.
+Ex: ‘DCOMP - DEPARTAMENTO DE COMPUTAÇÃO’ -&gt; ‘GG_DCOMP’</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo.DoesNotExist">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo.MultipleObjectsReturned">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo.departamento_rh">
+<span class="sig-name descname"><span class="pre">departamento_rh</span></span><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo.departamento_rh" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo.id" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.MapeamentoDepartamentoGrupo.prefixo_grupo_ad">
+<span class="sig-name descname"><span class="pre">prefixo_grupo_ad</span></span><a class="headerlink" href="#qualidade_ad.models.MapeamentoDepartamentoGrupo.prefixo_grupo_ad" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qualidade_ad.models.</span></span><span class="sig-name descname"><span class="pre">UsuarioUnificado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/qualidade_ad/models.html#UsuarioUnificado"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>O ‘Golden Record’. Representa o estado DESEJADO do usuário no AD
+após processar todas as suas linhas do CSV.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.DoesNotExist">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.MultipleObjectsReturned">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.data_processamento">
+<span class="sig-name descname"><span class="pre">data_processamento</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.data_processamento" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.deve_estar_ativo">
+<span class="sig-name descname"><span class="pre">deve_estar_ativo</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.deve_estar_ativo" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.email_oficial">
+<span class="sig-name descname"><span class="pre">email_oficial</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.email_oficial" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.get_next_by_data_processamento">
+<span class="sig-name descname"><span class="pre">get_next_by_data_processamento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">data_processamento&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.get_next_by_data_processamento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.get_previous_by_data_processamento">
+<span class="sig-name descname"><span class="pre">get_previous_by_data_processamento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">data_processamento&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.get_previous_by_data_processamento" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.grupos_calculados">
+<span class="sig-name descname"><span class="pre">grupos_calculados</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.grupos_calculados" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.nome_completo">
+<span class="sig-name descname"><span class="pre">nome_completo</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.nome_completo" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.objects" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.perfis_origem">
+<span class="sig-name descname"><span class="pre">perfis_origem</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.perfis_origem" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="qualidade_ad.models.UsuarioUnificado.samaccountname">
+<span class="sig-name descname"><span class="pre">samaccountname</span></span><a class="headerlink" href="#qualidade_ad.models.UsuarioUnificado.samaccountname" title="Link to this definition"></a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>

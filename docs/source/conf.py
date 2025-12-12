@@ -22,6 +22,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
     'sphinxcontrib.plantuml',
+    'sphinxcontrib.httpdomain',
 ]
 
 

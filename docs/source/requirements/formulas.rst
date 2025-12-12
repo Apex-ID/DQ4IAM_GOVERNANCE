@@ -1,6 +1,3 @@
-Formulas
-========
-
 Catálogo de Fórmulas e Métricas
 ===============================
 
@@ -10,7 +7,7 @@ Este documento detalha a matemática aplicada no motor de regras do **APEX GOVER
 -------------------------
 
 A. Índice de Qualidade de Dados (DQI)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 O DQI é um KPI composto que pondera as quatro dimensões principais. É calculado separadamente para Staging e Produção.
 
@@ -26,7 +23,7 @@ Onde:
 * **U (Unicidade):** Taxa de registros únicos vs. duplicados.
 
 B. Unicidade Composta
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 Utilizada na análise personalizada e na detecção de clones.
 
@@ -36,7 +33,7 @@ Utilizada na análise personalizada e na detecção de clones.
    \left( \frac{\text{Contagem de Tuplas Distintas}}{\text{Total de Linhas}} \right) \times 100
 
 C. Risco de Obsolescência (Temporalidade)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Utilizada para classificar ativos de risco.
 
@@ -44,7 +41,7 @@ Utilizada para classificar ativos de risco.
 * **Senha Crítica:** ``Data Atual - pwdLastSet > 365 dias``
 
 2. Análise de Lacunas (O que faltou?)
--------------------------------------
+""""""""""""""""""""""""""""""""""""""
 
 Apesar da cobertura abrangente, as seguintes fórmulas matemáticas avançadas do DAMA não foram implementadas nesta versão:
 
@@ -60,7 +57,7 @@ Apesar da cobertura abrangente, as seguintes fórmulas matemáticas avançadas d
    *O que é:* Compara o dado com fonte externa confiável (ex.: CPF na Receita Federal).  
    *Por que faltou:* Escopo restrito aos dados internos; sem integrações com APIs externas.
 
-==============================================================================
+
 5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)
 ==============================================================================
 
@@ -78,7 +75,7 @@ Fórmula Geral do Indicador
 
 Abaixo, a lógica técnica de detecção de falha para cada regra.
 
--------------------------------------------------------------------------------
+
 GRUPO A: COMPLETUDE (Campos Obrigatórios de Negócio)
 -------------------------------------------------------------------------------
 
@@ -112,7 +109,7 @@ GRUPO A: COMPLETUDE (Campos Obrigatórios de Negócio)
 10. **OUs sem Políticas (GPO)**  
     ``gPLink`` nulo ou vazio.
 
--------------------------------------------------------------------------------
+
 GRUPO B: TEMPORALIDADE E HIGIENE (Dados Obsoletos)
 -------------------------------------------------------------------------------
 
@@ -128,7 +125,7 @@ GRUPO B: TEMPORALIDADE E HIGIENE (Dados Obsoletos)
 14. **Computadores Inativos**  
     ``DataAtual - lastLogonTimestamp > 90 dias``
 
--------------------------------------------------------------------------------
+
 GRUPO C: CONSISTÊNCIA E INTEGRIDADE (Relacional)
 -------------------------------------------------------------------------------
 
@@ -159,7 +156,7 @@ GRUPO C: CONSISTÊNCIA E INTEGRIDADE (Relacional)
 23. **Grupos Vazios**  
      ``member`` nulo ou vazio.
 
--------------------------------------------------------------------------------
+
 GRUPO D: VALIDADE E CONFORMIDADE
 -------------------------------------------------------------------------------
 
@@ -173,7 +170,7 @@ GRUPO D: VALIDADE E CONFORMIDADE
      ``operatingSystem`` não contém:  
      *Windows 10*, *11*, *Server 2016*, *2019*, *2022*.
 
--------------------------------------------------------------------------------
+
 GRUPO E: ESTRUTURAL E UNICIDADE AVANÇADA
 -------------------------------------------------------------------------------
 

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulas &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+  <title>Catálogo de Fórmulas e Métricas &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -49,16 +49,25 @@
 <li class="toctree-l1"><a class="reference internal" href="functional.html#requisitos-funcionais-rf">Requisitos Funcionais (RF)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="non_functional.html">Non Functional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="non_functional.html#requisitos-nao-funcionais-e-inversos">Requisitos Não Funcionais e Inversos</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Formulas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#catalogo-de-formulas-e-metricas">Catálogo de Fórmulas e Métricas</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Catálogo de Fórmulas e Métricas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#formulas-implementadas">1. Fórmulas Implementadas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#a-indice-de-qualidade-de-dados-dqi">A. Índice de Qualidade de Dados (DQI)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#b-unicidade-composta">B. Unicidade Composta</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-risco-de-obsolescencia-temporalidade">C. Risco de Obsolescência (Temporalidade)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-risco-de-obsolescencia-temporalidade">C. Risco de Obsolescência (Temporalidade)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#analise-de-lacunas-o-que-faltou">2. Análise de Lacunas (O que faltou?)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#analise-de-lacunas-o-que-faltou">2. Análise de Lacunas (O que faltou?)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#dimensao-regras-de-negocio-e-auditoria-sql-engine">5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#formula-geral-do-indicador">Fórmula Geral do Indicador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grupo-a-completude-campos-obrigatorios-de-negocio">GRUPO A: COMPLETUDE (Campos Obrigatórios de Negócio)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grupo-b-temporalidade-e-higiene-dados-obsoletos">GRUPO B: TEMPORALIDADE E HIGIENE (Dados Obsoletos)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grupo-c-consistencia-e-integridade-relacional">GRUPO C: CONSISTÊNCIA E INTEGRIDADE (Relacional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grupo-d-validade-e-conformidade">GRUPO D: VALIDADE E CONFORMIDADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#grupo-e-estrutural-e-unicidade-avancada">GRUPO E: ESTRUTURAL E UNICIDADE AVANÇADA</a></li>
 </ul>
 </li>
 </ul>
@@ -83,6 +92,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/database_erd.html">Database Erd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/database_erd.html#diagrama-erd-completo-do-banco-de-dados">Diagrama ERD Completo do Banco de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/architecture.html">Diagrama de Implantação (Infraestrutura Física)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/architecture_logic.html">Diagrama de Implantação (Infraestrutura Logica + Serviços)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html">API REST (Backend Headless)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_docs.html#especificacoes-tecnicas">Especificações Técnicas</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul>
@@ -104,7 +116,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Formulas</li>
+      <li class="breadcrumb-item active">Catálogo de Fórmulas e Métricas</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/requirements/formulas.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -114,10 +126,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="formulas">
-<h1>Formulas<a class="headerlink" href="#formulas" title="Link to this heading"></a></h1>
-</section>
-<section id="catalogo-de-formulas-e-metricas">
+  <section id="catalogo-de-formulas-e-metricas">
 <h1>Catálogo de Fórmulas e Métricas<a class="headerlink" href="#catalogo-de-formulas-e-metricas" title="Link to this heading"></a></h1>
 <p>Este documento detalha a matemática aplicada no motor de regras do <strong>APEX GOVERNANCE</strong>.</p>
 <section id="formulas-implementadas">
@@ -149,10 +158,8 @@
 <li><p><strong>Inativo:</strong> <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Atual</span> <span class="pre">-</span> <span class="pre">lastLogonTimestamp</span> <span class="pre">&gt;</span> <span class="pre">90</span> <span class="pre">dias</span></code></p></li>
 <li><p><strong>Senha Crítica:</strong> <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Atual</span> <span class="pre">-</span> <span class="pre">pwdLastSet</span> <span class="pre">&gt;</span> <span class="pre">365</span> <span class="pre">dias</span></code></p></li>
 </ul>
-</section>
-</section>
 <section id="analise-de-lacunas-o-que-faltou">
-<h2>2. Análise de Lacunas (O que faltou?)<a class="headerlink" href="#analise-de-lacunas-o-que-faltou" title="Link to this heading"></a></h2>
+<h4>2. Análise de Lacunas (O que faltou?)<a class="headerlink" href="#analise-de-lacunas-o-que-faltou" title="Link to this heading"></a></h4>
 <p>Apesar da cobertura abrangente, as seguintes fórmulas matemáticas avançadas do DAMA não foram implementadas nesta versão:</p>
 <ol class="arabic simple">
 <li><p><strong>Taxa de Decaimento da Informação (Information Decay Rate):</strong>
@@ -165,9 +172,14 @@
 <em>O que é:</em> Compara o dado com fonte externa confiável (ex.: CPF na Receita Federal).
 <em>Por que faltou:</em> Escopo restrito aos dados internos; sem integrações com APIs externas.</p></li>
 </ol>
+</section>
+</section>
+</section>
+</section>
+<section id="dimensao-regras-de-negocio-e-auditoria-sql-engine">
+<h1>5. DIMENSÃO: REGRAS DE NEGÓCIO E AUDITORIA (SQL ENGINE)<a class="headerlink" href="#dimensao-regras-de-negocio-e-auditoria-sql-engine" title="Link to this heading"></a></h1>
 <p>Diferente das métricas simples, estas regras são <strong>binárias por registro (Passa/Falha)</strong>.
 O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p>
-</section>
 <section id="formula-geral-do-indicador">
 <h2>Fórmula Geral do Indicador<a class="headerlink" href="#formula-geral-do-indicador" title="Link to this heading"></a></h2>
 <div class="math notranslate nohighlight">
@@ -175,6 +187,9 @@ O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p
 \left(1 - \frac{\text{Total de Registros com Falha}}
 {\text{Total de Registros da Tabela}} \right) \times 100\]</div>
 <p>Abaixo, a lógica técnica de detecção de falha para cada regra.</p>
+</section>
+<section id="grupo-a-completude-campos-obrigatorios-de-negocio">
+<h2>GRUPO A: COMPLETUDE (Campos Obrigatórios de Negócio)<a class="headerlink" href="#grupo-a-completude-campos-obrigatorios-de-negocio" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p><strong>Usuários sem Gerente</strong>
 <code class="docutils literal notranslate"><span class="pre">manager</span></code> é nulo ou vazio.</p></li>
@@ -197,6 +212,9 @@ O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p
 <li><p><strong>OUs sem Políticas (GPO)</strong>
 <code class="docutils literal notranslate"><span class="pre">gPLink</span></code> nulo ou vazio.</p></li>
 </ol>
+</section>
+<section id="grupo-b-temporalidade-e-higiene-dados-obsoletos">
+<h2>GRUPO B: TEMPORALIDADE E HIGIENE (Dados Obsoletos)<a class="headerlink" href="#grupo-b-temporalidade-e-higiene-dados-obsoletos" title="Link to this heading"></a></h2>
 <ol class="arabic simple" start="11">
 <li><p><strong>Usuários Inativos (&gt;90 dias)</strong>
 <code class="docutils literal notranslate"><span class="pre">DataAtual</span> <span class="pre">-</span> <span class="pre">lastLogonTimestamp</span> <span class="pre">&gt;</span> <span class="pre">90</span> <span class="pre">dias</span></code></p></li>
@@ -207,6 +225,9 @@ O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p
 <li><p><strong>Computadores Inativos</strong>
 <code class="docutils literal notranslate"><span class="pre">DataAtual</span> <span class="pre">-</span> <span class="pre">lastLogonTimestamp</span> <span class="pre">&gt;</span> <span class="pre">90</span> <span class="pre">dias</span></code></p></li>
 </ol>
+</section>
+<section id="grupo-c-consistencia-e-integridade-relacional">
+<h2>GRUPO C: CONSISTÊNCIA E INTEGRIDADE (Relacional)<a class="headerlink" href="#grupo-c-consistencia-e-integridade-relacional" title="Link to this heading"></a></h2>
 <ol class="arabic simple" start="15">
 <li><dl class="simple">
 <dt><strong>Gerente Inválido</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">manager</span></code> não existe em <code class="docutils literal notranslate"><span class="pre">distinguishedName</span></code> de nenhum usuário.</p>
@@ -254,6 +275,9 @@ O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p
 </dl>
 </li>
 </ol>
+</section>
+<section id="grupo-d-validade-e-conformidade">
+<h2>GRUPO D: VALIDADE E CONFORMIDADE<a class="headerlink" href="#grupo-d-validade-e-conformidade" title="Link to this heading"></a></h2>
 <ol class="arabic simple" start="24">
 <li><dl class="simple">
 <dt><strong>UPN Fora do Padrão</strong></dt><dd><p>Sufixo do <code class="docutils literal notranslate"><span class="pre">userPrincipalName</span></code> diferente de <code class="docutils literal notranslate"><span class="pre">&#64;office.ufs.br</span></code>.</p>
@@ -272,6 +296,9 @@ O sistema executa <strong>33 regras distintas</strong> divididas em 5 grupos.</p
 </dl>
 </li>
 </ol>
+</section>
+<section id="grupo-e-estrutural-e-unicidade-avancada">
+<h2>GRUPO E: ESTRUTURAL E UNICIDADE AVANÇADA<a class="headerlink" href="#grupo-e-estrutural-e-unicidade-avancada" title="Link to this heading"></a></h2>
 <ol class="arabic simple" start="27">
 <li><dl class="simple">
 <dt><strong>Ciclos Hierárquicos</strong></dt><dd><p>Detecção via SQL recursivo: gerente A → B e B → A.</p>
