@@ -47,3 +47,52 @@ class LogEtapa(models.Model):
     
     def __str__(self):
         return f"Log {self.etapa_nome} (Execução #{self.execucao.id}) - {self.status}"
+    
+class BaseConhecimentoRH(models.Model):
+    """
+    Tabela que armazena a Cópia Dourada (Source of Truth) importada do sistema acadêmico/RH.
+    """
+    samaccountname = models.CharField(max_length=255, primary_key=True) # Chave de cruzamento
+    status_rh = models.CharField(max_length=100) # Ativo, Cancelado, Concluído
+    departamento_correto = models.CharField(max_length=255, null=True, blank=True)
+    cargo_correto = models.CharField(max_length=255, null=True, blank=True)
+    gerente_correto_login = models.CharField(max_length=255, null=True, blank=True)
+    nome_completo = models.CharField(max_length=255, null=True, blank=True)
+    email_correto = models.CharField(max_length=255, null=True, blank=True)
+    
+    data_importacao = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.samaccountname} ({self.status_rh})"
+
+class MapeamentoDepartamentoGrupo(models.Model):
+    """
+    Traduz o nome do setor no CSV para o nome do Grupo no AD.
+    Ex: 'DCOMP - DEPARTAMENTO DE COMPUTAÇÃO' -> 'GG_DCOMP'
+    """
+    departamento_rh = models.CharField(max_length=255, unique=True) # Como vem no CSV
+    prefixo_grupo_ad = models.CharField(max_length=100) # Ex: GG_DCOMP
+    
+    # Se quiser separar por tipo (Admin/Impressão), pode ter sufixos
+    # Mas o básico é saber qual a sigla da unidade.
+
+class UsuarioUnificado(models.Model):
+    """
+    O 'Golden Record'. Representa o estado DESEJADO do usuário no AD
+    após processar todas as suas linhas do CSV.
+    """
+    samaccountname = models.CharField(max_length=255, primary_key=True)
+    nome_completo = models.CharField(max_length=255)
+    email_oficial = models.CharField(max_length=255)
+    
+    # Status calculado: Se tiver pelo menos 1 vínculo ativo, é TRUE.
+    deve_estar_ativo = models.BooleanField(default=False)
+    
+    # Lista calculada de grupos que ele DEVE ter (JSON)
+    # Ex: ['GG_CP_ADMINISTRATIVO', 'GG_MEIOAMB_DISCENTES']
+    grupos_calculados = models.JSONField(default=list)
+    
+    # Log de quais linhas do CSV geraram esse registro
+    perfis_origem = models.JSONField(default=list)
+    
+    data_processamento = models.DateTimeField(auto_now=True)    

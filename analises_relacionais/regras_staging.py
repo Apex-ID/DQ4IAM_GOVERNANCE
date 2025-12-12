@@ -478,5 +478,83 @@ REGRAS_STAGING = [
             JOIN ad_users_staging u2 ON u1."sAMAccountName" LIKE '%' || u2."sAMAccountName" || '%'
             WHERE u1."id" != u2."id" AND LENGTH(u2."sAMAccountName") > 4 AND (u1."sAMAccountName" LIKE 'adm.%' OR u1."sAMAccountName" LIKE 'admin.%')
         """
+    },
+    # ==============================================================================
+    # GRUPO 7: RECONCILIAÇÃO COM RH (FONTE DA VERDADE)
+    # ==============================================================================
+    {
+        'nome': '37. Zombie Account (Inativo no RH, Ativo no AD)',
+        'dimensao': 'Consistência (Ciclo de Vida)',
+        'tabelas_alvo': ['ad_users'],
+        'impacto': 'Risco Crítico. Usuário desligado/formado que continua com acesso à rede.',
+        'sql': """
+            SELECT ad."sAMAccountName" as origem, 'Status RH: ' || rh.status_rh as detalhe
+            FROM ad_users ad
+            JOIN qualidade_ad_baseconhecimentorh rh ON ad."sAMAccountName" = rh.samaccountname
+            WHERE (ad."userAccountControl" & 2) = 0 
+              -- Adicionado 'APOSENTADO' na lista de status inválidos para ativos
+              AND rh.status_rh IN ('CANCELADO', 'CONCLUÍDO', 'DESLIGADO', 'DEMITIDO', 'APOSENTADO')
+        """
+    },
+    {
+        'nome': '38. Divergência de Departamento (AD vs RH)',
+        'dimensao': 'Acurácia',
+        'tabelas_alvo': ['ad_users_staging'],
+        'impacto': 'Usuário lotado no local errado. Afeta permissões e custos.',
+        # Lógica: Compara strings (ignorando case)
+        'sql': """
+            SELECT ad."sAMAccountName" as origem, 
+                   'AD: ' || COALESCE(ad.department, 'Vazio') || ' | RH: ' || rh.departamento_correto as detalhe
+            FROM ad_users ad
+            JOIN qualidade_ad_baseconhecimentorh rh ON ad."sAMAccountName" = rh.samaccountname
+            WHERE rh.status_rh LIKE 'Ativo%' -- Só checa quem está ativo
+              AND ad.department != rh.departamento_correto
+        """
+    },
+    {
+        'nome': '39. Divergência de Cargo (AD vs RH)',
+        'dimensao': 'Acurácia',
+        'tabelas_alvo': ['ad_users_staging'],
+        'impacto': 'Função incorreta. Pode conceder privilégios indevidos.',
+        'sql': """
+            SELECT ad."sAMAccountName" as origem, 
+                   'AD: ' || COALESCE(ad.title, 'Vazio') || ' | RH: ' || rh.cargo_correto as detalhe
+            FROM ad_users ad
+            JOIN qualidade_ad_baseconhecimentorh rh ON ad."sAMAccountName" = rh.samaccountname
+            WHERE rh.status_rh LIKE 'Ativo%'
+              AND ad.title != rh.cargo_correto
+        """
+    },
+    {
+        'nome': '40. Contas Fantasmas (Existem no AD, Não no RH)',
+        'dimensao': 'Integridade',
+        'tabelas_alvo': ['ad_users_staging'],
+        'impacto': 'Contas criadas sem respaldo oficial. Possíveis backdoors ou contas de serviço não documentadas.',
+        'sql': """
+            SELECT ad."sAMAccountName" as origem, 'Sem registro no RH' as detalhe
+            FROM ad_users ad
+            LEFT JOIN qualidade_ad_baseconhecimentorh rh ON ad."sAMAccountName" = rh.samaccountname
+            WHERE rh.samaccountname IS NULL
+              AND ad."sAMAccountName" NOT LIKE 'Admin%' -- Ignora admins conhecidos se quiser
+              AND (ad."userAccountControl" & 2) = 0 -- Apenas contas ativas
+        """
+    },
+    {
+        'nome': '41. Aposentado com Conta Ativa',
+        'dimensao': 'Consistência (Ciclo de Vida)',
+        'tabelas_alvo': ['ad_users_staging'],
+        'impacto': 'Risco de Segurança. Usuário aposentado mantém acesso indevido à rede corporativa.',
+        # Lógica: 
+        # 1. Cruza AD com RH (Base de Conhecimento)
+        # 2. Filtra onde o RH diz que é 'APOSENTADO'
+        # 3. Mas no AD a conta está ATIVA (bit 2 do userAccountControl é 0)
+        'sql': """
+            SELECT ad."sAMAccountName" as origem, 
+                   'Status RH: ' || rh.status_rh as detalhe
+            FROM ad_users ad
+            JOIN qualidade_ad_baseconhecimentorh rh ON ad."sAMAccountName" = rh.samaccountname
+            WHERE (ad."userAccountControl" & 2) = 0  -- Conta está ATIVA no AD
+              AND UPPER(rh.status_rh) LIKE '%APOSENTADO%' -- No RH consta como Aposentado
+        """
     }
 ]

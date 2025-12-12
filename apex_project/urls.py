@@ -39,4 +39,7 @@ urlpatterns = [
 
     # URLs do Construtor de Schemas
     path('', include('construtor_schemas.urls')),
+
+    # Rota para  API (PARA O REACT) 
+    path('api/v1/', include('api.urls')),
 ]

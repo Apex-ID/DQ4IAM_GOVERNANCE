@@ -49,16 +49,35 @@ INSTALLED_APPS = [
     'relatorios_gerenciais',
     'melhoria_continua',
     'construtor_schemas',
+    'api',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
+]
+
+# Configuração do DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+# Configuração do CORS (Permitir o React)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", # React local
+    "http://127.0.0.1:3000",
+    # Adicione o IP de produção do front depois
 ]
 
 ROOT_URLCONF = 'apex_project.urls'
