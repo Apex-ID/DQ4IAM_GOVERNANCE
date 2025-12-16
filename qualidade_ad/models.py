@@ -1,6 +1,7 @@
 # qualidade_ad/models.py
 
 from django.db import models
+from django.contrib.auth.models import User
 
 class ExecucaoPipeline(models.Model):
     """
@@ -95,4 +96,44 @@ class UsuarioUnificado(models.Model):
     # Log de quais linhas do CSV geraram esse registro
     perfis_origem = models.JSONField(default=list)
     
-    data_processamento = models.DateTimeField(auto_now=True)    
+    data_processamento = models.DateTimeField(auto_now=True)   
+
+
+class DicionarioOrganograma(models.Model):
+    """
+    Representa a estrutura oficial (Setores/Unidades).
+    Dados importados do CSV e gerenciáveis pelos técnicos.
+    """
+    codigo_unidade = models.CharField(max_length=50, primary_key=True, help_text="Código único (ex: 112406)")
+    sigla = models.CharField(max_length=50, null=True, blank=True)
+    nome = models.CharField(max_length=255)
+    hierarquia = models.CharField(max_length=100, help_text="Ex: .605.102.109.")
+    
+    # Controle de sistema
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    ultima_atualizacao = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.sigla} - {self.nome} ({self.codigo_unidade})"
+
+class HistoricoOrganograma(models.Model):
+    """
+    Guarda as versões e alterações feitas no Organograma.
+    """
+    Acoes = [
+        ('CRIACAO', 'Criação'),
+        ('EDICAO', 'Edição/Renomeação'),
+        ('IMPORTACAO', 'Importação CSV'),
+    ]
+
+    unidade_afetada = models.ForeignKey(DicionarioOrganograma, on_delete=models.CASCADE)
+    acao = models.CharField(max_length=20, choices=Acoes)
+    
+    # O que mudou?
+    detalhes = models.TextField(help_text="Ex: Nome alterado de 'DHI' para 'DHIST'")
+    
+    responsavel = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    data_evento = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.acao} em {self.unidade_afetada} - {self.data_evento}"

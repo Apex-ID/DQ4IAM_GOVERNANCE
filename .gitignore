@@ -6,6 +6,8 @@ apexvirtual/
 
 # Dados temporários
 temp_data/
+organograma/
+dados_verdade/
 *.csv
 *.txt
 

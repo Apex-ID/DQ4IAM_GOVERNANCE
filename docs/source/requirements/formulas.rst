@@ -7,7 +7,7 @@ Este documento detalha a matemática aplicada no motor de regras do **APEX GOVER
 -------------------------
 
 A. Índice de Qualidade de Dados (DQI)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 O DQI é um KPI composto que pondera as quatro dimensões principais. É calculado separadamente para Staging e Produção.
 
