@@ -16,6 +16,9 @@
         /* NOVA COR para o botão de Relatórios Gerenciais */
         .btn-navy { background-color: #001f3f; } 
         
+        /* NOVA COR para o Organograma */
+        .btn-teal { background-color: #20c997; }
+
         .messages { list-style: none; padding: 0; }
         .messages .success { border: 1px solid #155724; background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
         
@@ -94,17 +97,20 @@
         
         <hr style="margin-top: 40px;">
         
+        <h3>Painel de Navegação</h3>
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            
+            
+            <a href="{% url 'listar_organograma' %}" class="btn btn-teal" style="width: auto; padding: 15px 30px;">
+                🏢 Gestão do Organograma (UFS)
+            </a>
+
             <a href="{% url 'dashboard_analises' %}" class="btn btn-purple" style="width: auto; padding: 15px 30px;">
                 Dashboard de Métricas Simples &rarr;
             </a>
             
             <a href="{% url 'dashboard_relacional' %}" class="btn btn-orange" style="width: auto; padding: 15px 30px;">
                 Dashboard Relacional (Cruzamentos) &rarr;
-            </a>
-
-            <a href="{% url 'upload_csv' %}" class="btn" style="background-color: #17a2b8; color: white; width: auto; padding: 15px 30px;">
-                Ferramenta: Criar Novo Banco a partir de CSV
             </a>
 
             <a href="{% url 'central_relatorios' %}" class="btn btn-navy" style="width: auto; padding: 15px 30px;">
@@ -114,6 +120,7 @@
             <a href="{% url 'painel_gestao_incidentes' %}" class="btn" style="background-color: #28a745; color: white; width: auto; padding: 15px 30px;">
                 🛡️ Área de Gestão (Incidentes)
             </a>
+
             <a href="{% url 'upload_csv' %}" class="btn" style="background-color: #17a2b8; color: white; width: auto; padding: 15px 30px;">
                 Ferramenta: Criar Novo Banco a partir de CSV
             </a>

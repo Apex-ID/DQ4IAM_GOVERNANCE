@@ -137,3 +137,27 @@ class HistoricoOrganograma(models.Model):
 
     def __str__(self):
         return f"{self.acao} em {self.unidade_afetada} - {self.data_evento}"
+    
+class VinculoRH(models.Model):
+    """
+    Representa uma linha bruta vinda do arquivo CSV do RH/Acadêmico.
+    Uma pessoa (CPF) pode ter múltiplas linhas (Vínculos) aqui.
+    """
+    # Identificadores
+    matricula = models.CharField(max_length=50, primary_key=True) # ID único do vínculo
+    cpf = models.CharField(max_length=14, db_index=True) # Indexado para agrupar rápido depois
+    nome = models.CharField(max_length=255)
+    email = models.EmailField(null=True, blank=True)
+    
+    # Classificação
+    tipo_vinculo = models.CharField(max_length=50) # Ex: DOCENTE, TECNICO, ALUNO
+    status = models.CharField(max_length=50) # Ex: ATIVO, APOSENTADO, CONCLUIDO
+    
+    # Localização (Texto Bruto para ser processado depois)
+    lotacao_string = models.CharField(max_length=255) # Ex: "DHI - DEPARTAMENTO DE HISTORIA"
+    
+    # Metadados
+    data_importacao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nome} ({self.tipo_vinculo}) - {self.status}"

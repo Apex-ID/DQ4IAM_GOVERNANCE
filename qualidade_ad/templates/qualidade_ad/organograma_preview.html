@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Pré-visualização da Importação</h2>
+
+<div class="alert alert-info">
+    O sistema detectou: 
+    <strong>{{ total_novos }} novas unidades</strong> e 
+    <strong>{{ total_alterados }} atualizações</strong>.
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4 class="text-success">Serão Criados</h4>
+        <table class="table table-sm">
+            <thead><tr><th>Código</th><th>Sigla</th><th>Nome</th></tr></thead>
+            <tbody>
+                {% for item in novos %}
+                <tr>
+                    <td>{{ item.codigo }}</td>
+                    <td>{{ item.sigla }}</td>
+                    <td>{{ item.nome }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3">Nenhuma unidade nova.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h4 class="text-warning">Serão Atualizados</h4>
+        <table class="table table-sm">
+            <thead><tr><th>Código</th><th>Antes</th><th>Depois</th></tr></thead>
+            <tbody>
+                {% for item in alterados %}
+                <tr>
+                    <td>{{ item.codigo }}</td>
+                    <td class="text-muted">{{ item.antes }}</td>
+                    <td class="fw-bold">{{ item.depois }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3">Nenhuma alteração em unidades existentes.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr>
+<div class="d-flex justify-content-between">
+    <a href="{% url 'upload_organograma' %}" class="btn btn-danger">Cancelar / Voltar</a>
+    <a href="{% url 'confirmar_importacao' %}" class="btn btn-success btn-lg">Confirmar e Salvar no Banco</a>
+</div>
+{% endblock %}
