@@ -1,0 +1,106 @@
+Levantamento de Requisitos - Sistema APEX GOVERNANCE
+1. Visão Geral do Sistema
+O APEX GOVERNANCE é uma plataforma web de Governança de Dados focada na qualidade e integridade do Active Directory (AD). O sistema implementa um pipeline de ETL (Extração, Transformação e Carga) para consolidar dados em um repositório analítico e executa baterias de testes baseadas nas dimensões de qualidade do DAMA DMBOK (Completude, Validade, Unicidade e Consistência).
+
+2. Requisitos Funcionais (RF)
+O que o sistema deve fazer.
+
+Módulo 1: Pipeline de Dados (ETL)
+[RF001] Extração de Dados do AD: O sistema deve conectar-se ao Active Directory via protocolo LDAP e extrair metadados de Usuários, Computadores, Grupos e OUs.
+
+[RF002] Importação Local (Fallback): O sistema deve permitir a importação de arquivos CSV previamente extraídos para a pasta temporária, permitindo a execução do pipeline sem conexão direta com o AD.
+
+[RF003] Higienização de Dados: O sistema deve processar os arquivos brutos para remover caracteres nulos (\x00), espaços em branco excedentes e linhas vazias.
+
+[RF004] Carga em Staging: O sistema deve carregar os dados higienizados para tabelas de "Staging" no banco de dados, preservando o formato original (texto) para auditoria.
+
+[RF005] Transformação e Tipagem: O sistema deve converter os dados da Staging para tabelas de Produção, aplicando a tipagem correta (Timestamps, Inteiros, UUIDs) e registrando falhas de conversão.
+
+Módulo 2: Análise de Qualidade (Métricas Simples)
+[RF006] Análise de Completude Geral: O sistema deve calcular o percentual de preenchimento (células não nulas) para cada tabela da área de Staging.
+
+[RF007] Análise de Completude de Negócio: O sistema deve identificar registros críticos com campos obrigatórios vazios (ex: Usuários sem Gerente, Computadores sem Dono).
+
+[RF008] Análise de Validade de Formato: O sistema deve verificar se os dados brutos na Staging correspondem aos tipos de dados esperados no dicionário de dados (ex: se uma data é válida).
+
+[RF009] Análise de Unicidade Padrão: O sistema deve verificar a duplicidade de registros em colunas-chave pré-definidas.
+
+[RF010] Análise de Unicidade Personalizada (Multicoluna): O sistema deve permitir que o usuário selecione uma tabela e um conjunto de colunas (1 a 5) para verificar se a combinação desses valores é única.
+
+Módulo 3: Análise Relacional (Regras de Negócio)
+[RF011] Auditoria de Integridade Referencial: O sistema deve cruzar dados entre tabelas para validar relacionamentos (ex: verificar se o Gerente de um usuário é um usuário válido no AD).
+
+[RF012] Validação de Regras de Segurança: O sistema deve identificar inconsistências de segurança, como contas desabilitadas que ainda possuem grupos de acesso associados.
+
+[RF013] Validação de Temporalidade: O sistema deve identificar ativos obsoletos (ex: logins não realizados há mais de 90 dias).
+
+Módulo 4: Importador Dinâmico ("God Mode")
+[RF014] Upload de CSV Genérico: O sistema deve permitir o upload de qualquer arquivo CSV.
+
+[RF015] Criação Dinâmica de Banco de Dados: O sistema deve ser capaz de criar um novo banco de dados PostgreSQL e tabelas automaticamente com base no CSV enviado.
+
+Módulo 5: Visualização e Relatórios
+[RF016] Dashboard de Controle ETL: Uma interface para acionar o pipeline e visualizar o status de cada etapa (Extração, Limpeza, Carga, Transformação).
+
+[RF017] Dashboard de Métricas: Uma interface gráfica que exibe os resumos das últimas análises executadas.
+
+[RF018] Relatórios Detalhados: O sistema deve fornecer páginas de detalhe para cada execução, listando as colunas ou registros problemáticos.
+
+[RF019] Histórico de Execução: O sistema deve manter um log persistente de todas as execuções, com data, hora, status e resultados.
+
+[RF020] Impressão de Relatórios: As telas de detalhe devem ser otimizadas para a função "Imprimir para PDF" do navegador.
+
+3. Requisitos Não Funcionais (RNF)
+Como o sistema deve se comportar.
+
+[RNF001] Processamento Assíncrono: Tarefas pesadas (ETL e Análises) não devem bloquear a interface do usuário. O sistema deve utilizar filas de mensagens (Redis) e workers (Celery).
+
+[RNF002] Persistência Relacional: Todos os dados e logs devem ser armazenados em um banco de dados relacional robusto (PostgreSQL).
+
+[RNF003] Stack Tecnológica: O sistema deve ser desenvolvido em Python utilizando o framework Django.
+
+[RNF004] Ambiente de Execução: O sistema deve ser compatível com ambientes Linux, garantindo a estabilidade do Celery (mecanismo fork).
+
+[RNF005] Rastreabilidade de Erros: O sistema deve capturar erros de transformação de dados e registrá-los em uma tabela de log (etl_error_log) com o ID do registro de origem, sem interromper o processamento total.
+
+4. Regras de Negócio (RN) - Métricas DAMA
+A lógica específica implementada nos scripts.
+
+[RN001] Completude (DAMA): A fórmula de completude geral deve ser: (Células Preenchidas / Total de Células) * 100. Células vazias ('' ou NULL) são consideradas incompletas.
+
+[RN002] Validade (DAMA): A validade mede a conformidade do formato apenas dos dados presentes. Células vazias são ignoradas no cálculo de validade.
+
+[RN003] Unicidade de Ativos de TI: Para nomes de computadores, a unicidade deve considerar o patrimônio (sufixo numérico após o hífen) e ignorar prefixos de localidade (ex: LAB01-123 e ADM-123 são considerados duplicatas do patrimônio 123).
+
+[RN004] Consistência Hierárquica: Um usuário só é considerado consistente se o seu campo manager apontar para um distinguishedName existente na tabela de usuários.
+
+[RN005] Inatividade: Contas de usuário ou computador são consideradas inativas se o campo lastLogonTimestamp for anterior a 90 dias da data atual.
+
+Extensão de Regras de Negócio (RN) - Métricas Avançadas
+
+[RN006] Integridade Hierárquica (Anti-Ciclo): O sistema deve identificar cadeias de gerência circulares (ex: A reporta a B, B reporta a A), pois isso impede o cálculo correto da estrutura organizacional.
+
+[RN007] Padronização de Atributos: O sistema deve identificar campos categóricos (department, city, company) que excedam um limite aceitável de variação de valores distintos, indicando falta de padronização na entrada de dados.
+
+[RN008] OUs Obsoletas (Zumbi): Uma Unidade Organizacional será classificada como obsoleta se contiver objetos, mas todos os seus objetos filhos (usuários/computadores) estiverem desabilitados ou inativos.
+
+[RN009] Data Quality Index (DQI): O sistema deve calcular um índice único de qualidade (0-100) ponderando as médias de completude, validade, unicidade e consistência, permitindo o acompanhamento da evolução global da governança.
+
+Sugestão de Diagrama para o TCC
+Para ilustrar esses requisitos no seu documento, você pode criar um Diagrama de Caso de Uso simples:
+
+Ator: Administrador de Dados / Auditor.
+
+Casos de Uso:
+
+Executar Pipeline de Carga.
+
+Visualizar Dashboard de Qualidade.
+
+Configurar Análise de Unicidade.
+
+Executar Regras de Negócio.
+
+Baixar Relatório PDF.
+
+Importar CSV Dinâmico.

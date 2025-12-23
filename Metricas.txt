@@ -1,0 +1,26 @@
+1. Detecção de Ciclos Hierárquicos (Circularidade)Atualmente, verificamos se o gerente existe. 
+Mas e se o Usuário A for gerente do Usuário B, e o Usuário B for gerente do Usuário A? 
+Isso quebra qualquer sistema de organograma ou fluxo de aprovação.
+Dimensão: Consistência (Estrutural).
+Nova Regra (RN): "Nenhum usuário pode ser gerente (direto ou indireto) de si mesmo.
+"Implementação: Requer uma consulta SQL recursiva (CTE - Common Table Expression) no PostgreSQL para navegar na árvore de gerência.
+Valor para o TCC: Demonstra domínio avançado de SQL e teoria de grafos aplicada a dados.
+2. Índice de Padronização (Standardization)Muitas vezes os dados estão preenchidos (Completude 100%), mas sujos.
+Exemplo: No campo department, temos: "TI", "T.I.", "Tecnologia da Informação", "Dep. TI".
+Dimensão: Consistência (de Representação).
+Nova Métrica: Taxa de Variância de Valores.
+Como funciona: Para colunas categóricas (Departamento, Cidade, Cargo), o sistema lista os valores distintos. 
+Se houver muitos valores únicos parecidos (ex: > 50 variações para um campo que deveria ter 10), a métrica alerta falta de padronização.
+Valor para o TCC: Mostra preocupação com o uso dos dados para BI (Business Intelligence).
+3. "Zombie Containers" (OUs Fantasmas)Já verificamos grupos vazios. Mas e as Unidades Organizacionais (OUs)?
+Uma OU pode não estar vazia, mas conter apenas objetos desativados.Dimensão: Precisão / Temporalidade.
+Nova Regra (RN): "Uma OU é considerada 'Zumbi' se contiver mais de 10 objetos e 100% deles estiverem desabilitados ou inativos há > 1 ano.
+"Valor para o TCC: Limpeza profunda do diretório (Housekeeping).
+4. Análise de Risco de Senha (Password Age Distribution)Além de saber quem está com a senha expirada, é vital saber a idade média das senhas.
+Dimensão: Temporalidade / Segurança.Métrica: Histograma de Idade da Senha.
+Faixa Verde: < 90 dias.Faixa Amarela: 90 - 180 dias.Faixa Vermelha: > 1 ano (Contas de serviço esquecidas frequentemente caem aqui).
+Valor para o TCC: Foco em cibersegurança e prevenção de ataques de força bruta.
+5. DQI (Data Quality Index) - O "Score" FinalGestores adoram um número único.
+Nova Métrica Composta: Criar uma fórmula que pondera todas as outras métricas para dar uma nota de 0 a 100 para o AD.
+Fórmula Sugerida: DQI = (0.3 x{Completude}) + (0.3 x {Acurácia}) + (0.2 x {Validade}) + (0.2x {Unicidade}).
+Valor para o TCC: Transforma dados técnicos em um KPI (Key Performance Indicator) executivo.

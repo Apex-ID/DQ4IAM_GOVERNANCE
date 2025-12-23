@@ -1,0 +1,39 @@
+| **Dimensão DAMA**                 | **Descrição**                                                            | **Fórmula Geral**                                                                                                             | **Exemplo de Interpretação**                                              |
+| --------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **1. Completude (Completeness)**  | Mede a proporção de dados existentes em relação ao total esperado.       | [\text{Completude} = \frac{\text{Nº de valores preenchidos}}{\text{Nº total de valores esperados}} \times 100%]               | Se 950 de 1000 registros possuem CPF preenchido → 95% completos.          |
+| **2. Consistência (Consistency)** | Mede a coerência entre diferentes fontes, formatos ou regras de negócio. | [\text{Consistência} = \frac{\text{Nº de registros consistentes}}{\text{Nº total de registros verificados}} \times 100%]      | Se 970 registros estão coerentes entre sistemas A e B → 97% consistentes. |
+| **3. Acurácia (Accuracy)**        | Mede o quanto o valor do dado representa corretamente a realidade.       | [\text{Acurácia} = \frac{\text{Nº de valores corretos}}{\text{Nº total de valores verificados}} \times 100%]                  | Se 980 endereços correspondem aos reais → 98% acurados.                   |
+| **4. Validade (Validity)**        | Mede o quanto os dados seguem formatos, domínios e restrições definidos. | [\text{Validade} = \frac{\text{Nº de valores válidos}}{\text{Nº total de valores}} \times 100%]                               | Se 990 e-mails seguem o padrão válido → 99% válidos.                      |
+| **5. Unicidade (Uniqueness)**     | Mede a ausência de duplicidade nos registros.                            | [\text{Unicidade} = 1 - \frac{\text{Nº de registros duplicados}}{\text{Nº total de registros}} \times 100%]                   | Se 20 de 1000 registros estão duplicados → Unicidade = 98%.               |
+| **6. Atualidade (Timeliness)**    | Mede se o dado está disponível dentro do tempo esperado.                 | [\text{Atualidade} = \frac{\text{Nº de registros atualizados dentro do prazo}}{\text{Nº total de registros}} \times 100%]     | Se 900 registros estão atualizados até a data limite → 90% atuais.        |
+| **7. Integridade (Integrity)**    | Mede a presença e correção de relacionamentos entre entidades (chaves).  | [\text{Integridade} = \frac{\text{Nº de relacionamentos corretos}}{\text{Nº total de relacionamentos esperados}} \times 100%] | Se 995 de 1000 chaves estrangeiras são válidas → 99,5% íntegros.          |
+| **8. Conformidade (Conformity)**  | Mede o alinhamento com padrões internos e externos.                      | [\text{Conformidade} = \frac{\text{Nº de registros conformes}}{\text{Nº total de registros}} \times 100%]                     | Se 975 nomes seguem o padrão institucional → 97,5% conformes.             |
+
+$$\text{Consistência de Formato (Validade) \%} = \left( \frac{\text{Total de Células Verificadas} - \text{Total de Células Inválidas}}{\text{Total de Células Verificadas}} \right) \times 100$$
+
+
+
+
+
+
+
+📊 Outras Métricas Derivadas (comuns em frameworks DAMA)
+
+Além das métricas básicas, algumas organizações baseadas no DAMA incluem indicadores derivados:
+| **Indicador**                            | **Fórmula**                                                                                                                       | **Uso Típico**                                          |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| **Índice de Qualidade Global (IQG)**     | [\text{IQG} = \frac{\sum (w_i \times Q_i)}{\sum w_i}] <br>onde *Q_i* é a métrica de qualidade (ex.: completude) e *w_i* é o peso. | Resume várias dimensões ponderadas num único indicador. |
+| **Taxa de Erro (Error Rate)**            | [\text{Taxa de Erro} = \frac{\text{Nº de registros incorretos}}{\text{Nº total de registros}} \times 100%]                        | Identifica percentual de erros detectados.              |
+| **Índice de Correção (Correction Rate)** | [\text{Correção} = \frac{\text{Nº de erros corrigidos}}{\text{Nº total de erros detectados}} \times 100%]                         | Mede eficiência dos processos de saneamento de dados.   |
+
+
+
+
+
+📘 Referência
+
+Essas métricas derivam de:
+
+DAMA-DMBOK2 (Data Management Body of Knowledge, 2ª edição) — Capítulo 13: Data Quality Management
+
+Complementos técnicos baseados em ISO 8000 e TDQM (Total Data Quality Management).

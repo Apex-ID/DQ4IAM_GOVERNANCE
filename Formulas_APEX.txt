@@ -1,0 +1,202 @@
+==============================================================================
+DOCUMENTAÇÃO DE MÉTRICAS E FÓRMULAS - APEX GOVERNANCE
+==============================================================================
+
+1. DIMENSÃO: COMPLETUDE (COMPLETENESS)
+------------------------------------------------------------------------------
+Definição: Mede a proporção de dados armazenados contra o potencial de 100%.
+
+1.1. Completude Geral (Nível de Célula - Tabela Staging)
+   Mede o preenchimento global de uma tabela inteira.
+   
+   Fórmula:
+   % Completude = (Total de Células Preenchidas / Total de Células Possíveis) * 100
+
+   Onde:
+   - Total de Células Possíveis = (Total de Registros * Total de Colunas)
+   - Células Preenchidas = Células que não são Nulas (NULL) e não são vazias ('')
+
+1.2. Completude Específica (Nível de Atributo - Tabela Produção)
+   Mede a ausência de dados em campos obrigatórios de negócio.
+   
+   Fórmula (Percentual de Falha):
+   % Incompletude = (Total de Registros com Campo Vazio / Total de Registros) * 100
+
+   Aplicações no Sistema:
+   - Usuários sem Gerente: (Count(manager IS NULL) / Total Users) * 100
+   - Usuários sem Departamento: (Count(department IS NULL) / Total Users) * 100
+   - Computadores sem Dono: (Count(managedBy IS NULL) / Total Computers) * 100
+
+
+2. DIMENSÃO: VALIDADE (VALIDITY)
+------------------------------------------------------------------------------
+Definição: Mede se os dados estão em conformidade com a sintaxe (formato), 
+tipo ou intervalo definido no dicionário de dados.
+
+2.1. Validade de Formato (Tabela Staging)
+   Verifica se o dado bruto (texto) pode ser convertido para o tipo correto 
+   (Data, Inteiro, UUID, Booleano).
+   
+   Fórmula:
+   % Validade = (Células Preenchidas Válidas / Total de Células Preenchidas) * 100
+
+   Nota: Células vazias são ignoradas (não contam como inválidas nesta métrica, 
+   pois isso é problema de Completude).
+
+   Onde:
+   - Células Preenchidas Válidas = Total Preenchidas - Total com Erro de Formato
+
+
+3. DIMENSÃO: UNICIDADE (UNIQUENESS)
+------------------------------------------------------------------------------
+Definição: Mede se cada entidade ou evento é representado apenas uma vez 
+no conjunto de dados.
+
+3.1. Unicidade Padrão (Por Coluna)
+   Verifica duplicatas em colunas que deveriam ser chaves (ex: sAMAccountName).
+   
+   Fórmula:
+   % Unicidade = (Contagem de Valores Distintos / Contagem de Registros Preenchidos) * 100
+
+   Cálculo de Duplicatas:
+   Total Duplicatas = Registros Preenchidos - Valores Distintos
+
+3.2. Unicidade Composta (Personalizada)
+   Verifica duplicatas considerando a combinação de N colunas selecionadas pelo usuário.
+   
+   Fórmula:
+   % Unicidade = (Contagem de Tuplas Únicas / Total de Registros) * 100
+
+   Onde:
+   - Tupla = Combinação dos valores das colunas selecionadas (ex: Nome + Depto).
+
+3.3. Unicidade de Ativo de TI (Regra de Negócio Especial)
+   Aplicada apenas para tabelas de computadores nas colunas de nome.
+   
+   Lógica de Tratamento:
+   1. Remove sufixo '$' do nome (ex: "PC-01$" -> "PC-01").
+   2. Extrai apenas o Patrimônio após o último hífen (ex: "LAB-01" -> "01").
+   
+   Fórmula:
+   % Unicidade Patrimônio = (Contagem de Sufixos Distintos / Total de Registros) * 100
+
+
+4. DIMENSÃO: CONSISTÊNCIA E ACURÁCIA (REGRAS DE NEGÓCIO)
+------------------------------------------------------------------------------
+Definição: Mede a coerência lógica entre dados relacionados (dentro da mesma tabela 
+ou entre tabelas diferentes) e a aderência às regras de negócio da organização.
+
+4.1. Taxa de Conformidade (Geral para todas as 23 Regras)
+   Mede qual porcentagem da base de dados respeita a regra estabelecida.
+   
+   Fórmula:
+   % Conformidade = ((Total de Registros - Registros com Falha) / Total de Registros) * 100
+
+   Onde "Registros com Falha" é o resultado da query SQL específica da regra.
+
+   Exemplos de Regras Aplicadas:
+   - Consistência Hierárquica: Gerente (manager) deve existir na tabela de usuários.
+   - Integridade de Segurança: Usuário desabilitado não pode ter grupos (memberOf).
+   - Temporalidade: (Data Atual - lastLogonTimestamp) não deve ser > 90 dias.
+   - Acurácia de Identidade: Login (sAMAccountName) deve corresponder ao prefixo do UPN.
+
+==============================================================================
+==============================================================================
+5. DIMENSÃO: CONSISTÊNCIA E ACURÁCIA (ANÁLISES RELACIONAIS)
+==============================================================================
+Definição: Mede a coerência lógica entre dados relacionados (dentro da mesma tabela 
+ou entre tabelas diferentes) e a aderência às regras de negócio da organização.
+
+5.1. Fórmula Geral de Conformidade
+   Utilizada para calcular o percentual de qualidade para todas as regras abaixo.
+   
+   Fórmula:
+   % Conformidade = ((Total de Registros - Registros com Falha) / Total de Registros) * 100
+
+   Onde:
+   - Total de Registros = Contagem total de linhas na tabela principal analisada.
+   - Registros com Falha = Contagem de linhas que violam a regra de negócio específica.
+
+------------------------------------------------------------------------------
+5.2. Regras de Consistência Hierárquica (Pessoas)
+------------------------------------------------------------------------------
+
+A. Gerente Inválido (Link Quebrado)
+   Verifica se o identificador no campo 'manager' corresponde a um usuário real e existente.
+   
+   Lógica de Falha (SQL):
+   1. Selecionar usuários onde 'manager' NÃO é nulo.
+   2. Cruzar (JOIN) com a própria tabela de usuários usando 'manager' = 'distinguishedName'.
+   3. FALHA SE: O registro do gerente cruzado não for encontrado (IS NULL).
+
+B. Gerente Desabilitado
+   Verifica a coerência do status entre funcionário e gerente.
+   
+   Lógica de Falha (SQL):
+   1. Selecionar usuários ATIVOS (userAccountControl: bit 2 = 0).
+   2. Cruzar com o gerente (manager = distinguishedName).
+   3. FALHA SE: O gerente estiver DESABILITADO (userAccountControl: bit 2 = 1).
+
+------------------------------------------------------------------------------
+5.3. Regras de Consistência de Segurança (Status vs. Acesso)
+------------------------------------------------------------------------------
+
+C. Contas Desabilitadas com Permissões Ativas
+   Verifica falhas no processo de desligamento (offboarding).
+   
+   Lógica de Falha (SQL):
+   1. Selecionar usuários onde 'userAccountControl' indica DESABILITADO.
+   2. Verificar o campo 'memberOf' (lista de grupos).
+   3. FALHA SE: O campo 'memberOf' NÃO estiver vazio (usuário ainda possui grupos).
+
+D. Admin Inativo (Risco Crítico)
+   Identifica contas privilegiadas abandonadas.
+   
+   Lógica de Falha (SQL):
+   1. Selecionar usuários onde 'adminCount' = 1 (Privilegiado).
+   2. FALHA SE: 'lastLogonTimestamp' for anterior a 90 dias (Data Atual - 90 dias) 
+      OU se 'lastLogonTimestamp' for NULO.
+
+------------------------------------------------------------------------------
+5.4. Regras de Consistência de Infraestrutura (Ativos)
+------------------------------------------------------------------------------
+
+E. Computador Órfão (Sem Dono Válido)
+   Verifica se o responsável técnico pela máquina existe.
+   
+   Lógica de Falha (SQL):
+   1. Selecionar computadores (ad_computers) onde 'managedBy' NÃO é nulo.
+   2. Cruzar com usuários (ad_users) onde 'managedBy' = 'distinguishedName'.
+   3. FALHA SE: O usuário cruzado não for encontrado (IS NULL).
+
+F. Computador Fora de Padrão (Container Genérico)
+   Verifica organização estrutural (GPOs).
+   
+   Lógica de Falha (SQL):
+   1. Analisar o campo 'distinguishedName' do computador.
+   2. FALHA SE: O texto contiver "CN=Computers," (indicando que está na pasta padrão não gerenciada, em vez de uma OU correta).
+
+------------------------------------------------------------------------------
+5.5. Regras de Acurácia de Identidade (Validade Cruzada)
+------------------------------------------------------------------------------
+
+G. Divergência UPN vs SAM Account
+   Verifica consistência entre o login legado e o login moderno (nuvem).
+   
+   Lógica de Falha (SQL):
+   1. Extrair a parte do usuário do 'userPrincipalName' (texto antes do '@').
+   2. Comparar com o 'sAMAccountName'.
+   3. FALHA SE: Os dois valores forem diferentes.
+
+H. Colisão de E-mail (Usuário vs. Grupo)
+   Verifica unicidade global de endereços de e-mail.
+   
+   Lógica de Falha (SQL):
+   1. Cruzar tabela 'ad_users' com 'ad_groups' usando o campo 'mail'.
+   2. FALHA SE: Houver correspondência (o mesmo e-mail existe nas duas tabelas).
+
+==============================================================================
+
+quantas regras de negocios cada linha fere
+python3 -m http.server 8001
+python3 -m http.server --bind 0.0.0.0 8001

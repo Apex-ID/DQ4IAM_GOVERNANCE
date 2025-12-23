@@ -9,7 +9,7 @@ temp_data/
 organograma/
 dados_verdade/
 *.csv
-*.txt
+
 
 # Cache do Python
 __pycache__/
