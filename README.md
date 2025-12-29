@@ -172,14 +172,18 @@ CELERY_RESULT_BACKEND=redis://localhost:6379/0
 
 # Configuração LDAP (Opcional em Dev)
 AD_SERVER=ip_do_server_AD
+
 AD_USER=dominio\usuario_servico
+
 AD_PASSWORD=senha_do_ad
+
 AD_SEARCH_BASE=DC=ufs,DC=br
 
 6. Inicialização do Banco de Dados
 
 # Cria as migrações iniciais e tabelas
 python3 manage.py makemigrations
+
 python3 manage.py migrate
 
 # Cria o usuário administrador do sistema
