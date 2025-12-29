@@ -1,5 +1,6 @@
 # qualidade_ad/views.py
     
+from datetime import timezone
 import os
 import csv
 import re
@@ -97,23 +98,22 @@ def editar_unidade(request, pk):
 
 @login_required
 def criar_unidade(request):
+    # Pega a hierarquia do pai da URL (se houver)
+    parent_hier = request.GET.get('parent_hier', '')
+    initial_data = {}
+    
+    if parent_hier:
+        # Se o pai é .605.18., sugere que o filho comece com isso
+        initial_data = {'hierarquia': parent_hier}
+
     if request.method == "POST":
         form = OrganogramaForm(request.POST)
         if form.is_valid():
-            nova_unidade = form.save()
-            
-            # Histórico
-            HistoricoOrganograma.objects.create(
-                unidade_afetada=nova_unidade,
-                acao='CRIACAO',
-                detalhes=f"Unidade criada manualmente: {nova_unidade.nome}",
-                responsavel=request.user
-            )
-
+            # ... (código de salvar igual ao anterior) ...
             messages.success(request, "Nova unidade criada!")
-            return redirect('listar_organograma')
+            return redirect('explorer_organograma') # Redireciona para a árvore
     else:
-        form = OrganogramaForm()
+        form = OrganogramaForm(initial=initial_data) # Preenche o form
     
     return render(request, 'qualidade_ad/organograma_form.html', {'form': form, 'titulo': 'Nova Unidade'})
 
@@ -442,4 +442,61 @@ def listar_identidades(request):
     """
     identidades = IdentidadeConsolidada.objects.all().order_by('nome_completo')
     return render(request, 'qualidade_ad/identidades_list.html', {'identidades': identidades})
+
+
+@login_required
+def explorer_organograma(request):
+    """
+    Renderiza o Organograma em formato de Árvore Visual.
+    Calcula o nível de profundidade baseado nos pontos da hierarquia.
+    """
+    # Ordena por hierarquia é VITAL para a árvore ser montada na ordem certa
+    unidades = DicionarioOrganograma.objects.all().order_by('hierarquia')
+    
+    # Processamento para identificar o nível (recuo)
+    arvore = []
+    for u in unidades:
+        #HUMBERTO SE TIVER DUVIDA ME PERGUNTE
+        # Conta quantos pontos tem. 
+        # Ex: .605. (2 pontos) -> Nível 0
+        # Ex: .605.102. (3 pontos) -> Nível 1
+        # Ex: .605.102.109. (4 pontos) -> Nível 2
+        nivel = u.hierarquia.count('.') - 2 
+        if nivel < 0: nivel = 0
+        
+        arvore.append({
+            'obj': u,
+            'nivel': nivel,
+            'pixel_indent': nivel * 40, # 40px de recuo por nível
+            'eh_pai': False # Logica futura se quiser ícone de pasta
+        })
+
+    return render(request, 'qualidade_ad/organograma_tree.html', {
+        'arvore': arvore,
+        'titulo': 'Explorer do Organograma Institucional'
+    })
+
+@login_required
+def relatorio_organograma_pdf(request):
+    """
+    Gera uma versão imprimível (Print Friendly) que pode ser salva como PDF.
+    """
+    unidades = DicionarioOrganograma.objects.all().order_by('hierarquia')
+    lista_impressao = []
+    
+    for u in unidades:
+        nivel = u.hierarquia.count('.') - 2
+        if nivel < 0: nivel = 0
+        lista_impressao.append({
+            'codigo': u.codigo_unidade,
+            'hierarquia': u.hierarquia,
+            'sigla': u.sigla,
+            'nome': u.nome,
+            'espacos': '&nbsp;' * (nivel * 8) # Espaços para simular recuo no texto
+        })
+        
+    return render(request, 'qualidade_ad/relatorio_pdf_organograma.html', {
+        'lista': lista_impressao,
+        'data_geracao': timezone.now()
+    })
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Organograma UFS</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #000; padding: 5px; text-align: left; font-size: 12px; }
+        th { background-color: #eee; }
+        .nivel-texto { font-family: monospace; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+    </style>
+</head>
+<body onload="window.print()"> <div class="header">
+        <h2>UFS - Universidade Federal de Sergipe</h2>
+        <h3>Estrutura Organizacional Hierárquica</h3>
+        <small>Gerado em: {{ data_geracao }}</small>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="15%">Hierarquia</th>
+                <th width="10%">Cód.</th>
+                <th width="10%">Sigla</th>
+                <th>Nome da Unidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td class="nivel-texto">{{ item.hierarquia }}</td>
+                <td>{{ item.codigo }}</td>
+                <td>
+                    {{ item.espacos|safe }} 
+                    <strong>{{ item.sigla }}</strong>
+                </td>
+                <td>{{ item.nome }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

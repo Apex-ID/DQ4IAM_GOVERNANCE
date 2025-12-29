@@ -28,4 +28,8 @@ urlpatterns = [
     path('identidades/processar/', views.processar_consolidacao, name='processar_consolidacao'),
     # rota para listar identidades consolidadas
     path('identidades/listar/', views.listar_identidades, name='listar_identidades'),
+    # rota para explorar o organograma
+    path('organograma/explorer/', views.explorer_organograma, name='explorer_organograma'),
+    # rota para gerar relatório em PDF do organograma
+    path('organograma/relatorio/pdf/', views.relatorio_organograma_pdf, name='relatorio_organograma_pdf'),
 ]
