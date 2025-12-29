@@ -1,109 +1,228 @@
-APEX_GOVERNANCESistema de Governança e Qualidade de Dados do Active Directory
+# 🛡️ APEX Governance - Plataforma de Governança de Identidade e Qualidade de Dados (IGA)
 
-Este projeto é um sistema web completo, construído em Django, projetado para automatizar a extração, transformação e carga (ETL) de dados do ActiveD Directory (AD) da UFS. O objetivo final é criar e manter um repositório analítico em PostgreSQL, permitindo o monitoramento contínuo da qualidade dos dados e servindo como uma plataforma para tomada de decisão e governança de identidades.O sistema utiliza Celery para o processamento assíncrono (em segundo plano) das tarefas pesadas de ETL, garantindo que a interface web permaneça rápida e responsiva.
+> **Projeto de Trabalho de Conclusão de Curso (TCC)**
+> **Instituição:** Universidade Federal de Sergipe (UFS)
+> **Domínio:** Governança de TI, Gestão de Identidade (IAM) e Qualidade de Dados.
 
-🚀 Status Atual do Projeto (Novembro de 2025)Infraestrutura (100% Funcional): A arquitetura base do sistema está completa e operacional no ambiente Linux. A comunicação entre Django (Web), Celery (Tarefas), Redis (Mensageria) e PostgreSQL (Banco de Dados) foi validada com sucesso.Pipeline de ETL (50% Concluído):
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)
+![Django](https://img.shields.io/badge/Django-5.0-green?style=for-the-badge&logo=django)
+![Celery](https://img.shields.io/badge/Celery-Async-orange?style=for-the-badge&logo=celery)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Relational-blue?style=for-the-badge&logo=postgresql)
+![Redis](https://img.shields.io/badge/Redis-Broker-red?style=for-the-badge&logo=redis)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple?style=for-the-badge&logo=bootstrap)
 
-✅ Etapa 1: Extração (Real): A lógica de extração do AD (ad_extractor_and_reporter.py) foi refatorada e integrada ao Celery.
+---
 
-✅ Etapa 2: Limpeza (Real): A lógica de limpeza de CSVs (clean_and_report_csv.py) foi refatorada e integrada ao Celery.
+## 📑 Sumário
+1. [Contextualização e Motivação (TCC)](#-contextualização-e-motivação-tcc)
+2. [Arquitetura do Sistema](#-arquitetura-do-sistema)
+3. [Módulos e Funcionalidades Detalhadas](#-módulos-e-funcionalidades-detalhadas)
+    - [Gestão de Identidade (Core IGA)](#31-módulo-de-gestão-de-identidade-core-iga)
+    - [Pipeline ETL e Staging](#32-pipeline-etl-e-staging)
+    - [Gestão Organizacional (Organograma)](#33-módulo-de-gestão-organizacional)
+    - [Melhoria Contínua e Incidentes](#34-módulo-de-melhoria-contínua)
+    - [Análises e Métricas](#35-módulo-de-análises-e-métricas)
+4. [Stack Tecnológico](#-stack-tecnológico)
+5. [Guia de Instalação e Configuração](#-guia-de-instalação-e-configuração)
+6. [Manual de Execução](#-manual-de-execução)
 
-⏳ Etapa 3: Carga Staging (Pendente): A tarefa Celery ainda está usando uma simulação (time.sleep).
+---
 
-⏳ Etapa 4: Transformação (Pendente): A tarefa Celery ainda está usando uma simulação (time.sleep).
-Interface (MVP Funcional): Existe uma página de "Painel de Controle" que permite acionar manualmente o pipeline de ETL completo através de um botão.
+## 📖 Contextualização e Motivação (TCC)
 
-🛠️ Arquitetura e Tecnologias
-Componente                     Tecnologia / Biblioteca                      Propósito 
-Framework Web                     Django                               Fornece a interface do usuário, login, painéis e APIs.
-Processamento Assíncrono          Celery                               Executa as tarefas pesadas de ETL em segundo plano.
-Agendamento                       Celery Beat                          Agenda a execução automática do pipeline (ex: diariamente).
-Banco de Dados (App)              PostgreSQL                           Armazena os dados do Django (usuários, logs) e o repositórioanalítico.
-Mensageria (Broker)               Redis                                Fila de comunicação entre o Django e os "workers" do Celery.
-Análise de Dados                  Pandas                               Utilizado nas etapas de limpeza e transformação dos dados.
-Conexão                           ADldap3                              Biblioteca Python para conexão e extração de dados do ActiveDirectory.Ambiente de Dev                   Linux (Ubuntu/WSL)                   Ambiente de desenvolvimento e produção padrão.
+Este software foi desenvolvido como artefato prático para o Trabalho de Conclusão de Curso, abordando a **desconexão entre os Sistemas de Gestão de Pessoas (RH/Acadêmico) e a Infraestrutura de TI (Active Directory)** em grandes instituições.
 
-🐧 Guia de Instalação e Configuração (Ambiente Linux)
+### O Problema de Pesquisa
+Em ambientes universitários complexos como a UFS, a identidade de um usuário não é estática nem singular. Um indivíduo pode possuir múltiplos vínculos simultâneos (ex: Servidor Técnico que é aluno de Pós-Graduação e também atua como Professor Substituto).
+Os scripts legados e processos manuais falham ao tratar essas nuances, gerando:
+1.  **Contas Órfãs:** Usuários desligados que mantêm acesso.
+2.  **Privilégios Incorretos:** Alunos com acesso de professor (ou vice-versa).
+3.  **Estrutura de AD Caótica:** OUs (Unidades Organizacionais) que não refletem o organograma oficial.
 
-Siga estes passos para configurar um novo ambiente de desenvolvimento do zero.
+### A Solução Proposta
+O **APEX Governance** atua como uma camada de abstração e inteligência (Middleware de Governança). Ele ingere dados brutos, aplica regras de negócio hierárquicas e de prioridade, e gera um **"Golden Record" (Registro Dourado)** — uma versão única e higienizada da verdade digital do usuário, pronta para automatizar o Active Directory.
 
-1. Instalar Dependências do Sistema (Ubuntu/Debian)
-Atualize seu sistema e instale as ferramentas essenciais:
-    sudo apt update
-    sudo apt install python3-pip python3-venv redis-server -y
+---
 
-2. Iniciar o Serviço Redis
-Inicie o Redis e habilite-o para iniciar com o sistema:
-    sudo service redis-server start
-# Opcional: verifique se está rodando
-    sudo service redis-server status
+## 🏗️ Arquitetura do Sistema
 
-3. Configurar o Ambiente Python
-Navegue até a pasta do projeto (/mnt/d/Sergio/Documents/GITHUB/APEX_GOVERNANCE/) e crie o ambiente virtual:
-# 1. Criar o ambiente virtual
-    python3 -m venv apexvirtual
-# 2. Ativar o ambiente
-    source apexvirtual/bin/activate
-(Seu terminal deve agora mostrar (apexvirtual) no início)
+O sistema utiliza uma arquitetura baseada em eventos e microsserviços lógicos dentro de um monólito modular (Modular Monolith), utilizando o padrão **MVT (Model-View-Template)**.
 
-4. Instalar Dependências do Python
-Primeiro, crie o arquivo requirements.txt se ele não existir:
-# Crie o arquivo (use 'nano' ou seu editor)
-    nano requirements.txt
-#Cole este conteúdo dentro dele:Plaintextdjango
-    celery
-    redis
-    celery[redis]
-    python-dotenv
-    psycopg2-binary
-    pandas
-    ldap3
-    sqlalchemy
-    django-redis
+* **Camada de Ingestão:** Scripts Python/Pandas para leitura de CSVs e conexão LDAP com o AD.
+* **Camada de Processamento Assíncrono:** Utiliza **Celery** com **Redis** (Message Broker) para desacoplar tarefas pesadas (ETL) da interface do usuário, garantindo alta performance mesmo processando milhares de registros.
+* **Camada de Persistência:** PostgreSQL armazenando dados brutos (Staging), dados processados (Production) e logs de auditoria.
+* **Camada de Apresentação:** Interface Web responsiva renderizada pelo Django Templates com Bootstrap 5.
 
-Salve e feche o nano (Ctrl+O, Enter, Ctrl+X).Agora, instale as bibliotecas usando o pip de dentro do ambiente virtual (para evitar erros do  PEP 668):
-    python3 -m pip install -r requirements.txt
+---
 
-5. Configurar o Arquivo de Credenciais (.env)
-Crie o arquivo .env na raiz do projeto:
-    nano .env
-Cole e preencha o seguinte modelo. IMPORTANTE: Gere uma nova SECRET_KEY!
-# Gere uma nova chave em https://djecrety.ir/
-    SECRET_KEY='sua_chave_secreta_aqui'
+## 📦 Módulos e Funcionalidades Detalhadas
 
-# --- PostgreSQL Database Credentials ---
-    DB_HOST="IP_do HOST"
-    DB_NAME="apex_db"
-    DB_USER="apex_user"
-    DB_PASS="sua_senha_do_banco_sem_acento"
-    DB_PORT="5432"
+O sistema é composto por diversas aplicações Django (`apps`), cada uma responsável por um domínio da governança:
 
-# --- Active Directory Credentials ---
-    AD_SERVER="IP_ARCTIVE_DIRECTORY"
-    AD_USER="ufs.internal\seu_usuario_de_servico"
-    AD_PASSWORD="sua_senha_do_ad"
-    AD_SEARCH_BASE="DC=ufs,DC=internal"
+### 3.1. Módulo de Gestão de Identidade (Core IGA)
+O coração do sistema, responsável pela unificação de vínculos.
+* **Consolidação Híbrida de Identidade:** Algoritmo heurístico que varre todos os vínculos de um CPF/Login (Técnico, Docente, Aluno, Terceirizado).
+* **Sistema de Pesos Ponderados:** Resolve conflitos de atributos definindo a "Identidade Principal" baseada em hierarquia institucional (ex: *Docente (100) > Técnico (80) > Aluno (10)*).
+* **Acumulação de Permissões (GGs):** Gera a lista de **Grupos de Governança** necessários. Se um usuário é Técnico e Aluno, ele herda as GGs de ambos os perfis.
+* **Regex de Lotação Inteligente:** Extrai códigos de unidade (ex: `112406`) de strings não estruturadas vindas de sistemas legados para garantir o vínculo correto no organograma.
 
-6. Preparar o Banco de Dados Django
-Execute o migrate para criar as tabelas do Django (usuários, sessões, etc.) no seu PostgreSQL:
-    python3 manage.py migrate
+### 3.2. Pipeline ETL e Staging
+Motor de processamento de dados.
+* **Extração LDAP:** Conectores nativos para extração de Usuários, Computadores e Grupos do Active Directory.
+* **Staging Area:** Tabelas temporárias que recebem os dados brutos, permitindo auditoria antes da transformação.
+* **Tasks Assíncronas:**
+    * `executar_pipeline_completo_task`: Orquestra todo o fluxo.
+    * `importar_arquivos_existentes_task`: Permite reprocessamento (Replay) de dados históricos via CSV.
 
-Crie um superusuário para acessar a área administrativa (/admin/):
-    python3 manage.py createsuperuser
+### 3.3. Módulo de Gestão Organizacional
+Garante que a estrutura lógica de TI reflita a realidade administrativa.
+* **Explorer do Organograma (Tree View):** Interface visual que renderiza a hierarquia da instituição (Pastas e Subpastas) utilizando lógica de *Materialized Path* (ex: `.605.18.144.` define a ancestralidade).
+* **Gestão de De-Para:** Mapeamento entre Códigos Numéricos (Siape) e Siglas de Departamento (ex: 11040302 -> COSUP).
+* **Exportação de Relatórios:** Geração de PDFs da estrutura hierárquica para fins de auditoria.
 
-🚀 Como Executar o Sistema em Desenvolvimento
-Para rodar o sistema, você precisa de dois terminais abertos, ambos na raiz do projeto e com o ambiente virtual ativado. (O Redis já está rodando como um serviço).
+### 3.4. Módulo de Melhoria Contínua
+Focado no ciclo PDCA (Plan-Do-Check-Act) da qualidade de dados.
+* **Gestão de Incidentes de Dados:** Registro de anomalias encontradas durante o processo de ETL (ex: "Departamento não encontrado", "CPF duplicado").
+* **Workflow de Resolução:** Interface para analistas de dados marcarem incidentes como "Investigando", "Resolvido" ou "Falso Positivo".
+* **Auditoria de Correções:** Histórico de quem corrigiu o quê e quando.
 
-Terminal 1: Iniciar o "Worker" do CeleryEste terminal processará as tarefas em segundo plano.
-    (apexvirtual) $ python3 -m celery -A apex_project worker -l info
+### 3.5. Módulo de Análises e Métricas
+Apps `analises_simples` e `analises_relacionais`.
+* **Scorecard de Qualidade:** Dashboard que exibe métricas de Completude (campos vazios), Unicidade (duplicatas) e Conformidade (padrão de nomenclatura).
+* **Análise Cruzada (Cross-Reference):** Compara a "Fonte da Verdade" (RH) com o "Ambiente Alvo" (AD) para identificar:
+    * Contas no AD sem dono no RH (Contas Órfãs).
+    * Contas no RH sem login no AD (Falha de Provisionamento).
 
-Aguarde até ver a mensagem celery@... ready. e a lista de tarefas, incluindo qualidade_ad.tasks.executar_pipeline_completo_task.
+---
 
-Terminal 2: Iniciar o Servidor Web DjangoEste terminal servirá as páginas web.
-(apexvirtual) $ python3 manage.py runserver
+## 🛠️ Stack Tecnológico
 
-Acesso
-Com os dois serviços rodando, acesse o painel de controle no seu navegador:
-    http://127.0.0.1:8000/painel/
+* **Linguagem:** Python 3.12+
+* **Framework Web:** Django 5.0
+* **Gerenciamento de Tarefas:** Celery 5.x
+* **Broker de Mensagens:** Redis 7.x
+* **Banco de Dados:** PostgreSQL 16 (Recomendado) ou SQLite (Dev)
+* **Manipulação de Dados:** Pandas & NumPy
+* **Conectividade LDAP:** ldap3
+* **Frontend:** HTML5, CSS3, Bootstrap 5, FontAwesome 6
 
-Ao clicar no botão "Iniciar Execução...", você verá a atividade sendo registrada em tempo real no Terminal 1 (Celery).
+---
+
+## 🐧 Guia de Instalação e Configuração
+
+Este guia assume um ambiente Linux (Ubuntu/Debian ou WSL).
+
+### 1. Preparação do Sistema Operacional
+Instale as dependências de sistema necessárias:
+```bash
+sudo apt update
+sudo apt install python3-pip python3-venv redis-server libpq-dev -y
+
+---
+
+### 2. Configuração do Redis
+sudo service redis-server start
+# Verifique se está rodando (deve responder PONG)
+redis-cli ping
+
+## 3. Clonagem e Ambiente Virtual
+Bash
+
+# Clone o repositório
+git clone [https://github.com/seu-usuario/apex-governance.git](https://github.com/seu-usuario/apex-governance.git)
+cd apex-governance
+
+# Crie o ambiente virtual
+python3 -m venv apexvirtual
+
+# Ative o ambiente
+source apexvirtual/bin/activate
+
+
+### 4. Instalação de Dependências Python
+Bash
+
+pip install --upgrade pip
+pip install -r requirements.txt
+5. Configuração de Variáveis de Ambiente (.env)
+Crie um arquivo .env na raiz do projeto. Este arquivo não deve ser comitado no Git.
+
+Bash
+
+nano .env
+Conteúdo do .env:
+
+Ini, TOML
+
+# Segurança
+SECRET_KEY=sua_chave_secreta_super_segura_gerada_aleatoriamente
+DEBUG=True
+
+# Banco de Dados
+DB_NAME=apex_db
+DB_USER=postgres
+DB_PASS=sua_senha
+DB_HOST=localhost
+DB_PORT=5432
+
+# Configuração do Celery/Redis
+CELERY_BROKER_URL=redis://localhost:6379/0
+CELERY_RESULT_BACKEND=redis://localhost:6379/0
+
+# Configuração LDAP (Opcional em Dev)
+AD_SERVER=ip_do_server_AD
+AD_USER=dominio\usuario_servico
+AD_PASSWORD=senha_do_ad
+AD_SEARCH_BASE=DC=ufs,DC=br
+6. Inicialização do Banco de Dados
+Bash
+
+# Cria as migrações iniciais e tabelas
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+# Cria o usuário administrador do sistema
+python3 manage.py createsuperuser
+
+▶️ Manual de Execução
+Devido à arquitetura assíncrona, o sistema requer dois processos rodando simultaneamente em terminais separados.
+
+Terminal 1: O Servidor Web (Interface)
+Responsável por responder às requisições HTTP e servir o Painel.
+
+Bash
+
+# Certifique-se de estar com a venv ativada
+source apexvirtual/bin/activate
+python3 manage.py runserver
+Acesse em: http://127.0.0.1:8000/painel/
+
+Terminal 2: O Worker (Processamento em Background)
+Responsável por executar as tarefas de ETL, Consolidação de Identidade e Regras de Negócio.
+
+Bash
+
+# Certifique-se de estar com a venv ativada
+source apexvirtual/bin/activate
+
+# Inicia o worker do Celery
+celery -A apex_project worker --loglevel=info
+
+
+🧪 Fluxo de Teste Sugerido (Demo)
+
+Acesse o Painel Web.
+
+No card "Estrutura Organizacional", clique em Lista Plana e depois Importar CSV para carregar o organograma-ufs-2025.csv.
+
+Volte ao Painel. No card "Pipeline de Identidade", clique em Upload CSV e carregue o arquivo de usuários (usuarios-vinculos.csv).
+
+Ainda no fluxo de Identidade, clique em Processar.
+
+Observe o Terminal 2 (Celery): Você verá os logs de execução processando os vínculos e calculando as GGs.
+
+Clique em Visualizar para ver o Golden Record gerado, demonstrando a unificação dos usuários (ex: Técnico + Aluno consolidado).
+
+Acesse o menu Incidentes para verificar se alguma anomalia foi detectada automaticamente.
+
+Autor: Sergio Santana Projeto Acadêmico - UFS 2025
