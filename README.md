@@ -25,6 +25,7 @@
 4. [Stack Tecnológico](#-stack-tecnológico)
 5. [Guia de Instalação e Configuração](#-guia-de-instalação-e-configuração)
 6. [Manual de Execução](#-manual-de-execução)
+7. [Autor](#autor)
 
 ---
 
@@ -114,7 +115,7 @@ Este guia assume um ambiente Linux (Ubuntu/Debian ou WSL).
 
 ### 1. Preparação do Sistema Operacional
 Instale as dependências de sistema necessárias:
-```bash
+
 sudo apt update
 sudo apt install python3-pip python3-venv redis-server libpq-dev -y
 
@@ -225,4 +226,6 @@ Clique em Visualizar para ver o Golden Record gerado, demonstrando a unificaçã
 
 Acesse o menu Incidentes para verificar se alguma anomalia foi detectada automaticamente.
 
-Autor: Sergio Santana Projeto Acadêmico - UFS 2025
+## Autor: 
+Sergio Santana dos Santos
+Projeto Acadêmico - UFS, 2025
