@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Identidades Unificadas (Simulação)</h2>
+
+<div class="row mb-3">
+    <div class="col-md-4"><div class="card p-3 bg-light">Total Usuários: <strong>{{ total }}</strong></div></div>
+    <div class="col-md-4"><div class="card p-3 text-white bg-success">Ativos Calculados: <strong>{{ ativos }}</strong></div></div>
+    <div class="col-md-4"><div class="card p-3 text-white bg-danger">Inativos (Desligar): <strong>{{ inativos }}</strong></div></div>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Login (SamAccount)</th>
+            <th>Nome</th>
+            <th>Status Final</th>
+            <th>Vínculo Principal</th>
+            <th>Lotação Detectada</th>
+            <th>GGs Sugeridas (Nova Regra)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in identidades %}
+        <tr>
+            <td>{{ i.samaccountname }}</td>
+            <td>{{ i.nome_completo }}</td>
+            <td>
+                {% if i.status_calculado == 'ATIVO' %}
+                    <span class="badge bg-success">ATIVO</span>
+                {% else %}
+                    <span class="badge bg-danger">INATIVO</span>
+                {% endif %}
+            </td>
+            <td>{{ i.tipo_vinculo_principal }}</td>
+            <td>
+                {% if i.lotacao_sigla %}
+                    <strong>{{ i.lotacao_sigla }}</strong> <small>({{ i.lotacao_codigo }})</small>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td><small>{{ i.ggs_sugeridas }}</small></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

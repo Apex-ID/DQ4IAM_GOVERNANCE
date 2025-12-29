@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Identidades Consolidadas (Golden Record)</h2>
+    <div>
+        <a href="{% url 'processar_consolidacao' %}" class="btn btn-warning">
+            <i class="fas fa-sync-alt"></i> Recalcular Regras
+        </a>
+    </div>
+</div>
+
+<div class="card shadow">
+    <div class="card-body">
+        <table class="table table-hover table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Login</th>
+                    <th>Nome</th>
+                    <th>Status Calculado</th>
+                    <th>Lotação (Organograma)</th>
+                    <th>GGs Sugeridas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in identidades %}
+                <tr>
+                    <td><strong>{{ item.samaccountname }}</strong></td>
+                    <td>{{ item.nome_completo }}</td>
+                    <td>
+                        {% if item.status_calculado == 'ATIVO' %}
+                            <span class="badge bg-success">ATIVO</span>
+                        {% else %}
+                            <span class="badge bg-danger">INATIVO</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.lotacao_sigla %}
+                            {{ item.lotacao_sigla }} <small class="text-muted">({{ item.lotacao_codigo }})</small>
+                        {% else %}
+                            <span class="text-muted">-</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <small class="text-primary">{{ item.ggs_sugeridas }}</small>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        Nenhuma identidade processada. 
+                        <a href="{% url 'upload_vinculos_rh' %}">Faça o upload do CSV primeiro.</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

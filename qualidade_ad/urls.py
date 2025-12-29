@@ -22,4 +22,10 @@ urlpatterns = [
     path('organograma/editar/<str:pk>/', views.editar_unidade, name='editar_unidade'),
     # rota para deletar unidade do organograma
     path('organograma/deletar/<str:pk>/', views.deletar_unidade, name='deletar_unidade'),
+    # rota para upload vínculos RH
+    path('vinculos/upload/', views.upload_vinculos_rh, name='upload_vinculos_rh'),
+    # rota para processar consolidação de identidades
+    path('identidades/processar/', views.processar_consolidacao, name='processar_consolidacao'),
+    # rota para listar identidades consolidadas
+    path('identidades/listar/', views.listar_identidades, name='listar_identidades'),
 ]

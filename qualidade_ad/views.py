@@ -2,11 +2,13 @@
     
 import os
 import csv
+import re
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .tasks import (
     executar_pipeline_completo_task, 
@@ -15,9 +17,15 @@ from .tasks import (
 from .models import (
     ExecucaoPipeline,
     DicionarioOrganograma, 
-    HistoricoOrganograma
+    HistoricoOrganograma,
+    IdentidadeConsolidada,
+    VinculoRH
 )
-from .forms import OrganogramaForm, UploadOrganogramaForm
+from .forms import (
+    OrganogramaForm, 
+    UploadOrganogramaForm,
+    UploadVinculosForm
+)
 
 @login_required
 def painel_de_controle(request):
@@ -213,3 +221,225 @@ def confirmar_importacao(request):
     except Exception as e:
         messages.error(request, f"Erro na gravação: {e}")
         return redirect('upload_organograma')
+
+# --- GESTÃO DE IDENTIDADE (FONTE DA VERDADE) ---
+
+@login_required
+def upload_vinculos_rh(request):
+    if request.method == 'POST' and request.FILES.get('arquivo_csv'):
+        myfile = request.FILES['arquivo_csv']
+        fs = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'temp'))
+        filename = fs.save(myfile.name, myfile)
+        file_path = fs.path(filename)
+
+        try:
+            # Apaga dados anteriores para ter uma foto limpa
+            VinculoRH.objects.all().delete()
+            
+            with open(file_path, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f, quotechar="'", delimiter=',')
+                
+                buffer_vinculos = []
+                
+                for row in reader:
+                    # Limpeza de dados (Trim e Upper)
+                    # Verifica se a chave existe antes de acessar para evitar KeyError
+                    status_raw = row.get('status_rh', '')
+                    status_limpo = status_raw.strip().upper()
+                    
+                    vinculo = VinculoRH(
+                        samaccountname=row.get('samaccountname', '').strip(),
+                        nome=row.get('nome_completo', '').strip(),
+                        email=row.get('email_correto', '').strip(),
+                        departamento_string=row.get('departamento_correto', '').strip(),
+                        cargo=row.get('cargo_correto', '').strip(),
+                        gerente_login=row.get('gerente_correto_login', '').strip(),
+                        status_rh=status_limpo
+                    )
+                    buffer_vinculos.append(vinculo)
+                
+                # Bulk Create para performance
+                VinculoRH.objects.bulk_create(buffer_vinculos)
+                
+            os.remove(file_path)
+            messages.success(request, f"Sucesso! {len(buffer_vinculos)} inhas importadas. Agora clique em 'Processar Regras' para atualizar o Golden Record.")
+            return redirect('listar_identidades')
+
+        except Exception as e:
+            messages.error(request, f"Erro na importação: {e}")
+            return redirect('upload_vinculos_rh')
+
+    form = UploadVinculosForm()
+    return render(request, 'qualidade_ad/upload_generico.html', {'form': form, 'titulo': 'Importar Fonte da Verdade (RH)'})
+
+@login_required
+def processar_consolidacao(request):
+    """
+    Lê a tabela VinculoRH (bruta), aplica as regras de negócio 
+    e popula a IdentidadeConsolidada (limpa).
+    """
+    # 1. Limpar tabela de consolidação anterior
+    IdentidadeConsolidada.objects.all().delete()
+    
+    # 2. Pegar lista de logins únicos
+    logins_unicos = VinculoRH.objects.values_list('samaccountname', flat=True).distinct()
+    
+    identidades_buffer = []
+    
+    for login in logins_unicos:
+        vinculos = VinculoRH.objects.filter(samaccountname=login)
+        
+        # --- REGRA 1: DEFINIR STATUS ---
+        vinculo_ativo = vinculos.filter(status_rh__icontains='ATIVO').first()
+        
+        if vinculo_ativo:
+            status_final = 'ATIVO'
+            vinculo_principal = vinculo_ativo
+        else:
+            status_final = 'INATIVO' 
+            vinculo_principal = vinculos.first()
+            
+        # --- REGRA 2: EXTRAIR CÓDIGO DA LOTAÇÃO ---
+        codigo_lotacao = None
+        sigla_lotacao = None
+        ggs = []
+
+        if status_final == 'ATIVO':
+            texto_depto = vinculo_principal.departamento_string
+            match = re.search(r'(\d+)\s*$', texto_depto)
+            
+            if match:
+                codigo_lotacao = match.group(1)
+                try:
+                    unidade = DicionarioOrganograma.objects.get(pk=codigo_lotacao)
+                    sigla_lotacao = unidade.sigla
+                    
+                    # --- REGRA 3: DEFINIR GGs ---
+                    cargo = vinculo_principal.cargo.upper()
+                    
+                    if 'PROFESSOR' in cargo or 'DOCENTE' in cargo:
+                        ggs.append(f"GG_{sigla_lotacao}_DOCENTES")
+                        ggs.append(f"GG_{sigla_lotacao}_IMPRESSAO")
+                    elif 'TECNICO' in cargo:
+                        ggs.append(f"GG_{sigla_lotacao}_ADMINISTRATIVO")
+                        ggs.append(f"GG_{sigla_lotacao}_IMPRESSAO")
+                        
+                except DicionarioOrganograma.DoesNotExist:
+                    sigla_lotacao = "NAO_ENCONTRADO"
+            
+            if 'DISCENTE' in vinculo_principal.cargo.lower():
+                ggs.append("GG_ALUNOS_GENERICO") 
+
+        identidade = IdentidadeConsolidada(
+            samaccountname=login,
+            nome_completo=vinculo_principal.nome,
+            status_calculado=status_final,
+            lotacao_codigo=codigo_lotacao,
+            lotacao_sigla=sigla_lotacao,
+            ggs_sugeridas=", ".join(ggs)
+        )
+        identidades_buffer.append(identidade)
+    
+    IdentidadeConsolidada.objects.bulk_create(identidades_buffer)
+    
+    messages.success(request, f"Processamento concluído! {len(identidades_buffer)} identidades consolidadas.")
+    return redirect('listar_identidades')
+
+@login_required
+def listar_identidades(request):
+    identidades = IdentidadeConsolidada.objects.all().order_by('nome_completo')
+    return render(request, 'qualidade_ad/identidades_list.html', {'identidades': identidades})
+
+
+
+@login_required
+def processar_consolidacao(request):
+    """
+    Lê a tabela VinculoRH (bruta), aplica as regras de negócio 
+    e popula a IdentidadeConsolidada (limpa).
+    """
+    # 1. Limpar tabela de consolidação anterior (Recomeçar do zero)
+    IdentidadeConsolidada.objects.all().delete()
+    
+    # 2. Pegar lista de logins únicos na tabela bruta
+    logins_unicos = VinculoRH.objects.values_list('samaccountname', flat=True).distinct()
+    
+    identidades_buffer = []
+    
+    for login in logins_unicos:
+        # Pega todas as linhas desse usuário (Ex: as 6 linhas do aaronsena)
+        vinculos = VinculoRH.objects.filter(samaccountname=login)
+        
+        # --- REGRA 1: DEFINIR STATUS ---
+        # Se tiver PELO MENOS UMA linha contendo "ATIVO", o usuário é ATIVO.
+        # Usamos icontains para ignorar maiúsculas/minúsculas
+        vinculo_ativo = vinculos.filter(status_rh__icontains='ATIVO').first()
+        
+        if vinculo_ativo:
+            status_final = 'ATIVO'
+            vinculo_principal = vinculo_ativo # A linha ativa é a que manda na lotação
+        else:
+            status_final = 'INATIVO' 
+            vinculo_principal = vinculos.first() # Pega qualquer uma só para ter o nome
+            
+        # --- REGRA 2: EXTRAIR CÓDIGO DA LOTAÇÃO ---
+        codigo_lotacao = None
+        sigla_lotacao = None
+        ggs = []
+
+        if status_final == 'ATIVO':
+            texto_depto = vinculo_principal.departamento_string # "DHI ... - 112406 "
+            
+            # REGEX: Procura dígitos no final da string
+            match = re.search(r'(\d+)\s*$', texto_depto)
+            
+            if match:
+                codigo_lotacao = match.group(1) # "112406"
+                
+                # Busca no Organograma Oficial
+                try:
+                    unidade = DicionarioOrganograma.objects.get(pk=codigo_lotacao)
+                    sigla_lotacao = unidade.sigla # "DHI"
+                    
+                    # --- REGRA 3: DEFINIR GGs ---
+                    cargo = vinculo_principal.cargo.upper()
+                    
+                    if 'PROFESSOR' in cargo or 'DOCENTE' in cargo:
+                        ggs.append(f"GG_{sigla_lotacao}_DOCENTES")
+                        ggs.append(f"GG_{sigla_lotacao}_IMPRESSAO")
+                    elif 'TECNICO' in cargo:
+                        ggs.append(f"GG_{sigla_lotacao}_ADMINISTRATIVO")
+                        ggs.append(f"GG_{sigla_lotacao}_IMPRESSAO")
+                        
+                except DicionarioOrganograma.DoesNotExist:
+                    sigla_lotacao = "NAO_ENCONTRADO"
+            
+            # Tratamento especial para ALUNOS (que não costumam ter código numérico no final)
+            if 'DISCENTE' in vinculo_principal.cargo.lower():
+                ggs.append("GG_ALUNOS_GENERICO") 
+
+        # Cria o objeto na memória
+        identidade = IdentidadeConsolidada(
+            samaccountname=login,
+            nome_completo=vinculo_principal.nome,
+            status_calculado=status_final,
+            lotacao_codigo=codigo_lotacao,
+            lotacao_sigla=sigla_lotacao,
+            ggs_sugeridas=", ".join(ggs)
+        )
+        identidades_buffer.append(identidade)
+    
+    # Salva tudo no banco de uma vez
+    IdentidadeConsolidada.objects.bulk_create(identidades_buffer)
+    
+    messages.success(request, f"Processamento concluído! {len(identidades_buffer)} identidades consolidadas.")
+    return redirect('listar_identidades')
+
+@login_required
+def listar_identidades(request):
+    """
+    Mostra o resultado final.
+    """
+    identidades = IdentidadeConsolidada.objects.all().order_by('nome_completo')
+    return render(request, 'qualidade_ad/identidades_list.html', {'identidades': identidades})
+

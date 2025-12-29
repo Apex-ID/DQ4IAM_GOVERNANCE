@@ -140,24 +140,73 @@ class HistoricoOrganograma(models.Model):
     
 class VinculoRH(models.Model):
     """
-    Representa uma linha bruta vinda do arquivo CSV do RH/Acadêmico.
-    Uma pessoa (CPF) pode ter múltiplas linhas (Vínculos) aqui.
+    Fonte da Verdade Bruta (Importada do CSV).
     """
-    # Identificadores
-    matricula = models.CharField(max_length=50, primary_key=True) # ID único do vínculo
-    cpf = models.CharField(max_length=14, db_index=True) # Indexado para agrupar rápido depois
+    # Identificação
+    samaccountname = models.CharField(max_length=100, db_index=True)
     nome = models.CharField(max_length=255)
     email = models.EmailField(null=True, blank=True)
     
-    # Classificação
-    tipo_vinculo = models.CharField(max_length=50) # Ex: DOCENTE, TECNICO, ALUNO
-    status = models.CharField(max_length=50) # Ex: ATIVO, APOSENTADO, CONCLUIDO
+    # Dados Organizacionais
+    departamento_string = models.CharField(max_length=255) 
+    cargo = models.CharField(max_length=255)
+    gerente_login = models.CharField(max_length=100, null=True, blank=True)
     
-    # Localização (Texto Bruto para ser processado depois)
-    lotacao_string = models.CharField(max_length=255) # Ex: "DHI - DEPARTAMENTO DE HISTORIA"
+    # Status
+    status_rh = models.CharField(max_length=100)
     
-    # Metadados
     data_importacao = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = "Vínculo de RH"
+        verbose_name_plural = "Vínculos de RH"
+
     def __str__(self):
-        return f"{self.nome} ({self.tipo_vinculo}) - {self.status}"
+        return f"{self.samaccountname} - {self.status_rh}"
+
+class IdentidadeConsolidada(models.Model):
+    """
+    Tabela Final: Um registro único por pessoa (Login), 
+    com o status calculado e as GGs definidas.
+    """
+    samaccountname = models.CharField(max_length=100, primary_key=True)
+    nome_completo = models.CharField(max_length=255)
+    
+    # Status Final (ATIVO ou INATIVO)
+    status_calculado = models.CharField(max_length=50) 
+    
+    # Dados Organizacionais (Limpos)
+    lotacao_codigo = models.CharField(max_length=50, null=True, blank=True)
+    lotacao_sigla = models.CharField(max_length=50, null=True, blank=True)
+    
+    # Grupos Calculados
+    ggs_sugeridas = models.TextField(blank=True, help_text="Grupos separados por vírgula")
+    
+    data_processamento = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.samaccountname} ({self.status_calculado})"
+    
+class IdentidadeConsolidada(models.Model):
+    """
+    O 'Golden Record'. Resultado do processamento de múltiplos vínculos.
+    Aqui decidimos quem o usuário É, baseados em todas as suas linhas do CSV.
+    """
+    samaccountname = models.CharField(max_length=100, primary_key=True)
+    nome_completo = models.CharField(max_length=255)
+    
+    # Status Calculado (Se tiver 1 ativo, vira ATIVO)
+    status_calculado = models.CharField(max_length=50) 
+    
+    # O Vínculo "Vencedor" (Aquele que está ativo e definiu a lotação)
+    lotacao_codigo = models.CharField(max_length=50, null=True, blank=True) # Ex: 112406
+    lotacao_sigla = models.CharField(max_length=50, null=True, blank=True) # Ex: DHI (Vem do Organograma)
+    tipo_vinculo_principal = models.CharField(max_length=100, null=True, blank=True) # Ex: DOCENTE
+    
+    # GGs Sugeridas (Lista separada por vírgula para visualização)
+    ggs_sugeridas = models.TextField(help_text="Lista de GGs calculadas baseadas na regra", blank=True)
+    
+    data_processamento = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.samaccountname} - {self.status_calculado}"

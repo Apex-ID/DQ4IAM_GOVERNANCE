@@ -4,6 +4,7 @@ from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import traceback
 from django.utils import timezone
+from django.conf import settings  
 from qualidade_ad.models import LogEtapa
 
 def executar_carga_staging(execucao_id):
@@ -21,9 +22,11 @@ def executar_carga_staging(execucao_id):
         print(f"  [Etapa 4] Iniciando carga para Staging (Execução ID: {execucao_id})...")
         
         load_dotenv()
-        # Define o caminho para a pasta de dados temporários
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-        data_path = os.path.join(base_dir, 'temp_data')
+        
+        
+        # Usa o BASE_DIR do Django para garantir que pegamos a pasta temp_data dentro do projeto
+        data_path = os.path.join(settings.BASE_DIR, 'temp_data')
+        # ---------------------------
 
         # Mapeamento dos arquivos limpos para as tabelas de staging
         csv_to_table_map = {
@@ -50,8 +53,14 @@ def executar_carga_staging(execucao_id):
                 print(f"    -> Processando: {csv_file} -> {table_name}")
                 
                 file_path = os.path.join(data_path, csv_file)
+                
+                # Verifica se o arquivo existe antes de tentar ler
                 if not os.path.exists(file_path):
-                    raise FileNotFoundError(f"Arquivo de entrada não encontrado: {file_path}")
+                    msg_erro = f"Arquivo não encontrado no caminho esperado: {file_path}"
+                    print(f"      ERRO: {msg_erro}")
+                    # Não vamos parar tudo por um arquivo, mas vamos registrar o erro
+                    erros.append(msg_erro)
+                    continue 
 
                 print(f"      -> Lendo o arquivo '{file_path}'...")
                 df = pd.read_csv(file_path, dtype=str)
@@ -90,7 +99,13 @@ def executar_carga_staging(execucao_id):
                     erros.append(f"Falha ao carregar {table_name}: {e}")
                     raise e # Levanta o erro para o try/except principal
         
-        resumo_da_etapa = f"Carga para Staging concluída. {total_linhas_carregadas} linhas totais carregadas nas 4 tabelas."
+        if erros:
+             resumo_da_etapa = f"Carga concluída parcialmente. {total_linhas_carregadas} linhas importadas. Erros: {'; '.join(erros)}"
+             # Se houve erros de arquivo, podemos considerar FALHOU ou SUCESSO PARCIAL.
+             # Aqui vou deixar passar se carregou algo, mas alertando.
+        else:
+            resumo_da_etapa = f"Carga para Staging concluída. {total_linhas_carregadas} linhas totais carregadas nas 4 tabelas."
+            
         print(f"  [Etapa 4] {resumo_da_etapa}")
 
     except Exception as e:

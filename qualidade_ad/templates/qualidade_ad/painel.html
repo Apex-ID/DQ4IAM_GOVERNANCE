@@ -4,135 +4,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ titulo }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        body { font-family: sans-serif; margin: 40px; background-color: #f4f7f6; }
-        .container { max-width: 900px; margin: auto; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .btn { display: block; width: 100%; background-color: #007bff; color: white; padding: 15px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; margin-bottom: 15px; text-decoration: none; text-align: center; }
-        .btn:hover { opacity: 0.9; }
-        .btn-secondary { background-color: #6c757d; }
-        .btn-purple { background-color: #6f42c1; }
-        .btn-orange { background-color: #fd7e14; }
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { max-width: 1200px; margin-top: 30px; margin-bottom: 50px; }
         
-        /* NOVA COR para o botão de Relatórios Gerenciais */
-        .btn-navy { background-color: #001f3f; } 
+        /* Estilo dos Cards de Fluxo */
+        .flow-card { border: none; transition: transform 0.2s; height: 100%; cursor: pointer; }
+        .flow-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .flow-step { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 10px; }
         
-        /* NOVA COR para o Organograma */
-        .btn-teal { background-color: #20c997; }
+        /* Cores Personalizadas (Mantendo sua identidade visual) */
+        .btn-purple { background-color: #6f42c1; color: white; border: none; }
+        .btn-purple:hover { background-color: #5a32a3; color: white; }
+        
+        .btn-orange { background-color: #fd7e14; color: white; border: none; }
+        .btn-orange:hover { background-color: #e36d0d; color: white; }
+        
+        .btn-navy { background-color: #001f3f; color: white; border: none; }
+        .btn-navy:hover { background-color: #00162b; color: white; }
 
-        .messages { list-style: none; padding: 0; }
-        .messages .success { border: 1px solid #155724; background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-        
-        .execucao { border: 1px solid #ddd; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
-        .execucao-header { background-color: #f9f9f9; padding: 10px 15px; border-bottom: 1px solid #ddd; font-size: 0.9em; }
-        .execucao-body { padding: 15px; }
-        .lista-logs { font-size: 0.9em; color: #333; list-style-type: none; padding-left: 0; }
-        .log-item { margin-bottom: 12px; }
-        .status-sucesso { color: #28a745; font-weight: bold; }
-        .status-falhou { color: #dc3545; font-weight: bold; }
-        .status-em-progresso { color: #007bff; font-weight: bold; }
-        .log-resumo { font-family: monospace; background: #eee; padding: 8px; font-size: 0.85em; margin-top: 5px; border-radius: 3px; white-space: pre-wrap; overflow-wrap: break-word; }
+        .btn-teal { background-color: #20c997; color: white; border: none; }
+        .btn-teal:hover { background-color: #19a17a; color: white; }
+
+        .btn-cyan { background-color: #17a2b8; color: white; border: none; }
+        .btn-cyan:hover { background-color: #138496; color: white; }
+
+        /* Estilo do Log de Execução */
+        .log-container { max-height: 400px; overflow-y: auto; }
+        .log-status-success { color: #198754; font-weight: bold; }
+        .log-status-fail { color: #dc3545; font-weight: bold; }
+        .log-detail { font-size: 0.85em; background-color: #f8f9fa; padding: 8px; border-radius: 4px; border-left: 3px solid #ccc; margin-top: 5px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>{{ titulo }}</h1>
-        <hr>
 
+    <nav class="navbar navbar-dark bg-dark mb-4 shadow-sm">
+        <div class="container-fluid px-5">
+            <span class="navbar-brand mb-0 h1"><i class="fas fa-shield-alt"></i> APEX Governance</span>
+            <div class="d-flex">
+                 <a href="/admin/" class="btn btn-outline-light btn-sm">Área Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
         {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+                    {% if message.tags == 'success' %}<i class="fas fa-check-circle"></i>{% endif %}
+                    {% if message.tags == 'error' %}<i class="fas fa-exclamation-circle"></i>{% endif %}
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
         {% endif %}
 
-        <h3>Ações do Pipeline de Carga</h3>
-        <p>Execute o pipeline para carregar ou atualizar os dados do AD no banco.</p>
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit" name="acao_pipeline_completo" class="btn">
-                1. Pipeline Completo (Extrair do AD)
-            </button>
-            <button type="submit" name="acao_importar_arquivos" class="btn btn-secondary">
-                2. Importar de Arquivos Locais (temp_data) .CSV
-            </button>
-        </form>
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h5 class="mb-0 text-primary"><i class="fas fa-id-card-alt"></i> Pipeline de Identidade (Fonte da Verdade)</h5>
+            </div>
+            <div class="card-body bg-light">
+                <div class="row g-4 text-center">
+                    
+                    <div class="col-md-4">
+                        <div class="card flow-card shadow-sm p-3">
+                            <div class="flow-step text-muted">PASSO 1</div>
+                            <i class="fas fa-file-csv fa-3x text-secondary mb-2"></i>
+                            <h6 class="fw-bold">Upload CSV</h6>
+                            <p class="small text-muted mb-3">Carregar arquivo bruto do RH</p>
+                            <a href="{% url 'upload_vinculos_rh' %}" class="btn btn-primary w-100 stretched-link">Importar Arquivo</a>
+                        </div>
+                    </div>
 
-        <hr style="margin-top: 30px;">
-        
-        <h2>Histórico de Execuções do Pipeline (Carga AD)</h2>
-        {% for execucao in ultimas_execucoes %}
-            <div class="execucao">
-                <div class="execucao-header">
-                    <strong>Execução #{{ execucao.id }}</strong> - 
-                    Iniciada em: {{ execucao.timestamp_inicio }} - 
-                    Status: 
-                    <strong class="{% if execucao.status == 'CONCLUIDO' %}status-sucesso{% elif execucao.status == 'FALHOU' %}status-falhou{% else %}status-em-progresso{% endif %}">
-                        {{ execucao.get_status_display }}
-                    </strong>
-                </div>
-                <div class="execucao-body">
-                    <p><strong>Relatório das Etapas:</strong></p>
-                    <ul class="lista-logs">
-                        {% for log in execucao.logs_etapas.all %}
-                            <li class="log-item">
-                                <strong>{{ log.get_etapa_nome_display }}:</strong>
-                                <span class="{% if log.status == 'SUCESSO' %}status-sucesso{% else %}status-falhou{% endif %}">
-                                    [{{ log.get_status_display }}]
-                                </span>
-                                <small>(Duração: {{ log.timestamp_fim|timesince:log.timestamp_inicio }})</small>
-                                <p class="log-resumo">
-                                    {{ log.resumo_execucao|truncatechars:300 }}
-                                </p>
-                            </li>
-                        {% empty %}
-                            <li>Logs das etapas ainda não disponíveis...</li>
-                        {% endfor %}
-                    </ul>
+                    <div class="col-md-4">
+                        <div class="card flow-card shadow-sm p-3 border-warning">
+                            <div class="flow-step text-warning">PASSO 2</div>
+                            <i class="fas fa-cogs fa-3x text-warning mb-2"></i>
+                            <h6 class="fw-bold">Consolidação</h6>
+                            <p class="small text-muted mb-3">Aplicar Regras de Negócio</p>
+                            <a href="{% url 'processar_consolidacao' %}" class="btn btn-warning w-100 stretched-link">Processar Dados</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card flow-card shadow-sm p-3 border-success">
+                            <div class="flow-step text-success">PASSO 3</div>
+                            <i class="fas fa-check-double fa-3x text-success mb-2"></i>
+                            <h6 class="fw-bold">Resultado Final</h6>
+                            <p class="small text-muted mb-3">Ver Golden Record</p>
+                            <a href="{% url 'listar_identidades' %}" class="btn btn-success w-100 stretched-link">Visualizar</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        {% empty %}
-            <p>Nenhuma execução registrada ainda.</p>
-        {% endfor %}
-        
-        <hr style="margin-top: 40px;">
-        
-        <h3>Painel de Navegação</h3>
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            
-            
-            <a href="{% url 'listar_organograma' %}" class="btn btn-teal" style="width: auto; padding: 15px 30px;">
-                🏢 Gestão do Organograma (UFS)
-            </a>
-
-            <a href="{% url 'dashboard_analises' %}" class="btn btn-purple" style="width: auto; padding: 15px 30px;">
-                Dashboard de Métricas Simples &rarr;
-            </a>
-            
-            <a href="{% url 'dashboard_relacional' %}" class="btn btn-orange" style="width: auto; padding: 15px 30px;">
-                Dashboard Relacional (Cruzamentos) &rarr;
-            </a>
-
-            <a href="{% url 'central_relatorios' %}" class="btn btn-navy" style="width: auto; padding: 15px 30px;">
-                📄 Central de Relatórios (PDF)
-            </a>
-
-            <a href="{% url 'painel_gestao_incidentes' %}" class="btn" style="background-color: #28a745; color: white; width: auto; padding: 15px 30px;">
-                🛡️ Área de Gestão (Incidentes)
-            </a>
-
-            <a href="{% url 'upload_csv' %}" class="btn" style="background-color: #17a2b8; color: white; width: auto; padding: 15px 30px;">
-                Ferramenta: Criar Novo Banco a partir de CSV
-            </a>
-
-            <a href="{% url 'historico_cargas' %}" class="btn" style="background-color: #6c757d; color: white; width: auto; padding: 15px 30px;">
-                📜 Histórico de Cargas (ETL Builder)
-            </a>
         </div>
 
-        <div style="text-align: center; margin-top: 20px;">
-            <p><a href="/admin/" style="color: #666;">Acessar Área Administrativa</a></p>
+        <div class="row mb-4">
+            
+            <div class="col-lg-4 mb-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-white">
+                        <h6 class="mb-0 fw-bold"><i class="fas fa-server"></i> Sincronização AD (Técnico)</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted small">Executa a extração via LDAP diretamente do servidor.</p>
+                        <form method="post" class="d-grid gap-2">
+                            {% csrf_token %}
+                            <button type="submit" name="acao_pipeline_completo" class="btn btn-dark">
+                                <i class="fas fa-sync"></i> 1. Extração Completa (AD)
+                            </button>
+                            <button type="submit" name="acao_importar_arquivos" class="btn btn-secondary">
+                                <i class="fas fa-folder-open"></i> 2. Carga Local (Backup)
+                            </button>
+                        </form>
+                        <hr>
+                        <div class="d-grid">
+                             <a href="{% url 'listar_organograma' %}" class="btn btn-teal">
+                                <i class="fas fa-sitemap"></i> Gestão do Organograma
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0 fw-bold"><i class="fas fa-history"></i> Histórico de Execuções (Logs)</h6>
+                        <span class="badge bg-secondary">{{ ultimas_execucoes|length }} Recentes</span>
+                    </div>
+                    <div class="card-body log-container bg-light">
+                        {% if ultimas_execucoes %}
+                            <ul class="list-group list-group-flush">
+                                {% for execucao in ultimas_execucoes %}
+                                <li class="list-group-item bg-white mb-2 shadow-sm rounded border">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Execução #{{ execucao.id }}</h6>
+                                        <small class="text-muted">{{ execucao.timestamp_inicio|date:"d/m/Y H:i" }}</small>
+                                    </div>
+                                    <p class="mb-1">
+                                        Status: 
+                                        {% if execucao.status == 'CONCLUIDO' %}
+                                            <span class="badge bg-success">SUCESSO</span>
+                                        {% elif execucao.status == 'FALHOU' %}
+                                            <span class="badge bg-danger">FALHOU</span>
+                                        {% else %}
+                                            <span class="badge bg-primary">EM ANDAMENTO</span>
+                                        {% endif %}
+                                    </p>
+                                    
+                                    <div class="mt-2">
+                                        {% for log in execucao.logs_etapas.all %}
+                                            <div class="log-detail">
+                                                <strong>{{ log.get_etapa_nome_display }}</strong>: 
+                                                <span class="{% if log.status == 'SUCESSO' %}log-status-success{% else %}log-status-fail{% endif %}">
+                                                    {{ log.get_status_display }}
+                                                </span>
+                                                <br>
+                                                <small class="text-muted fst-italic">{{ log.resumo_execucao|truncatechars:140 }}</small>
+                                            </div>
+                                        {% empty %}
+                                            <small class="text-muted">Sem detalhes de etapa disponíveis.</small>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="text-center py-4 text-muted">
+                                <i class="fas fa-inbox fa-3x mb-3"></i>
+                                <p>Nenhuma execução registrada ainda.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <h5 class="mb-3 text-secondary"><i class="fas fa-th"></i> Acesso Rápido</h5>
+        <div class="row g-3">
+            
+            <div class="col-md-3">
+                <a href="{% url 'dashboard_analises' %}" class="btn btn-purple w-100 py-3 shadow-sm h-100 d-flex align-items-center justify-content-center flex-column">
+                    <i class="fas fa-chart-pie fa-2x mb-2"></i>
+                    <span>Métricas Simples</span>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="{% url 'dashboard_relacional' %}" class="btn btn-orange w-100 py-3 shadow-sm h-100 d-flex align-items-center justify-content-center flex-column">
+                    <i class="fas fa-project-diagram fa-2x mb-2"></i>
+                    <span>Dash Relacional</span>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="{% url 'central_relatorios' %}" class="btn btn-navy w-100 py-3 shadow-sm h-100 d-flex align-items-center justify-content-center flex-column">
+                    <i class="fas fa-file-pdf fa-2x mb-2"></i>
+                    <span>Relatórios PDF</span>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="{% url 'painel_gestao_incidentes' %}" class="btn btn-success w-100 py-3 shadow-sm h-100 d-flex align-items-center justify-content-center flex-column">
+                    <i class="fas fa-shield-virus fa-2x mb-2"></i>
+                    <span>Gestão Incidentes</span>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="{% url 'upload_csv' %}" class="btn btn-cyan w-100 py-3 shadow-sm h-100 d-flex align-items-center justify-content-center flex-column">
+                    <i class="fas fa-database fa-2x mb-2"></i>
+                    <span>Criar Banco (CSV)</span>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="{% url 'historico_cargas' %}" class="btn btn-secondary w-100 py-3 shadow-sm h-100 d-flex align-items-center justify-content-center flex-column">
+                    <i class="fas fa-scroll fa-2x mb-2"></i>
+                    <span>Histórico ETL</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5 mb-5">
+            <small class="text-muted">&copy; 2025 APEX Governance - UFS</small>
+        </div>
+
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
