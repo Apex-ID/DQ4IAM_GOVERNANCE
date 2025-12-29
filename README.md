@@ -120,13 +120,13 @@ sudo apt install python3-pip python3-venv redis-server libpq-dev -y
 
 ---
 
-### 2. Configuração do Redis
+2. Configuração do Redis
 sudo service redis-server start
 # Verifique se está rodando (deve responder PONG)
 redis-cli ping
 
-## 3. Clonagem e Ambiente Virtual
-Bash
+3. Clonagem e Ambiente Virtual
+
 
 # Clone o repositório
 git clone [https://github.com/seu-usuario/apex-governance.git](https://github.com/seu-usuario/apex-governance.git)
@@ -139,15 +139,15 @@ python3 -m venv apexvirtual
 source apexvirtual/bin/activate
 
 
-### 4. Instalação de Dependências Python
-Bash
+4. Instalação de Dependências Python
 
 pip install --upgrade pip
 pip install -r requirements.txt
-5. Configuração de Variáveis de Ambiente (.env)
-Crie um arquivo .env na raiz do projeto. Este arquivo não deve ser comitado no Git.
 
-Bash
+
+5. Configuração de Variáveis de Ambiente (.env)
+
+Crie um arquivo .env na raiz do projeto. Este arquivo não deve ser comitado no Git.
 
 nano .env
 Conteúdo do .env:
@@ -174,8 +174,8 @@ AD_SERVER=ip_do_server_AD
 AD_USER=dominio\usuario_servico
 AD_PASSWORD=senha_do_ad
 AD_SEARCH_BASE=DC=ufs,DC=br
+
 6. Inicialização do Banco de Dados
-Bash
 
 # Cria as migrações iniciais e tabelas
 python3 manage.py makemigrations
@@ -190,7 +190,7 @@ Devido à arquitetura assíncrona, o sistema requer dois processos rodando simul
 Terminal 1: O Servidor Web (Interface)
 Responsável por responder às requisições HTTP e servir o Painel.
 
-Bash
+
 
 # Certifique-se de estar com a venv ativada
 source apexvirtual/bin/activate
@@ -200,7 +200,7 @@ Acesse em: http://127.0.0.1:8000/painel/
 Terminal 2: O Worker (Processamento em Background)
 Responsável por executar as tarefas de ETL, Consolidação de Identidade e Regras de Negócio.
 
-Bash
+
 
 # Certifique-se de estar com a venv ativada
 source apexvirtual/bin/activate
