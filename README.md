@@ -130,14 +130,14 @@ redis-cli ping
 
 
 # Clone o repositório
-git clone [https://github.com/seu-usuario/DQ4IAM-governance.git](https://github.com/seu-usuario/DQ4IAM-governance.git)
+git clone [https://github.com/seu-usuario/dq4iam-governance.git](https://github.com/seu-usuario/dq4iam-governance.git)
 cd DQ4IAM-governance
 
 # Crie o ambiente virtual
-python3 -m venv DQ4IAMvirtual
+python3 -m venv dq4iamvirtual
 
 # Ative o ambiente
-source DQ4IAMvirtual/bin/activate
+source dq4iamvirtual/bin/activate
 
 
 4. Instalação de Dependências Python
@@ -160,7 +160,7 @@ SECRET_KEY=sua_chave_secreta_super_segura_gerada_aleatoriamente
 DEBUG=True
 
 # Banco de Dados
-DB_NAME=DQ4IAM_db
+DB_NAME=dq4iam_db
 DB_USER=postgres
 DB_PASS=sua_senha
 DB_HOST=localhost
@@ -198,7 +198,7 @@ Responsável por responder às requisições HTTP e servir o Painel.
 
 
 # Certifique-se de estar com a venv ativada
-source DQ4IAMvirtual/bin/activate
+source dq4iamvirtual/bin/activate
 python3 manage.py runserver
 Acesse em: http://127.0.0.1:8000/painel/
 
@@ -208,10 +208,10 @@ Responsável por executar as tarefas de ETL, Consolidação de Identidade e Regr
 
 
 # Certifique-se de estar com a venv ativada
-source DQ4IAMvirtual/bin/activate
+source dq4iamvirtual/bin/activate
 
 # Inicia o worker do Celery
-celery -A DQ4IAM_project worker --loglevel=info
+celery -A dq4iam_project worker --loglevel=info
 
 
 🧪 Fluxo de Teste Sugerido (Demo)
@@ -232,4 +232,4 @@ Acesse o menu Incidentes para verificar se alguma anomalia foi detectada automat
 
 ## Autor: 
 Sergio Santana dos Santos
-Projeto Acadêmico - UFS, 2025
+Projeto Acadêmico conclusão de curso em SIstemas de Informação  - UFS, 2025
