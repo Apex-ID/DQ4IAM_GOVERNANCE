@@ -10,7 +10,7 @@ from . import views
 # Configuração do Swagger
 schema_view = get_schema_view(
    openapi.Info(
-      title="APEX Governance API",
+      title="DQ4IAM Governance API",
       default_version='v1',
       description="API para o Frontend React (Produção)",
       contact=openapi.Contact(email="ti@ufs.br"),

@@ -40,7 +40,7 @@ def relatorio_oficial_impressao(request, tipo_metrica, pk):
     """
     contexto = {
         'data_geracao': timezone.now(),
-        'sistema': 'APEX GOVERNANCE',
+        'sistema': 'DQ4IAM GOVERNANCE',
         'versao': '1.0.0',
     }
 

@@ -6,7 +6,7 @@ import django
 # Caminhos do projeto
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../..'))
-sys.path.insert(0, os.path.abspath('../../APEX_GOVERNANCE'))
+sys.path.insert(0, os.path.abspath('../../DQ4IAM_GOVERNANCE'))
 
 # Config do Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dq4iam_project.settings')

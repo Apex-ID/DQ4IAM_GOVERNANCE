@@ -1,7 +1,7 @@
 Catálogo de Fórmulas e Métricas
 ===============================
 
-Este documento detalha a matemática aplicada no motor de regras do **APEX GOVERNANCE**.
+Este documento detalha a matemática aplicada no motor de regras do **DQ4IAM GOVERNANCE**.
 
 1. Fórmulas Implementadas
 -------------------------

@@ -30,7 +30,7 @@ def executar_extracao_ad(execucao_id):
         search_base = os.getenv("AD_SEARCH_BASE")
 
         # --- INÍCIO DA CORREÇÃO ---
-        # Corrigido: Usando 3 'dirname' para chegar na raiz do projeto (APEX_GOVERNANCE)
+        # Corrigido: Usando 3 'dirname' para chegar na raiz do projeto (DQ4IAM_GOVERNANCE)
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         # --- FIM DA CORREÇÃO ---
 

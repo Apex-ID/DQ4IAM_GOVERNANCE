@@ -77,7 +77,7 @@ def dashboard_analises(request):
     ultimos_relatorios_personalizados = RelatorioUnicidadePersonalizada.objects.all().order_by('-timestamp_inicio')[:5]
 
     context = {
-        'titulo': 'APEX - Dashboard de Análises Simples',
+        'titulo': 'DQ4IAM - Dashboard de Análises Simples',
         'ultimos_relatorios_usuarios': ultimos_relatorios_usuarios, 
         'ultimos_relatorios_gerais': ultimos_relatorios_gerais,
         'ultimos_relatorios_validade': ultimos_relatorios_validade,

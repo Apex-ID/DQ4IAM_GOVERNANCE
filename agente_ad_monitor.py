@@ -67,7 +67,7 @@ def monitorar_logs():
     server = 'localhost' # Monitora a própria máquina
     log_type = 'Security'
     
-    print(f"--- INICIANDO AGENTE APEX NO SERVIDOR {socket.gethostname()} ---")
+    print(f"--- INICIANDO AGENTE DQ4IAM NO SERVIDOR {socket.gethostname()} ---")
     print(f"Alvo API: {URL_API}")
     print("Monitorando eventos de segurança do Active Directory...")
 
@@ -140,7 +140,7 @@ def monitorar_logs():
                             print(f"⚡ Detectado: {acao} (ID {event_id})")
                             resp = requests.post(URL_API, json=payload, timeout=5)
                             if resp.status_code == 201:
-                                print("   -> Enviado para o APEX [OK]")
+                                print("   -> Enviado para o DQ4IAM [OK]")
                             else:
                                 print(f"   -> Erro API: {resp.status_code}")
                         except Exception as e_req:

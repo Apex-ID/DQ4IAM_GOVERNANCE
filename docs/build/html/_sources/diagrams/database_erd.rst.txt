@@ -9,5 +9,5 @@ Ele é gerado automaticamente a partir do código-fonte dos Modelos.
 
 .. image:: ../_static/erd_banco_dados.png
    :align: center
-   :alt: Diagrama ERD Completo do APEX
+   :alt: Diagrama ERD Completo do DQ4IAM
    :width: 100%

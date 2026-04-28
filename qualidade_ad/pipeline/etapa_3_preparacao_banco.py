@@ -117,7 +117,7 @@ def executar_preparacao_banco(execucao_id):
              python_executable = os.path.join(sys.prefix, 'bin', 'python')
         
         # --- INÍCIO DA CORREÇÃO 1 ---
-        # Corrigido: Usando 3 'dirname' para chegar na raiz do projeto (APEX_GOVERNANCE)
+        # Corrigido: Usando 3 'dirname' para chegar na raiz do projeto (DQ4IAM_GOVERNANCE)
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         # --- FIM DA CORREÇÃO 1 ---
         manage_py_path = os.path.join(base_dir, 'manage.py')

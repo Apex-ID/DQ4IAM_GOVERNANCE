@@ -79,7 +79,7 @@ def dashboard_relacional(request):
     ultimo_risco = RelatorioRiscoSenha.objects.last()
 
     context = {
-        'titulo': 'APEX - Governança Avançada (DQI & Riscos)',
+        'titulo': 'DQ4IAM - Governança Avançada (DQI & Riscos)',
         'historico_producao': historico_producao, 
         'historico_staging': historico_staging,   
         'dqi_producao': dqi_producao,

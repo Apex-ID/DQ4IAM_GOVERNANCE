@@ -49,7 +49,7 @@ def painel_de_controle(request):
     ultimas_execucoes = ExecucaoPipeline.objects.all().prefetch_related('logs_etapas').order_by('-timestamp_inicio')[:5]
     
     context = {
-        'titulo': 'APEX - Painel de Carga de Dados (ETL)',
+        'titulo': 'DQ4IAM - Painel de Carga de Dados (ETL)',
         'ultimas_execucoes': ultimas_execucoes,
     }
     return render(request, 'qualidade_ad/painel.html', context)

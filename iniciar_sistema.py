@@ -36,7 +36,7 @@ def main():
     python_exec = sys.executable 
 
     # 2. Inicia Celery Worker
-    cmd_celery = f"{python_exec} -m celery -A apex_project worker -l info"
+    cmd_celery = f"{python_exec} -m celery -A dq4iam_project worker -l info"
     abrir_terminal("1. Celery Worker", cmd_celery)
     time.sleep(2)
 

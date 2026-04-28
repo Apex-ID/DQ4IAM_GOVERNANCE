@@ -1,48 +1,48 @@
-Apex Project
+Dq4iam Project
 ============
 
-apex\_project package
+dq4iam\_project package
 =====================
 
 Submodules
 ----------
 
-apex\_project.asgi module
+dq4iam\_project.asgi module
 -------------------------
 
-.. automodule:: apex_project.asgi
+.. automodule:: dq4iam_project.asgi
    :members:
    :show-inheritance:
    :undoc-members:
 
-apex\_project.celery module
+dq4iam\_project.celery module
 ---------------------------
 
-.. automodule:: apex_project.celery
+.. automodule:: dq4iam_project.celery
    :members:
    :show-inheritance:
    :undoc-members:
 
-apex\_project.settings module
+dq4iam\_project.settings module
 -----------------------------
 
-.. automodule:: apex_project.settings
+.. automodule:: dq4iam_project.settings
    :members:
    :show-inheritance:
    :undoc-members:
 
-apex\_project.urls module
+dq4iam\_project.urls module
 -------------------------
 
-.. automodule:: apex_project.urls
+.. automodule:: dq4iam_project.urls
    :members:
    :show-inheritance:
    :undoc-members:
 
-apex\_project.wsgi module
+dq4iam\_project.wsgi module
 -------------------------
 
-.. automodule:: apex_project.wsgi
+.. automodule:: dq4iam_project.wsgi
    :members:
    :show-inheritance:
    :undoc-members:
@@ -50,7 +50,7 @@ apex\_project.wsgi module
 Module contents
 ---------------
 
-.. automodule:: apex_project
+.. automodule:: dq4iam_project
    :members:
    :show-inheritance:
    :undoc-members:

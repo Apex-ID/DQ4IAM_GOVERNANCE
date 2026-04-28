@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qualidade_ad.views &mdash; APEX_GOVERNANCE 1.0.0 documentation</title>
+  <title>qualidade_ad.views &mdash; DQ4IAM_GOVERNANCE 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -29,7 +29,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            APEX_GOVERNANCE
+            DQ4IAM_GOVERNANCE
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">Referência de Código</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html#apex-governance">APEX_GOVERNANCE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html#dq4iam-governance">DQ4IAM_GOVERNANCE</a></li>
 </ul>
 
         </div>
@@ -85,7 +85,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">APEX_GOVERNANCE</a>
+          <a href="../../index.html">DQ4IAM_GOVERNANCE</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -138,7 +138,7 @@
     <span class="n">ultimas_execucoes</span> <span class="o">=</span> <span class="n">ExecucaoPipeline</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">prefetch_related</span><span class="p">(</span><span class="s1">&#39;logs_etapas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-timestamp_inicio&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
     
     <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;APEX - Painel de Carga de Dados (ETL)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;titulo&#39;</span><span class="p">:</span> <span class="s1">&#39;DQ4IAM - Painel de Carga de Dados (ETL)&#39;</span><span class="p">,</span>
         <span class="s1">&#39;ultimas_execucoes&#39;</span><span class="p">:</span> <span class="n">ultimas_execucoes</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;qualidade_ad/painel.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>

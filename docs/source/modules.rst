@@ -9,7 +9,7 @@ DQ4IAM_GOVERNANCE
 
    analises_relacionais
    analises_simples
-   apex_project
+   dq4iam_project
    carga_manual
    importador_dinamico
    iniciar_sistema
