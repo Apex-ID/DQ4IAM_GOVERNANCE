@@ -1,7 +1,7 @@
 DQ4IAM_GOVERNANCE
 Sistema de Governança e Qualidade de Dados
 
-Este projeto é um sistema web completo, construído em Django, projetado para automatizar a extração, transformação e carga (ETL) de dados do ActiveD Directory (AD) da UFS. O objetivo final é criar e manter um repositório analítico em PostgreSQL, permitindo o monitoramento contínuo da qualidade dos dados e servindo como uma plataforma para tomada de decisão e governança de identidades.O sistema utiliza Celery para o processamento assíncrono (em segundo plano) das tarefas pesadas de ETL, garantindo que a interface web permaneça rápida e responsiva.
+Este projeto é um sistema web completo, construído em Django, projetado para automatizar a extração, transformação e carga (ETL) de dados do ActiveD Directory (AD). O objetivo final é criar e manter um repositório analítico em PostgreSQL, permitindo o monitoramento contínuo da qualidade dos dados e servindo como uma plataforma para tomada de decisão e governança de identidades.O sistema utiliza Celery para o processamento assíncrono (em segundo plano) das tarefas pesadas de ETL, garantindo que a interface web permaneça rápida e responsiva.
 
 🚀 Status Atual do Projeto (Novembro de 2025)Infraestrutura (100% Funcional): A arquitetura base do sistema está completa e operacional no ambiente Linux. A comunicação entre Django (Web), Celery (Tarefas), Redis (Mensageria) e PostgreSQL (Banco de Dados) foi validada com sucesso.Pipeline de ETL (50% Concluído):
 
@@ -81,9 +81,9 @@ Cole e preencha o seguinte modelo. IMPORTANTE: Gere uma nova SECRET_KEY!
 
 # --- Active Directory Credentials ---
     AD_SERVER="IP_ARCTIVE_DIRECTORY"
-    AD_USER="ufs.internal\seu_usuario_de_servico"
+    AD_USER=" .internal\seu_usuario_de_servico"
     AD_PASSWORD="sua_senha_do_ad"
-    AD_SEARCH_BASE="DC=ufs,DC=internal"
+    AD_SEARCH_BASE="DC= ,DC=internal"
 
 6. Preparar o Banco de Dados Django
 Execute o migrate para criar as tabelas do Django (usuários, sessões, etc.) no seu PostgreSQL:
