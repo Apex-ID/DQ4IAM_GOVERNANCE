@@ -1,4 +1,4 @@
-APEX-ID_GOVERNANCE
+DQ4IAM_GOVERNANCE
 Sistema de Governança e Qualidade de Dados do Active Directory
 
 Este projeto é um sistema web completo, construído em Django, projetado para automatizar a extração, transformação e carga (ETL) de dados do ActiveD Directory (AD) da UFS. O objetivo final é criar e manter um repositório analítico em PostgreSQL, permitindo o monitoramento contínuo da qualidade dos dados e servindo como uma plataforma para tomada de decisão e governança de identidades.O sistema utiliza Celery para o processamento assíncrono (em segundo plano) das tarefas pesadas de ETL, garantindo que a interface web permaneça rápida e responsiva.
@@ -40,12 +40,12 @@ Inicie o Redis e habilite-o para iniciar com o sistema:
     sudo service redis-server status
 
 3. Configurar o Ambiente Python
-Navegue até a pasta do projeto (/mnt/d/Sergio/Documents/GITHUB/APEX_GOVERNANCE/) e crie o ambiente virtual:
+Navegue até a pasta do projeto (/mnt/d/Sergio/Documents/GITHUB/DQ4IAM_GOVERNANCE/) e crie o ambiente virtual:
 # 1. Criar o ambiente virtual
-    python3 -m venv apexvirtual
+    python3 -m venv DQ4IAMvirtual
 # 2. Ativar o ambiente
-    source apexvirtual/bin/activate
-(Seu terminal deve agora mostrar (apexvirtual) no início)
+    source DQ4IAMvirtual/bin/activate
+(Seu terminal deve agora mostrar (DQ4IAMvirtual) no início)
 
 4. Instalar Dependências do Python
 Primeiro, crie o arquivo requirements.txt se ele não existir:
@@ -74,8 +74,8 @@ Cole e preencha o seguinte modelo. IMPORTANTE: Gere uma nova SECRET_KEY!
 
 # --- PostgreSQL Database Credentials ---
     DB_HOST="IP_do HOST"
-    DB_NAME="apex_db"
-    DB_USER="apex_user"
+    DB_NAME="DQ4IAM_db"
+    DB_USER="DQ4IAM_user"
     DB_PASS="sua_senha_do_banco_sem_acento"
     DB_PORT="5432"
 
@@ -96,12 +96,12 @@ Crie um superusuário para acessar a área administrativa (/admin/):
 Para rodar o sistema, você precisa de dois terminais abertos, ambos na raiz do projeto e com o ambiente virtual ativado. (O Redis já está rodando como um serviço).
 
 Terminal 1: Iniciar o "Worker" do CeleryEste terminal processará as tarefas em segundo plano.
-    (apexvirtual) $ python3 -m celery -A apex_project worker -l info
+    (DQ4IAMvirtual) $ python3 -m celery -A DQ4IAM_project worker -l info
 
 Aguarde até ver a mensagem celery@... ready. e a lista de tarefas, incluindo qualidade_ad.tasks.executar_pipeline_completo_task.
 
 Terminal 2: Iniciar o Servidor Web DjangoEste terminal servirá as páginas web.
-(apexvirtual) $ python3 manage.py runserver
+(DQ4IAMvirtual) $ python3 manage.py runserver
 
 Acesso
 Com os dois serviços rodando, acesse o painel de controle no seu navegador:
