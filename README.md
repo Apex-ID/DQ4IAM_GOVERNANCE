@@ -1,5 +1,5 @@
 DQ4IAM_GOVERNANCE
-Sistema de Governança e Qualidade de Dados do Active Directory
+Sistema de Governança e Qualidade de Dados
 
 Este projeto é um sistema web completo, construído em Django, projetado para automatizar a extração, transformação e carga (ETL) de dados do ActiveD Directory (AD) da UFS. O objetivo final é criar e manter um repositório analítico em PostgreSQL, permitindo o monitoramento contínuo da qualidade dos dados e servindo como uma plataforma para tomada de decisão e governança de identidades.O sistema utiliza Celery para o processamento assíncrono (em segundo plano) das tarefas pesadas de ETL, garantindo que a interface web permaneça rápida e responsiva.
 
