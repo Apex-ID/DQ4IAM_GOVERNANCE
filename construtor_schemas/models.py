@@ -11,7 +11,7 @@ class MapeamentoCarga(models.Model):
     tabela_origem = models.CharField(max_length=100) # ex: ad_users_staging
     
     # Destino (Produção - Pode ser em outro banco que acabamos de criar)
-    banco_destino = models.CharField(max_length=100) # ex: apex_producao
+    banco_destino = models.CharField(max_length=100) # ex: DQ4IAM_producao
     tabela_destino = models.CharField(max_length=100) # ex: ad_users_final
     
     # O Mapa em si: JSON

@@ -9,10 +9,10 @@ sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('../../APEX_GOVERNANCE'))
 
 # Config do Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'apex_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dq4iam_project.settings')
 django.setup()
 
-project = 'APEX_GOVERNANCE'
+project = 'DQ4IAM_GOVERNANCE'
 author = 'Sergio Santana dos Santos'
 release = '1.0.0'
 

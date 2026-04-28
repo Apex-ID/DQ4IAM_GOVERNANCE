@@ -24,7 +24,7 @@ def abrir_terminal(titulo, comando):
 
 def main():
     print("="*50)
-    print("   APEX GOVERNANCE - INICIALIZADOR DE SISTEMA")
+    print("   DQ4IAM GOVERNANCE - INICIALIZADOR DE SISTEMA")
     print("="*50)
 
     # 1. Verifica/Inicia Redis (precisa de sudo, pode pedir senha)

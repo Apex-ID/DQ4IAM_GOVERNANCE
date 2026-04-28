@@ -1,7 +1,7 @@
 Modules
 =======
 
-APEX_GOVERNANCE
+DQ4IAM_GOVERNANCE
 ===============
 
 .. toctree::

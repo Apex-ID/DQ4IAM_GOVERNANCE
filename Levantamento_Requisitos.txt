@@ -1,6 +1,6 @@
-Levantamento de Requisitos - Sistema APEX GOVERNANCE
+Levantamento de Requisitos - Sistema DQ4IAM GOVERNANCE
 1. Visão Geral do Sistema
-O APEX GOVERNANCE é uma plataforma web de Governança de Dados focada na qualidade e integridade do Active Directory (AD). O sistema implementa um pipeline de ETL (Extração, Transformação e Carga) para consolidar dados em um repositório analítico e executa baterias de testes baseadas nas dimensões de qualidade do DAMA DMBOK (Completude, Validade, Unicidade e Consistência).
+O DQ4IAM GOVERNANCE é uma plataforma web de Governança de Dados focada na qualidade e integridade do Active Directory (AD). O sistema implementa um pipeline de ETL (Extração, Transformação e Carga) para consolidar dados em um repositório analítico e executa baterias de testes baseadas nas dimensões de qualidade do DAMA DMBOK (Completude, Validade, Unicidade e Consistência).
 
 2. Requisitos Funcionais (RF)
 O que o sistema deve fazer.

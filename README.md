@@ -1,4 +1,4 @@
-# 🛡️ APEX Governance - Plataforma de Governança de Identidade e Qualidade de Dados (IGA)
+# 🛡️ DQ4IAM Governance - Plataforma de Governança de Identidade e Qualidade de Dados (IGA)
 
 > **Projeto de Trabalho de Conclusão de Curso (TCC)**
 > **Instituição:** Universidade Federal de Sergipe (UFS)
@@ -41,7 +41,7 @@ Os scripts legados e processos manuais falham ao tratar essas nuances, gerando:
 3.  **Estrutura de AD Caótica:** OUs (Unidades Organizacionais) que não refletem o organograma oficial.
 
 ### A Solução Proposta
-O **APEX Governance** atua como uma camada de abstração e inteligência (Middleware de Governança). Ele ingere dados brutos, aplica regras de negócio hierárquicas e de prioridade, e gera um **"Golden Record" (Registro Dourado)** — uma versão única e higienizada da verdade digital do usuário, pronta para automatizar o Active Directory.
+O **DQ4IAM Governance** atua como uma camada de abstração e inteligência (Middleware de Governança). Ele ingere dados brutos, aplica regras de negócio hierárquicas e de prioridade, e gera um **"Golden Record" (Registro Dourado)** — uma versão única e higienizada da verdade digital do usuário, pronta para automatizar o Active Directory.
 
 ---
 
@@ -130,14 +130,14 @@ redis-cli ping
 
 
 # Clone o repositório
-git clone [https://github.com/seu-usuario/apex-governance.git](https://github.com/seu-usuario/apex-governance.git)
-cd apex-governance
+git clone [https://github.com/seu-usuario/DQ4IAM-governance.git](https://github.com/seu-usuario/DQ4IAM-governance.git)
+cd DQ4IAM-governance
 
 # Crie o ambiente virtual
-python3 -m venv apexvirtual
+python3 -m venv DQ4IAMvirtual
 
 # Ative o ambiente
-source apexvirtual/bin/activate
+source DQ4IAMvirtual/bin/activate
 
 
 4. Instalação de Dependências Python
@@ -160,7 +160,7 @@ SECRET_KEY=sua_chave_secreta_super_segura_gerada_aleatoriamente
 DEBUG=True
 
 # Banco de Dados
-DB_NAME=apex_db
+DB_NAME=DQ4IAM_db
 DB_USER=postgres
 DB_PASS=sua_senha
 DB_HOST=localhost
@@ -198,7 +198,7 @@ Responsável por responder às requisições HTTP e servir o Painel.
 
 
 # Certifique-se de estar com a venv ativada
-source apexvirtual/bin/activate
+source DQ4IAMvirtual/bin/activate
 python3 manage.py runserver
 Acesse em: http://127.0.0.1:8000/painel/
 
@@ -208,10 +208,10 @@ Responsável por executar as tarefas de ETL, Consolidação de Identidade e Regr
 
 
 # Certifique-se de estar com a venv ativada
-source apexvirtual/bin/activate
+source DQ4IAMvirtual/bin/activate
 
 # Inicia o worker do Celery
-celery -A apex_project worker --loglevel=info
+celery -A DQ4IAM_project worker --loglevel=info
 
 
 🧪 Fluxo de Teste Sugerido (Demo)

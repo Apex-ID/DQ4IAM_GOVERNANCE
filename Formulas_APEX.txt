@@ -1,5 +1,5 @@
 ==============================================================================
-DOCUMENTAÇÃO DE MÉTRICAS E FÓRMULAS - APEX GOVERNANCE
+DOCUMENTAÇÃO DE MÉTRICAS E FÓRMULAS - DQ4IAM GOVERNANCE
 ==============================================================================
 
 1. DIMENSÃO: COMPLETUDE (COMPLETENESS)

@@ -1,0 +1,119 @@
+DQ4IAM_GOVERNANCE:
+
+1. Arquitetura e Tecnologias
+Definimos uma arquitetura profissional baseada em microsserviços assíncronos:
+
+Core: Python 3.12 + Django 5.2.
+
+Banco de Dados: PostgreSQL (hospedando tabelas de Staging, Produção e Logs de Auditoria).
+
+Processamento Assíncrono: Celery (para rodar tarefas pesadas sem travar o site).
+
+Broker de Mensagens: Redis (gerencia a fila de tarefas entre Django e Celery).
+
+Manipulação de Dados: Pandas (para limpeza/análise) e SQLAlchemy (para carga massiva no banco).
+
+Ambiente: Migramos para Linux (WSL/Ubuntu) para garantir compatibilidade total com o Celery.
+
+2. Estrutura de Módulos (Django Apps)
+Dividimos o sistema em 4 aplicativos principais, seguindo o princípio de "Separação de Preocupações":
+
+A. App qualidade_ad (O Motor de ETL)
+Responsabilidade: Extrair dados do AD, limpar e carregar no banco.
+
+Pipeline de 5 Etapas:
+
+Extração: Conecta no AD via LDAP e gera CSVs brutos.
+
+Limpeza: Remove caracteres nulos e espaços extras.
+
+Preparação do Banco: (Re)cria as tabelas com id SERIAL para garantir integridade.
+
+Carga Staging: Carrega dados brutos (como Texto) para tabelas _staging.
+
+Transformação: Move para tabelas de Produção convertendo tipos (UUID, Data, Int) e logando erros de conversão.
+
+Funcionalidade Extra: Botão para "Importar Arquivos Locais" (pula a extração do AD, útil para testes).
+
+B. App analises_simples (Métricas de Tabela Única - DAMA)
+Responsabilidade: Calcular métricas de qualidade em tabelas individuais.
+
+Métricas Implementadas:
+
+Completude Geral: % de células preenchidas vs. vazias na tabela inteira (Staging).
+
+Completude Específica: Regras de negócio para usuários (ex: % sem Gerente, % sem Departamento).
+
+Validade de Formato: Verifica se os dados em Staging respeitam o tipo de dado do dicionário (ex: se um UUID é válido).
+
+Unicidade (Padrão): Verifica duplicatas em colunas-chave.
+
+Unicidade Personalizada: Permite ao usuário escolher colunas (ex: "Nome" + "Departamento") para verificar duplicatas compostas.
+
+Lógica Especial: Implementamos verificação de sufixo de patrimônio para nomes de computadores.
+
+C. App analises_relacionais (Regras de Negócio Complexas)
+Responsabilidade: Cruzar dados entre tabelas para validar consistência e integridade.
+
+Motor de Regras: Um sistema flexível que lê um dicionário de regras SQL.
+
+Regras Implementadas (23 Regras no total):
+
+Hierarquia (Gerente inválido/desabilitado).
+
+Segurança (Contas desabilitadas com grupos, Admins inativos).
+
+Infraestrutura (Computadores órfãos, SOs obsoletos).
+
+Integridade (UPN fora do padrão, Colisão de e-mail).
+
+D. App importador_dinamico ("God Mode")
+Responsabilidade: Permitir upload de CSVs arbitrários.
+
+Funcionalidade:
+
+Upload de arquivo.
+
+Leitura de cabeçalhos.
+
+Criação dinâmica de um Novo Banco de Dados no Postgres.
+
+Criação automática de tabelas e carga dos dados.
+
+3. Interface de Usuário (Frontend)
+Criamos dashboards funcionais e conectados:
+
+Painel de Controle (ETL):
+
+Botões para iniciar Pipeline Completo ou Importação Local.
+
+Histórico de execução com status (Sucesso/Falha) e logs detalhados das etapas.
+
+Dashboard de Análises:
+
+Botões separados para métricas de Produção e Staging.
+
+Histórico detalhado para cada tipo de análise (Unicidade, Validade, Completude).
+
+Links clicáveis que levam para Páginas de Detalhe.
+
+Páginas de Detalhe (Relatórios):
+
+Páginas limpas e formatadas, prontas para "Salvar como PDF" (Ctrl+P).
+
+Mostram métricas resumidas e tabelas com as colunas problemáticas.
+
+Configuração de Unicidade:
+
+Wizard de 2 passos para escolher Tabela -> Colunas -> Executar.
+
+4. O Que Falta / Próximos Passos (Sugestão)
+O sistema está tecnicamente completo em termos de funcionalidades de backend. Para finalizar o TCC/Projeto, os próximos passos seriam:
+
+Testes de Carga Real: Rodar o sistema com o volume total de dados do AD (se ainda não fizemos com os 80k usuários) para garantir performance.
+
+Refinamento Visual (CSS): Melhorar um pouco o layout (ex: adicionar uma barra lateral de navegação fixa) para parecer mais um "produto".
+
+Segurança: Adicionar o decorator @login_required nas views para que apenas usuários logados acessem o sistema.
+
+Documentação: Gerar um diagrama da arquitetura (Django -> Redis -> Celery) para o seu documento final.

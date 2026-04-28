@@ -1,15 +1,15 @@
 Index
 =====
 
-Documentação Oficial: APEX GOVERNANCE
+Documentação Oficial: DQ4IAM GOVERNANCE
 =====================================
 
-Bem-vindo à documentação técnica do **APEX GOVERNANCE**, uma plataforma de Governança de Dados, Auditoria e Monitoramento Ativo para ambientes Microsoft Active Directory.
+Bem-vindo à documentação técnica do **DQ4IAM GOVERNANCE**, uma plataforma de Governança de Dados, Auditoria e Monitoramento Ativo para ambientes Microsoft Active Directory.
 
-.. image:: _static/logo.png
+.. image:: _static/logo_dq4iam.png
    :align: center
    :width: 200px
-   :alt: Logo APEX
+   :alt: Logo DQ4IAM
 
 Este documento detalha a arquitetura, requisitos, métricas matemáticas e diagramas de engenharia do sistema.
 
@@ -39,6 +39,7 @@ Este documento detalha a arquitetura, requisitos, métricas matemáticas e diagr
    diagrams/database_erd
    diagrams/architecture
    diagrams/architecture_logic
+   diagrams/architecture_final
 
    api_docs
 

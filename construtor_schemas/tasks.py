@@ -15,7 +15,7 @@ def executar_criacao_schema_task(self, config):
     Executa a criação física do banco de dados e das tabelas baseada no dicionário.
     
     config = {
-        'nome_banco': 'apex_producao',
+        'nome_banco': 'dq4iam_producao',
         'criar_banco': True/False,
         'nome_tabela': 'ad_users',
         'colunas': [{'nome': 'cn', 'tipo': 'VARCHAR(255)'}, ...]
@@ -106,7 +106,7 @@ def executar_carga_mapeada_task(self, config):
     Lê dados de Staging, renomeia colunas conforme mapa e insere no Banco Novo.
     config = {
         'origem': 'ad_users_staging',
-        'banco_destino': 'apex_novo',
+        'banco_destino': 'dq4iam_novo',
         'tabela_destino': 'ad_users',
         'mapeamento': {'cn': 'nome_completo', 'mail': 'email'}
     }

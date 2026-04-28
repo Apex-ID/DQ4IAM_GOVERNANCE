@@ -1,7 +1,7 @@
 API REST (Backend Headless)
 ===========================
 
-O APEX GOVERNANCE evoluiu para uma arquitetura desacoplada. Este módulo expõe os dados e funcionalidades do sistema via **JSON**, permitindo a conexão com interfaces modernas (como React, Vue ou Mobile).
+O DQ4IAM GOVERNANCE evoluiu para uma arquitetura desacoplada. Este módulo expõe os dados e funcionalidades do sistema via **JSON**, permitindo a conexão com interfaces modernas (como React, Vue ou Mobile).
 
 Especificações Técnicas
 =======================
